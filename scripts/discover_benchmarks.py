@@ -247,6 +247,18 @@ def _build_prompt(track: str, title: str, abstract: str) -> tuple[str, str]:
         "Reject surveys, awesome-lists, datasets-without-protocol, and methods/models "
         "that are not benchmarks. Respond with STRICT JSON only."
     )
+    subcategory_hint = {
+        "vlm": (
+            '  "vlm_category": one of spatial | planning | qa | physical | reasoning,\n'
+        ),
+        "vla": (
+            '  "vla_env": one of simulation | sim2real | real,\n'
+        ),
+        "wm": (
+            '  "wm_category": one of perceptual | generation | interactive | embodied_utility | physical,\n'
+        ),
+    }.get(track, "")
+
     user = (
         f"Track: {track} ({track_desc}).\n"
         f"Title: {title}\n"
@@ -254,7 +266,8 @@ def _build_prompt(track: str, title: str, abstract: str) -> tuple[str, str]:
         "Return JSON with keys:\n"
         '  "is_benchmark": boolean,\n'
         '  "name": benchmark name (string),\n'
-        '  "tests_en": one concise sentence on what it evaluates (English),\n'
+        + subcategory_hint
+        + '  "tests_en": one concise sentence on what it evaluates (English),\n'
         '  "tests_cn": same in Simplified Chinese,\n'
         '  "metric_en": main metric(s) (English, short),\n'
         '  "metric_cn": main metric(s) in Simplified Chinese.\n'
@@ -392,6 +405,9 @@ def build_entry(track: str, track_cfg: dict, repo_item: dict, arxiv_id: str,
     }
     for k, v in (track_cfg.get("extra_fields") or {}).items():
         entry[k] = v
+    for key in ("vlm_category", "vla_env", "wm_category", "vlm_group"):
+        if assess.get(key):
+            entry[key] = assess[key]
     return entry
 
 

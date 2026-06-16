@@ -3,22 +3,13 @@
 
 Single source of truth: data/benchmarks.yaml (human-curated).
 Machine-managed columns (Stars / Updated) are fetched from the GitHub REST API
-and injected only into the marked table blocks:
+and injected only into the marked table blocks, e.g.:
 
-    <!-- AEE-TABLE:VLM-PRIMARY:START --> ... <!-- AEE-TABLE:VLM-PRIMARY:END -->
-    <!-- AEE-TABLE:VLM-CONTROL:START --> ... <!-- AEE-TABLE:VLM-CONTROL:END -->
-    <!-- AEE-TABLE:VLA:START --> ... <!-- AEE-TABLE:VLA:END -->
-    <!-- AEE-TABLE:WM:START -->  ... <!-- AEE-TABLE:WM:END -->
+    <!-- AEE-TABLE:VLM-PRIMARY-SPATIAL:START --> ... <!-- END -->
+    <!-- AEE-TABLE:VLA-SIM:START --> ... <!-- END -->
+    <!-- AEE-TABLE:WM-INTERACTIVE:START --> ... <!-- END -->
 
 Everything outside the markers (prose, related lists, etc.) is left untouched.
-
-The script is idempotent: a file is only rewritten when its rendered content
-actually changes. Transient GitHub API failures fall back to the cache in
-data/.cache/metadata.json so existing values are never wiped to blanks.
-
-Usage:
-    python scripts/render_readme.py            # render in place
-    python scripts/render_readme.py --check     # exit 1 if files would change
 """
 
 from __future__ import annotations
@@ -43,18 +34,56 @@ README_CN = REPO_ROOT / "README_CN.md"
 GITHUB_API = "https://api.github.com/repos/{repo}"
 PLACEHOLDER = "—"
 
-# Marker specs: (marker_name, selector function)
-MARKER_SPECS = [
-    ("VLM-PRIMARY", lambda e: e.get("track") == "vlm" and e.get("vlm_group") == "primary"),
-    ("VLM-CONTROL", lambda e: e.get("track") == "vlm" and e.get("vlm_group", "control") == "control"),
-    ("VLA", lambda e: e.get("track") == "vla"),
-    ("WM", lambda e: e.get("track") == "wm"),
-]
-
 HEADERS = {
     "en": ["Benchmark", "Year", "What it tests", "Metric", "Stars", "Updated", "Links"],
     "cn": ["基准", "年份", "评什么", "指标", "Stars", "最近更新", "链接"],
 }
+
+
+def _vlm_primary(cat: str):
+    return lambda e: (
+        e.get("track") == "vlm"
+        and e.get("vlm_group") == "primary"
+        and e.get("vlm_category") == cat
+    )
+
+
+def _vlm_control(cat: str):
+    return lambda e: (
+        e.get("track") == "vlm"
+        and e.get("vlm_group", "control") == "control"
+        and e.get("vlm_category") == cat
+    )
+
+
+def _vla(env: str):
+    return lambda e: e.get("track") == "vla" and e.get("vla_env") == env
+
+
+def _wm(cat: str):
+    return lambda e: e.get("track") == "wm" and e.get("wm_category") == cat
+
+
+# Marker specs: (marker_name, selector function)
+MARKER_SPECS = [
+    ("VLM-PRIMARY-SPATIAL", _vlm_primary("spatial")),
+    ("VLM-PRIMARY-PLANNING", _vlm_primary("planning")),
+    ("VLM-PRIMARY-QA", _vlm_primary("qa")),
+    ("VLM-PRIMARY-PHYSICAL", _vlm_primary("physical")),
+    ("VLM-PRIMARY-REASONING", _vlm_primary("reasoning")),
+    ("VLM-CONTROL-REASONING", _vlm_control("reasoning")),
+    ("VLM-CONTROL-PERCEPTION", _vlm_control("perception")),
+    ("VLM-CONTROL-VIDEO", _vlm_control("video")),
+    ("VLM-CONTROL-DOCUMENT", _vlm_control("document")),
+    ("VLA-SIM", _vla("simulation")),
+    ("VLA-SIM2REAL", _vla("sim2real")),
+    ("VLA-REAL", _vla("real")),
+    ("WM-PERCEPTUAL", _wm("perceptual")),
+    ("WM-GENERATION", _wm("generation")),
+    ("WM-INTERACTIVE", _wm("interactive")),
+    ("WM-EMBODIED", _wm("embodied_utility")),
+    ("WM-PHYSICAL", _wm("physical")),
+]
 
 
 def gh_headers() -> dict:
@@ -83,18 +112,13 @@ def save_cache(cache: dict) -> None:
 
 
 def fetch_repo_meta(repo: str, cache: dict) -> dict | None:
-    """Return {'stars': int, 'updated': 'YYYY-MM'} for a repo, or None.
-
-    Uses only the standard library (urllib); honors http(s)_proxy env vars.
-    On API failure, fall back to any cached value for the repo.
-    """
     req = urllib.request.Request(GITHUB_API.format(repo=repo), headers=gh_headers())
     try:
         with urllib.request.urlopen(req, timeout=10) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         meta = {
             "stars": int(data.get("stargazers_count", 0)),
-            "updated": (data.get("pushed_at") or "")[:7],  # YYYY-MM
+            "updated": (data.get("pushed_at") or "")[:7],
         }
         cache[repo] = meta
         return meta
@@ -148,6 +172,8 @@ def render_row(entry: dict, lang: str) -> str:
 
 
 def render_table(entries: list[dict], lang: str) -> str:
+    if not entries:
+        return "_No entries yet._" if lang == "en" else "_暂无条目。_"
     header = "| " + " | ".join(HEADERS[lang]) + " |"
     sep = "|" + "|".join(["---"] * len(HEADERS[lang])) + "|"
     rows = [render_row(e, lang) for e in entries]
@@ -157,10 +183,7 @@ def render_table(entries: list[dict], lang: str) -> str:
 def replace_block(text: str, marker: str, body: str) -> str:
     start = f"<!-- AEE-TABLE:{marker}:START -->"
     end = f"<!-- AEE-TABLE:{marker}:END -->"
-    pattern = re.compile(
-        re.escape(start) + r".*?" + re.escape(end),
-        re.DOTALL,
-    )
+    pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
     if not pattern.search(text):
         raise ValueError(f"Marker block AEE-TABLE:{marker} not found")
     replacement = f"{start}\n{body}\n{end}"
@@ -168,7 +191,6 @@ def replace_block(text: str, marker: str, body: str) -> str:
 
 
 def render_readme(path: Path, entries_by_marker: dict, lang: str) -> bool:
-    """Render one README file. Return True if the file content changed."""
     text = path.read_text(encoding="utf-8")
     new_text = text
     for marker, _selector in MARKER_SPECS:

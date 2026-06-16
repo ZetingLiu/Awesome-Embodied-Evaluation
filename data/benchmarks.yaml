@@ -4,18 +4,17 @@
 # Machine-managed fields (Stars / Updated) are fetched at render time using
 # `repo` and injected by scripts/render_readme.py.
 #
-# `repo` is "owner/name" for GitHub metadata lookup. Use null when there is
-# no single official GitHub repository.
-#
-# VLM entries additionally use `vlm_group`:
-#   - primary: embodied-oriented benchmarks (main list)
-#   - control: general multimodal benchmarks (control set)
+# Subcategory fields (for fine-grained tables):
+#   vlm_group + vlm_category  — VLM primary vs control, and capability axis
+#   vla_env                   — simulation | sim2real | real
+#   wm_category               — perceptual | generation | interactive | embodied_utility | physical
 
 benchmarks:
-  # ---------------- VLM (Embodied Primary) ----------------
+  # ======================== VLM · Embodied Primary · Spatial ========================
   - name: Where2Place
     track: vlm
     vlm_group: primary
+    vlm_category: spatial
     year_en: "2024"
     year_cn: "2024"
     tests_en: "Spatial free-space reference: language-conditioned placement in cluttered real scenes"
@@ -31,6 +30,7 @@ benchmarks:
   - name: RefSpatial-Bench
     track: vlm
     vlm_group: primary
+    vlm_category: spatial
     year_en: "2025"
     year_cn: "2025"
     tests_en: "Multi-step spatial referring and placement reasoning in complex 3D scenes"
@@ -46,6 +46,7 @@ benchmarks:
   - name: VSI-Bench
     track: vlm
     vlm_group: primary
+    vlm_category: spatial
     year_en: "2025"
     year_cn: "2025"
     tests_en: "Egocentric video-based visual-spatial intelligence (configurational, measurement, spatiotemporal)"
@@ -58,9 +59,27 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/vision-x-nyu/thinking-in-space}
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/nyu-visionx/VSI-Bench}
 
+  - name: EmbSpatial-Bench
+    track: vlm
+    vlm_group: primary
+    vlm_category: spatial
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "Egocentric spatial relationships (above/below/left/right/close/far) in embodied 3D scenes"
+    tests_cn: "具身 3D 场景中的第一视角空间关系理解（上下左右/远近等 6 类关系）"
+    metric_en: "Accuracy"
+    metric_cn: "Accuracy"
+    repo: mengfeidu/EmbSpatial-Bench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2406.05756}
+      - {en: Code, cn: 代码, url: https://github.com/mengfeidu/EmbSpatial-Bench}
+      - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/Phineas476/EmbSpatial-Bench}
+
+  # ======================== VLM · Embodied Primary · Planning ========================
   - name: EgoPlan-Bench2
     track: vlm
     vlm_group: primary
+    vlm_category: planning
     year_en: "2024"
     year_cn: "2024"
     tests_en: "Egocentric real-world planning across daily scenarios and long-horizon task progress"
@@ -73,9 +92,11 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/qiulu66/EgoPlan-Bench2/}
       - {en: Site, cn: 主页, url: https://qiulu66.github.io/egoplanbench2/}
 
+  # ======================== VLM · Embodied Primary · Embodied QA ========================
   - name: OpenEQA
     track: vlm
     vlm_group: primary
+    vlm_category: qa
     year_en: "2024"
     year_cn: "2024"
     tests_en: "Embodied question answering with episodic-memory and active-exploration settings"
@@ -88,9 +109,11 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/facebookresearch/open-eqa}
       - {en: Site, cn: 主页, url: https://open-eqa.github.io/}
 
+  # ======================== VLM · Embodied Primary · Physical Reasoning ========================
   - name: PhysBench
     track: vlm
     vlm_group: primary
+    vlm_category: physical
     year_en: "2025"
     year_cn: "2025"
     tests_en: "Physical-world understanding for embodied agents (object physics, relations, scene dynamics)"
@@ -103,10 +126,28 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/physical-superintelligence-lab/PhysBench}
       - {en: Site, cn: 主页, url: https://physbench.github.io/}
 
-  # ---------------- VLM (General Control) ----------------
+  # ======================== VLM · Embodied Primary · Embodied Reasoning ========================
+  - name: ERQA
+    name_cn: ERQA（具身推理问答）
+    track: vlm
+    vlm_group: primary
+    vlm_category: reasoning
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Multimodal embodied reasoning QA (spatial reasoning, world knowledge) in real-world robotic scenarios"
+    tests_cn: "真实机器人场景下的多模态具身推理问答（空间推理与世界知识）"
+    metric_en: "Accuracy (MCQ)"
+    metric_cn: "Accuracy（选择题）"
+    repo: embodiedreasoning/ERQA
+    links:
+      - {en: Report, cn: 技术报告, url: https://storage.googleapis.com/deepmind-media/gemini-robotics/gemini_robotics_report.pdf}
+      - {en: Code, cn: 代码, url: https://github.com/embodiedreasoning/ERQA}
+
+  # ======================== VLM · Control · Reasoning ========================
   - name: MMMU
     track: vlm
     vlm_group: control
+    vlm_category: reasoning
     year_en: "2023"
     year_cn: "2023"
     tests_en: "College-level, multi-discipline multimodal reasoning (30 subjects, heterogeneous image types)"
@@ -119,23 +160,10 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/MMMU-Benchmark/MMMU}
       - {en: Site, cn: 主页, url: https://mmmu-benchmark.github.io/}
 
-  - name: MMBench
-    track: vlm
-    vlm_group: control
-    year_en: "2023"
-    year_cn: "2023"
-    tests_en: "Fine-grained, multi-ability understanding with CircularEval; EN/ZH"
-    tests_cn: "细粒度、多能力维度理解，含 CircularEval；中英双语"
-    metric_en: "Accuracy"
-    metric_cn: "Accuracy"
-    repo: open-compass/MMBench
-    links:
-      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.06281}
-      - {en: Code, cn: 代码, url: https://github.com/open-compass/MMBench}
-
   - name: MathVista
     track: vlm
     vlm_group: control
+    vlm_category: reasoning
     year_en: "2023"
     year_cn: "2023"
     tests_en: "Mathematical reasoning in visual contexts (charts, geometry, figures)"
@@ -147,9 +175,43 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2310.02255}
       - {en: Code, cn: 代码, url: https://github.com/lupantech/MathVista}
 
+  # ======================== VLM · Control · Perception ========================
+  - name: MMBench
+    track: vlm
+    vlm_group: control
+    vlm_category: perception
+    year_en: "2023"
+    year_cn: "2023"
+    tests_en: "Fine-grained, multi-ability understanding with CircularEval; EN/ZH"
+    tests_cn: "细粒度、多能力维度理解，含 CircularEval；中英双语"
+    metric_en: "Accuracy"
+    metric_cn: "Accuracy"
+    repo: open-compass/MMBench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.06281}
+      - {en: Code, cn: 代码, url: https://github.com/open-compass/MMBench}
+
+  - name: SEED-Bench series
+    name_cn: SEED-Bench 系列
+    track: vlm
+    vlm_group: control
+    vlm_category: perception
+    year_en: "2023-2024"
+    year_cn: "2023-2024"
+    tests_en: "Broad multimodal capability coverage (image/video, generation-oriented comprehension, text-rich understanding)"
+    tests_cn: "覆盖更广的多模态能力（图像/视频、生成式理解、富文本视觉理解）"
+    metric_en: "Accuracy"
+    metric_cn: "Accuracy"
+    repo: AILab-CVC/SEED-Bench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.16125}
+      - {en: Code, cn: 代码, url: https://github.com/AILab-CVC/SEED-Bench}
+
+  # ======================== VLM · Control · Video ========================
   - name: Video-MME / Video-MME-v2
     track: vlm
     vlm_group: control
+    vlm_category: video
     year_en: "2024/2026"
     year_cn: "2024/2026"
     tests_en: "Comprehensive video understanding, with v2 targeting robustness, consistency, and reasoning faithfulness"
@@ -163,25 +225,12 @@ benchmarks:
       - {en: Paper v2, cn: 论文 v2, url: https://arxiv.org/abs/2604.05015}
       - {en: Code v2, cn: 代码 v2, url: https://github.com/MME-Benchmarks/Video-MME-v2}
 
-  - name: SEED-Bench series
-    name_cn: SEED-Bench 系列
-    track: vlm
-    vlm_group: control
-    year_en: "2023-2024"
-    year_cn: "2023-2024"
-    tests_en: "Broad multimodal capability coverage (image/video, generation-oriented comprehension, text-rich understanding)"
-    tests_cn: "覆盖更广的多模态能力（图像/视频、生成式理解、富文本视觉理解）"
-    metric_en: "Accuracy"
-    metric_cn: "Accuracy"
-    repo: AILab-CVC/SEED-Bench
-    links:
-      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.16125}
-      - {en: Code, cn: 代码, url: https://github.com/AILab-CVC/SEED-Bench}
-
+  # ======================== VLM · Control · Document ========================
   - name: DocVQA (RRC track)
     name_cn: DocVQA（RRC 赛道）
     track: vlm
     vlm_group: control
+    vlm_category: document
     year_en: "2020-ongoing"
     year_cn: "2020-持续更新"
     tests_en: "Document visual question answering and document reasoning under challenge protocol"
@@ -193,9 +242,10 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2007.00398}
       - {en: RRC, cn: RRC, url: https://rrc.cvc.uab.es/}
 
-  # ---------------- VLA ----------------
+  # ======================== VLA · Simulation ========================
   - name: LIBERO
     track: vla
+    vla_env: simulation
     year_en: "2023"
     year_cn: "2023"
     tests_en: "Lifelong / language-conditioned tabletop manipulation (Spatial, Object, Goal, Long suites)"
@@ -207,8 +257,24 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2306.03310}
       - {en: Code, cn: 代码, url: https://github.com/Lifelong-Robot-Learning/LIBERO}
 
+  - name: LIBERO-PRO
+    track: vla
+    vla_env: simulation
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Robust LIBERO extension with perturbations on objects, initial states, instructions, and environments"
+    tests_cn: "LIBERO 鲁棒性扩展：在物体、初始状态、指令、环境四维度施加扰动，诊断记忆化问题"
+    metric_en: "Success rate under perturbations"
+    metric_cn: "扰动下成功率"
+    repo: Zxy-MLlab/LIBERO-PRO
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2510.03827}
+      - {en: Code, cn: 代码, url: https://github.com/Zxy-MLlab/LIBERO-PRO}
+      - {en: Site, cn: 主页, url: https://zxy-mllab.github.io/LIBERO-PRO-Webpage/}
+
   - name: CALVIN
     track: vla
+    vla_env: simulation
     year_en: "2021"
     year_cn: "2021"
     tests_en: "Long-horizon instruction chaining; compositional generalization (ABC→D)"
@@ -220,21 +286,69 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2112.03227}
       - {en: Code, cn: 代码, url: https://github.com/mees/calvin}
 
-  - name: SimplerEnv
+  - name: RoboTwin 2.0
     track: vla
+    vla_env: simulation
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Dual-arm manipulation benchmark with domain randomization; 50 tasks, 5 robot embodiments, sim-to-real protocol"
+    tests_cn: "双臂操作基准：50 任务、5 种机器人本体、强域随机化；社区 VLA 评测常用（含 CVPR 挑战赛）"
+    metric_en: "Task success rate"
+    metric_cn: "任务成功率"
+    repo: RoboTwin-Platform/RoboTwin
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2506.18088}
+      - {en: Code, cn: 代码, url: https://github.com/RoboTwin-Platform/RoboTwin}
+      - {en: Site, cn: 主页, url: https://robotwin-platform.github.io/}
+      - {en: Leaderboard, cn: 排行榜, url: https://robotwin-platform.github.io/leaderboard}
+
+  - name: VLA-Arena
+    track: vla
+    vla_env: simulation
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Structured VLA eval across task structure, language, and vision axes (170 tasks; Safety/Distractor/Extrapolation/Long-Horizon)"
+    tests_cn: "结构化 VLA 评测：任务结构/语言/视觉三轴、170 任务（Safety/Distractor/Extrapolation/Long-Horizon）"
+    metric_en: "Success rate by difficulty level (L0–L2)"
+    metric_cn: "按难度等级（L0–L2）的成功率"
+    repo: PKU-Alignment/VLA-Arena
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2512.22539}
+      - {en: Code, cn: 代码, url: https://github.com/PKU-Alignment/VLA-Arena}
+      - {en: Site, cn: 主页, url: https://vla-arena.github.io/}
+
+  - name: THE COLOSSEUM
+    track: vla
+    vla_env: simulation
     year_en: "2024"
     year_cn: "2024"
-    tests_en: "Real-to-sim evaluation of real-robot policies (Google Robot, WidowX+Bridge)"
-    tests_cn: "真实机器人策略的 real-to-sim 评测（Google Robot、WidowX+Bridge）"
-    metric_en: "Success rate, sim↔real correlation (MMRV, Pearson r)"
-    metric_cn: "成功率、sim↔real 相关性（MMRV、Pearson r）"
-    repo: simpler-env/SimplerEnv
+    tests_en: "Generalization in robotic manipulation under visual/semantic/execution perturbations"
+    tests_cn: "机器人操作泛化评测：视觉/语义/执行多类扰动下的策略鲁棒性"
+    metric_en: "Success rate"
+    metric_cn: "成功率"
+    repo: robot-colosseum/robot-colosseum
     links:
-      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2405.05946}
-      - {en: Code, cn: 代码, url: https://github.com/simpler-env/SimplerEnv}
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2402.08191}
+      - {en: Code, cn: 代码, url: https://github.com/robot-colosseum/robot-colosseum}
+      - {en: Site, cn: 主页, url: https://robot-colosseum.github.io}
+
+  - name: RLBench
+    track: vla
+    vla_env: simulation
+    year_en: "2020"
+    year_cn: "2020"
+    tests_en: "100+ language-conditioned manipulation tasks in CoppeliaSim (Franka Panda); widely used VLA baseline"
+    tests_cn: "CoppeliaSim 中 100+ 语言条件操作任务（Franka Panda）；VLA/操作学习长期基线"
+    metric_en: "Success rate"
+    metric_cn: "成功率"
+    repo: stepjam/RLBench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/1909.12271}
+      - {en: Code, cn: 代码, url: https://github.com/stepjam/RLBench}
 
   - name: ManiSkill2
     track: vla
+    vla_env: simulation
     year_en: "2023"
     year_cn: "2023"
     tests_en: "Generalizable manipulation across diverse objects / skills with high-throughput simulation"
@@ -248,6 +362,7 @@ benchmarks:
 
   - name: BEHAVIOR-1K
     track: vla
+    vla_env: simulation
     year_en: "2024"
     year_cn: "2024"
     tests_en: "Long-horizon, human-centered household activities with realistic simulation dynamics"
@@ -261,6 +376,7 @@ benchmarks:
 
   - name: RoboCasa / RoboCasa365
     track: vla
+    vla_env: simulation
     year_en: "2024/2026"
     year_cn: "2024/2026"
     tests_en: "Large-scale everyday kitchen manipulation, from atomic skills to long-horizon composites"
@@ -272,22 +388,87 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2406.02523}
       - {en: Code, cn: 代码, url: https://github.com/robocasa/robocasa}
 
-  # ---------------- WM ----------------
-  - name: WorldArena
-    track: wm
-    year_en: "2026"
-    year_cn: "2026"
-    tests_en: "Perceptual quality + functional utility (data engine, policy eval, action planning)"
-    tests_cn: "感知质量 + 功能效用（数据引擎、策略评测、动作规划）"
-    metric_en: "EWMScore (composite)"
-    metric_cn: "EWMScore（综合）"
-    repo: tsinghua-fib-lab/WorldArena
+  - name: EmbodiedBench
+    track: vla
+    vla_env: simulation
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "MLLM-as-agent eval across 1,128 tasks in 4 sim environments (high/low-level; 6 capability subsets)"
+    tests_cn: "MLLM 作为具身智能体：4 个仿真环境、1128 任务，覆盖高层语义与低层导航/操作"
+    metric_en: "Task success rate"
+    metric_cn: "任务成功率"
+    repo: EmbodiedBench/EmbodiedBench
     links:
-      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2602.08971}
-      - {en: Site, cn: 主页, url: https://world-arena.ai/}
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2502.09560}
+      - {en: Code, cn: 代码, url: https://github.com/EmbodiedBench/EmbodiedBench}
+      - {en: Site, cn: 主页, url: https://embodiedbench.github.io/}
 
+  # ======================== VLA · Sim-to-Real Proxy ========================
+  - name: SimplerEnv
+    track: vla
+    vla_env: sim2real
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "Real-to-sim evaluation of real-robot policies (Google Robot, WidowX+Bridge)"
+    tests_cn: "真实机器人策略的 real-to-sim 评测（Google Robot、WidowX+Bridge）"
+    metric_en: "Success rate, sim↔real correlation (MMRV, Pearson r)"
+    metric_cn: "成功率、sim↔real 相关性（MMRV、Pearson r）"
+    repo: simpler-env/SimplerEnv
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2405.05946}
+      - {en: Code, cn: 代码, url: https://github.com/simpler-env/SimplerEnv}
+
+  - name: REALM
+    track: vla
+    vla_env: sim2real
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Real-to-sim validated generalization benchmark (DROID embodiment; 15 perturbations, 7 skills)"
+    tests_cn: "经真机验证的 real-to-sim 泛化基准（DROID 本体；15 类扰动、7 类技能）"
+    metric_en: "Success rate; sim↔real correlation"
+    metric_cn: "成功率；sim↔real 相关性"
+    repo: martin-sedlacek/REALM
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2512.19562}
+      - {en: Code, cn: 代码, url: https://github.com/martin-sedlacek/REALM}
+      - {en: Site, cn: 主页, url: https://martin-sedlacek.com/realm/}
+
+  # ======================== VLA · Real Robot ========================
+  - name: DROID
+    track: vla
+    vla_env: real
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "In-the-wild Franka manipulation eval on real hardware; multi-scene generalization protocol"
+    tests_cn: "真实 Franka 硬件上的 in-the-wild 操作评测；多场景泛化协议"
+    metric_en: "Success rate (ID / OOD)"
+    metric_cn: "成功率（同分布 / OOD）"
+    repo: droid-dataset/droid_policy_learning
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2403.12945}
+      - {en: Code, cn: 代码, url: https://github.com/droid-dataset/droid_policy_learning}
+      - {en: Site, cn: 主页, url: https://droid-dataset.github.io/}
+
+  # ======================== WM · Perceptual Quality ========================
+  - name: VBench
+    track: wm
+    wm_category: perceptual
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "16-dimension video generation quality (subject, motion, temporal consistency, etc.)"
+    tests_cn: "16 维视频生成质量评测（主体、运动、时序一致性等）"
+    metric_en: "VBench composite + per-dimension scores"
+    metric_cn: "VBench 综合分 + 各维度分数"
+    repo: Vchitect/VBench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2311.17909}
+      - {en: Code, cn: 代码, url: https://github.com/Vchitect/VBench}
+      - {en: Site, cn: 主页, url: https://vchitect.github.io/VBench-project/}
+
+  # ======================== WM · World Generation ========================
   - name: WorldScore
     track: wm
+    wm_category: generation
     year_en: "2025"
     year_cn: "2025"
     tests_en: "Unified world generation across 3D/4D/T2V/I2V; controllability, quality, dynamics"
@@ -299,20 +480,54 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2504.00983}
       - {en: Site, cn: 主页, url: https://haoyi-duan.github.io/WorldScore/}
 
-  - name: EWMBench
+  - name: 4DWorldBench
     track: wm
-    year_en: "2025"
-    year_cn: "2025"
-    tests_en: "Embodied world models: scene consistency, motion correctness, semantic alignment"
-    tests_cn: "具身世界模型：场景一致性、运动正确性、语义对齐"
-    metric_en: "Per-dimension scores"
-    metric_cn: "各维度分数"
-    repo: AgibotTech/EWMBench
+    wm_category: generation
+    year_en: "2025/2026"
+    year_cn: "2025/2026"
+    tests_en: "3D/4D world generation realism: perceptual quality, condition alignment, physics, and consistency"
+    tests_cn: "3D/4D 世界生成能力评测：感知质量、条件对齐、物理真实性与时空一致性"
+    metric_en: "Multi-dimension composite evaluation"
+    metric_cn: "多维综合评测"
+    repo: null
     links:
-      - {en: Code, cn: 代码, url: https://github.com/AgibotTech/EWMBench}
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2511.19836}
 
+  # ======================== WM · Interactive / Multi-turn ========================
+  - name: WBench
+    track: wm
+    wm_category: interactive
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Multi-turn interactive video world models (navigation, subject action, event editing, perspective switch)"
+    tests_cn: "多轮交互式视频世界模型评测（导航、主体动作、事件编辑、视角切换）"
+    metric_en: "22 sub-metrics across 5 dimensions"
+    metric_cn: "5 维度共 22 项子指标"
+    repo: meituan-longcat/WBench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.25874}
+      - {en: Code, cn: 代码, url: https://github.com/meituan-longcat/WBench}
+      - {en: Site, cn: 主页, url: https://meituan-longcat.github.io/WBench/}
+
+  # ======================== WM · Embodied Utility ========================
+  - name: WorldArena
+    track: wm
+    wm_category: embodied_utility
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Perceptual quality + functional utility (data engine, policy eval, action planning)"
+    tests_cn: "感知质量 + 功能效用（数据引擎、策略评测、动作规划）"
+    metric_en: "EWMScore (composite)"
+    metric_cn: "EWMScore（综合）"
+    repo: tsinghua-fib-lab/WorldArena
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2602.08971}
+      - {en: Site, cn: 主页, url: https://world-arena.ai/}
+
+  # ======================== WM · Physical / Instruction Adherence ========================
   - name: WorldModelBench
     track: wm
+    wm_category: physical
     year_en: "2025"
     year_cn: "2025"
     tests_en: "World modeling capability under instruction following, commonsense, and physical adherence"
@@ -324,14 +539,15 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2502.20694}
       - {en: Code, cn: 代码, url: https://github.com/WorldModelBench-Team/WorldModelBench}
 
-  - name: 4DWorldBench
+  - name: EWMBench
     track: wm
-    year_en: "2025/2026"
-    year_cn: "2025/2026"
-    tests_en: "3D/4D world generation realism: perceptual quality, condition alignment, physics, and consistency"
-    tests_cn: "3D/4D 世界生成能力评测：感知质量、条件对齐、物理真实性与时空一致性"
-    metric_en: "Multi-dimension composite evaluation"
-    metric_cn: "多维综合评测"
-    repo: null
+    wm_category: physical
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Embodied world models: scene consistency, motion correctness, semantic alignment"
+    tests_cn: "具身世界模型：场景一致性、运动正确性、语义对齐"
+    metric_en: "Per-dimension scores"
+    metric_cn: "各维度分数"
+    repo: AgibotTech/EWMBench
     links:
-      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2511.19836}
+      - {en: Code, cn: 代码, url: https://github.com/AgibotTech/EWMBench}

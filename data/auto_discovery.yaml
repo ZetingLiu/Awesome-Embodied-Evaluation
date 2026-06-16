@@ -44,6 +44,7 @@ automation:
     vlm:
       extra_fields:
         vlm_group: primary
+        vlm_category: spatial
       min_stars: 20
       min_track_hits: 2
       min_citations: 0   # >0 requires S2_API_KEY; 0 disables the gate
@@ -63,6 +64,8 @@ automation:
         - exploration
 
     vla:
+      extra_fields:
+        vla_env: simulation
       min_stars: 30
       min_track_hits: 2
       min_citations: 0
@@ -81,6 +84,8 @@ automation:
         - navigation
 
     wm:
+      extra_fields:
+        wm_category: generation
       min_stars: 15
       min_track_hits: 2
       min_citations: 0
