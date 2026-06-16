@@ -1,0 +1,62 @@
+{
+  "AILab-CVC/SEED-Bench": {
+    "stars": 364,
+    "updated": "2025-01"
+  },
+  "AgibotTech/EWMBench": {
+    "stars": 126,
+    "updated": "2025-06"
+  },
+  "Lifelong-Robot-Learning/LIBERO": {
+    "stars": 1952,
+    "updated": "2025-03"
+  },
+  "MME-Benchmarks/Video-MME": {
+    "stars": 779,
+    "updated": "2025-12"
+  },
+  "MMMU-Benchmark/MMMU": {
+    "stars": 576,
+    "updated": "2026-02"
+  },
+  "StanfordVL/BEHAVIOR-1K": {
+    "stars": 1519,
+    "updated": "2026-06"
+  },
+  "WorldModelBench-Team/WorldModelBench": {
+    "stars": 41,
+    "updated": "2025-07"
+  },
+  "haosulab/ManiSkill2-task-dev": {
+    "stars": 1,
+    "updated": "2023-08"
+  },
+  "haoyi-duan/WorldScore": {
+    "stars": 284,
+    "updated": "2025-12"
+  },
+  "lupantech/MathVista": {
+    "stars": 363,
+    "updated": "2025-09"
+  },
+  "mees/calvin": {
+    "stars": 942,
+    "updated": "2025-09"
+  },
+  "open-compass/MMBench": {
+    "stars": 303,
+    "updated": "2025-05"
+  },
+  "robocasa/robocasa": {
+    "stars": 1465,
+    "updated": "2026-05"
+  },
+  "simpler-env/SimplerEnv": {
+    "stars": 1089,
+    "updated": "2025-12"
+  },
+  "tsinghua-fib-lab/WorldArena": {
+    "stars": 220,
+    "updated": "2026-05"
+  }
+}

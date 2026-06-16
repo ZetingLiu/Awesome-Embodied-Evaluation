@@ -27,9 +27,10 @@ import json
 import os
 import re
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 
-import requests
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -82,20 +83,22 @@ def save_cache(cache: dict) -> None:
 def fetch_repo_meta(repo: str, cache: dict) -> dict | None:
     """Return {'stars': int, 'updated': 'YYYY-MM'} for a repo, or None.
 
+    Uses only the standard library (urllib); honors http(s)_proxy env vars.
     On API failure, fall back to any cached value for the repo.
     """
+    req = urllib.request.Request(GITHUB_API.format(repo=repo), headers=gh_headers())
     try:
-        resp = requests.get(GITHUB_API.format(repo=repo), headers=gh_headers(), timeout=20)
-        if resp.status_code == 200:
-            data = resp.json()
-            meta = {
-                "stars": int(data.get("stargazers_count", 0)),
-                "updated": (data.get("pushed_at") or "")[:7],  # YYYY-MM
-            }
-            cache[repo] = meta
-            return meta
-        print(f"[warn] GitHub API {resp.status_code} for {repo}; using cache", file=sys.stderr)
-    except requests.RequestException as exc:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        meta = {
+            "stars": int(data.get("stargazers_count", 0)),
+            "updated": (data.get("pushed_at") or "")[:7],  # YYYY-MM
+        }
+        cache[repo] = meta
+        return meta
+    except urllib.error.HTTPError as exc:
+        print(f"[warn] GitHub API {exc.code} for {repo}; using cache", file=sys.stderr)
+    except (urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
         print(f"[warn] GitHub API error for {repo}: {exc}; using cache", file=sys.stderr)
     return cache.get(repo)
 
