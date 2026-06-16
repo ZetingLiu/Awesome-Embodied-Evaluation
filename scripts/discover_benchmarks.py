@@ -131,6 +131,30 @@ def clean_benchmark_name(title: str) -> str:
     return title[:80].strip()
 
 
+def stable_name_from_assess(assess_name: str | None, arxiv_title: str) -> str:
+    """Stabilize LLM naming with deterministic fallback rules.
+
+    Rule order:
+    1) If the paper title is "X: ...", use exactly X.
+    2) Otherwise, allow the LLM name only when it appears in the title text.
+    3) If uncertain, fall back to clean_benchmark_name(arxiv_title).
+    """
+    title = " ".join((arxiv_title or "").split())
+    fallback = clean_benchmark_name(title)
+    candidate = " ".join((assess_name or "").split()).strip()
+    if not candidate:
+        return fallback
+
+    # For "X: ..." titles, keep exactly X to avoid ad-hoc aliases.
+    if ":" in title:
+        return candidate if candidate == fallback else fallback
+
+    # For non-colon titles, only keep names that are explicitly present.
+    if candidate == title or candidate.lower() in title.lower():
+        return candidate
+    return fallback
+
+
 # --------------------------------------------------------------------------- #
 # Structured sources
 # --------------------------------------------------------------------------- #
@@ -229,11 +253,17 @@ def _build_prompt(track: str, title: str, abstract: str) -> tuple[str, str]:
         f"Abstract: {abstract[:1800]}\n\n"
         "Return JSON with keys:\n"
         '  "is_benchmark": boolean,\n'
-        '  "name": short benchmark name (string),\n'
+        '  "name": benchmark name (string),\n'
         '  "tests_en": one concise sentence on what it evaluates (English),\n'
         '  "tests_cn": same in Simplified Chinese,\n'
         '  "metric_en": main metric(s) (English, short),\n'
         '  "metric_cn": main metric(s) in Simplified Chinese.\n'
+        "\n"
+        'Naming rule for "name" (must follow):\n'
+        "1) If title matches 'X: ...', set name to exactly X (keep original casing).\n"
+        "2) Otherwise set name to the full paper title (do not shorten).\n"
+        "3) NEVER invent a new alias/acronym not explicitly present in the title.\n"
+        "4) If uncertain, keep the full title.\n"
         "If not a benchmark, set is_benchmark=false and leave other fields empty.\n"
         "Return ONLY the JSON object, with no prose and no code fences."
     )
@@ -331,7 +361,10 @@ def passes_track_relevance(track_cfg: dict, text: str) -> bool:
 def build_entry(track: str, track_cfg: dict, repo_item: dict, arxiv_id: str,
                 arxiv_meta: dict, assess: dict) -> dict:
     repo_full = repo_item["full_name"]
-    name = (assess.get("name") or "").strip() or clean_benchmark_name(arxiv_meta["title"])
+    raw_name = (assess.get("name") or "").strip()
+    name = stable_name_from_assess(raw_name, arxiv_meta["title"])
+    if raw_name and name != raw_name:
+        print(f"[warn] unstable-name fallback for {repo_full}: '{raw_name}' -> '{name}'", file=sys.stderr)
     year = arxiv_meta.get("year") or (repo_item.get("created_at", "1970")[:4])
 
     site = (repo_item.get("homepage") or "").strip()
