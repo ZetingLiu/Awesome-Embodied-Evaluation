@@ -1,0 +1,240 @@
+# Single source of truth for the benchmark tables in README.md / README_CN.md.
+#
+# Human-curated fields: name, track, year_*, tests_*, metric_*, links.
+# Machine-managed fields (Stars / Updated) are NOT stored here; they are fetched
+# at render time from the GitHub API using `repo` and injected by
+# scripts/render_readme.py into the marked table blocks.
+#
+# `repo` is "owner/name" of the primary GitHub repository used for stars and
+# last-push date. Set it to null when the entry has no single GitHub repo.
+#
+# List order == table row order. Entries are grouped by `track` (vlm | vla | wm)
+# and rendered in the order they appear here.
+
+benchmarks:
+  # ---------------- VLM ----------------
+  - name: MMMU
+    track: vlm
+    year_en: "2023"
+    year_cn: "2023"
+    tests_en: "College-level, multi-discipline multimodal reasoning (30 subjects, heterogeneous image types)"
+    tests_cn: "大学级、多学科多模态推理（30 个学科，图像类型高度异构）"
+    metric_en: "Accuracy"
+    metric_cn: "Accuracy"
+    repo: MMMU-Benchmark/MMMU
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2311.16502}
+      - {en: Code, cn: 代码, url: https://github.com/MMMU-Benchmark/MMMU}
+      - {en: Site, cn: 主页, url: https://mmmu-benchmark.github.io/}
+
+  - name: MMBench
+    track: vlm
+    year_en: "2023"
+    year_cn: "2023"
+    tests_en: "Fine-grained, multi-ability understanding with CircularEval; EN/ZH"
+    tests_cn: "细粒度、多能力维度理解，含 CircularEval；中英双语"
+    metric_en: "Accuracy"
+    metric_cn: "Accuracy"
+    repo: open-compass/MMBench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.06281}
+      - {en: Code, cn: 代码, url: https://github.com/open-compass/MMBench}
+
+  - name: MathVista
+    track: vlm
+    year_en: "2023"
+    year_cn: "2023"
+    tests_en: "Mathematical reasoning in visual contexts (charts, geometry, figures)"
+    tests_cn: "视觉情境下的数学推理（图表、几何、图形）"
+    metric_en: "Accuracy"
+    metric_cn: "Accuracy"
+    repo: lupantech/MathVista
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2310.02255}
+      - {en: Code, cn: 代码, url: https://github.com/lupantech/MathVista}
+
+  - name: Video-MME / Video-MME-v2
+    track: vlm
+    year_en: "2024/2026"
+    year_cn: "2024/2026"
+    tests_en: "Comprehensive video understanding, with v2 targeting robustness, consistency, and reasoning faithfulness"
+    tests_cn: "全面视频理解评测；v2 进一步强调鲁棒性、一致性与推理可靠性"
+    metric_en: "Accuracy / Group-based score (v2)"
+    metric_cn: "Accuracy / 组级评分（v2）"
+    repo: MME-Benchmarks/Video-MME
+    links:
+      - {en: Paper v1, cn: 论文 v1, url: https://arxiv.org/abs/2405.21075}
+      - {en: Code v1, cn: 代码 v1, url: https://github.com/MME-Benchmarks/Video-MME}
+      - {en: Paper v2, cn: 论文 v2, url: https://arxiv.org/abs/2604.05015}
+      - {en: Code v2, cn: 代码 v2, url: https://github.com/MME-Benchmarks/Video-MME-v2}
+
+  - name: SEED-Bench series
+    name_cn: SEED-Bench 系列
+    track: vlm
+    year_en: "2023-2024"
+    year_cn: "2023-2024"
+    tests_en: "Broad multimodal capability coverage (image/video, generation-oriented comprehension, text-rich understanding)"
+    tests_cn: "覆盖更广的多模态能力（图像/视频、生成式理解、富文本视觉理解）"
+    metric_en: "Accuracy"
+    metric_cn: "Accuracy"
+    repo: AILab-CVC/SEED-Bench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.16125}
+      - {en: Code, cn: 代码, url: https://github.com/AILab-CVC/SEED-Bench}
+
+  - name: DocVQA (RRC track)
+    name_cn: DocVQA（RRC 赛道）
+    track: vlm
+    year_en: "2020-ongoing"
+    year_cn: "2020-持续更新"
+    tests_en: "Document visual question answering and document reasoning under challenge protocol"
+    tests_cn: "文档视觉问答与文档推理，按挑战赛协议评测"
+    metric_en: "ANLS / Accuracy"
+    metric_cn: "ANLS / Accuracy"
+    repo: null
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2007.00398}
+      - {en: RRC, cn: RRC, url: https://rrc.cvc.uab.es/}
+
+  # ---------------- VLA ----------------
+  - name: LIBERO
+    track: vla
+    year_en: "2023"
+    year_cn: "2023"
+    tests_en: "Lifelong / language-conditioned tabletop manipulation (Spatial, Object, Goal, Long suites)"
+    tests_cn: "终身 / 语言条件下的桌面操作（Spatial、Object、Goal、Long 四个子集）"
+    metric_en: "Success rate"
+    metric_cn: "成功率"
+    repo: Lifelong-Robot-Learning/LIBERO
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2306.03310}
+      - {en: Code, cn: 代码, url: https://github.com/Lifelong-Robot-Learning/LIBERO}
+
+  - name: CALVIN
+    track: vla
+    year_en: "2021"
+    year_cn: "2021"
+    tests_en: "Long-horizon instruction chaining; compositional generalization (ABC→D)"
+    tests_cn: "长时序指令串联；组合泛化（ABC→D）"
+    metric_en: "Avg. completed chain length"
+    metric_cn: "平均完成链长"
+    repo: mees/calvin
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2112.03227}
+      - {en: Code, cn: 代码, url: https://github.com/mees/calvin}
+
+  - name: SimplerEnv
+    track: vla
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "Real-to-sim evaluation of real-robot policies (Google Robot, WidowX+Bridge)"
+    tests_cn: "真实机器人策略的 real-to-sim 评测（Google Robot、WidowX+Bridge）"
+    metric_en: "Success rate, sim↔real correlation (MMRV, Pearson r)"
+    metric_cn: "成功率、sim↔real 相关性（MMRV、Pearson r）"
+    repo: simpler-env/SimplerEnv
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2405.05946}
+      - {en: Code, cn: 代码, url: https://github.com/simpler-env/SimplerEnv}
+
+  - name: ManiSkill2
+    track: vla
+    year_en: "2023"
+    year_cn: "2023"
+    tests_en: "Generalizable manipulation across diverse objects / skills with high-throughput simulation"
+    tests_cn: "多对象、多技能条件下的泛化操作评测，强调高吞吐仿真"
+    metric_en: "Task success / reward-based scores"
+    metric_cn: "任务成功率 / 奖励相关指标"
+    repo: haosulab/ManiSkill2-task-dev
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2302.04659}
+      - {en: Code, cn: 代码, url: https://github.com/haosulab/ManiSkill2-task-dev}
+
+  - name: BEHAVIOR-1K
+    track: vla
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "Long-horizon, human-centered household activities with realistic simulation dynamics"
+    tests_cn: "面向真实日常活动的长时程任务评测，强调高保真物理与场景复杂度"
+    metric_en: "Activity success / completion metrics"
+    metric_cn: "活动成功率 / 完成度指标"
+    repo: StanfordVL/BEHAVIOR-1K
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2403.09227}
+      - {en: Code, cn: 代码, url: https://github.com/StanfordVL/BEHAVIOR-1K}
+
+  - name: RoboCasa / RoboCasa365
+    track: vla
+    year_en: "2024/2026"
+    year_cn: "2024/2026"
+    tests_en: "Large-scale everyday kitchen manipulation, from atomic skills to long-horizon composites"
+    tests_cn: "大规模厨房场景日常操作评测，覆盖原子技能到长时程复合任务"
+    metric_en: "Success rate across benchmark suites"
+    metric_cn: "各套件成功率"
+    repo: robocasa/robocasa
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2406.02523}
+      - {en: Code, cn: 代码, url: https://github.com/robocasa/robocasa}
+
+  # ---------------- WM ----------------
+  - name: WorldArena
+    track: wm
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Perceptual quality + functional utility (data engine, policy eval, action planning)"
+    tests_cn: "感知质量 + 功能效用（数据引擎、策略评测、动作规划）"
+    metric_en: "EWMScore (composite)"
+    metric_cn: "EWMScore（综合）"
+    repo: tsinghua-fib-lab/WorldArena
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2602.08971}
+      - {en: Site, cn: 主页, url: https://world-arena.ai/}
+
+  - name: WorldScore
+    track: wm
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Unified world generation across 3D/4D/T2V/I2V; controllability, quality, dynamics"
+    tests_cn: "统一的世界生成评测，覆盖 3D/4D/T2V/I2V；可控性、质量、动态性"
+    metric_en: "WorldScore (composite)"
+    metric_cn: "WorldScore（综合）"
+    repo: haoyi-duan/WorldScore
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2504.00983}
+      - {en: Site, cn: 主页, url: https://haoyi-duan.github.io/WorldScore/}
+
+  - name: EWMBench
+    track: wm
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Embodied world models: scene consistency, motion correctness, semantic alignment"
+    tests_cn: "具身世界模型：场景一致性、运动正确性、语义对齐"
+    metric_en: "Per-dimension scores"
+    metric_cn: "各维度分数"
+    repo: AgibotTech/EWMBench
+    links:
+      - {en: Code, cn: 代码, url: https://github.com/AgibotTech/EWMBench}
+
+  - name: WorldModelBench
+    track: wm
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "World modeling capability under instruction following, commonsense, and physical adherence"
+    tests_cn: "面向世界建模能力的评测：指令遵循、常识一致性、物理一致性"
+    metric_en: "Composite world-modeling scores"
+    metric_cn: "综合世界建模分数"
+    repo: WorldModelBench-Team/WorldModelBench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2502.20694}
+      - {en: Code, cn: 代码, url: https://github.com/WorldModelBench-Team/WorldModelBench}
+
+  - name: 4DWorldBench
+    track: wm
+    year_en: "2025/2026"
+    year_cn: "2025/2026"
+    tests_en: "3D/4D world generation realism: perceptual quality, condition alignment, physics, and consistency"
+    tests_cn: "3D/4D 世界生成能力评测：感知质量、条件对齐、物理真实性与时空一致性"
+    metric_en: "Multi-dimension composite evaluation"
+    metric_cn: "多维综合评测"
+    repo: null
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2511.19836}
