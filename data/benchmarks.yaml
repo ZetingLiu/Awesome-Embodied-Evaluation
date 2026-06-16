@@ -335,3 +335,76 @@ benchmarks:
     repo: null
     links:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2511.19836}
+
+  # ---------------- auto-discovered (2026-06-16) ----------------
+  - name: VLA-Arena
+    track: vla
+    year_en: '2025'
+    year_cn: '2025'
+    tests_en: Evaluates vision-language-action models across 170 tasks with three difficulty levels and perturbations in language
+      and visual observations.
+    tests_cn: 评估视觉-语言-动作模型在170个任务上的表现，包含三个难度级别以及语言和视觉观察的扰动。
+    metric_en: Success rate, robustness to perturbations, generalization beyond training, safety constraint adherence, long-horizon
+      composition.
+    metric_cn: 成功率、对扰动的鲁棒性、超越训练的泛化能力、安全约束遵守、长程任务组合能力。
+    repo: PKU-Alignment/VLA-Arena
+    links:
+    - en: Paper
+      cn: 论文
+      url: https://arxiv.org/abs/2512.22539
+    - en: Code
+      cn: 代码
+      url: https://github.com/PKU-Alignment/VLA-Arena
+  - name: THE COLOSSEUM
+    track: vla
+    year_en: '2024'
+    year_cn: '2024'
+    tests_en: Evaluates robotic manipulation policies across 20 diverse tasks with 14 axes of environmental perturbations including
+      color, texture, size, lighting, distractors, and camera pose.
+    tests_cn: 在20个多样化任务和14个环境扰动轴（包括颜色、纹理、大小、光照、干扰物和相机位姿）上评估机器人操作策略。
+    metric_en: Success rate
+    metric_cn: 成功率
+    repo: robot-colosseum/robot-colosseum
+    links:
+    - en: Paper
+      cn: 论文
+      url: https://arxiv.org/abs/2402.08191
+    - en: Code
+      cn: 代码
+      url: https://github.com/robot-colosseum/robot-colosseum
+    - en: Site
+      cn: 主页
+      url: https://robot-colosseum.github.io
+  - name: ReVidgen
+    track: wm
+    year_en: '2026'
+    year_cn: '2026'
+    tests_en: Evaluates robot-oriented video generation across five task domains and four embodiments, assessing task-level
+      correctness and visual fidelity.
+    tests_cn: 评估面向机器人的视频生成，涵盖五个任务领域和四种实体，评价任务级正确性和视觉保真度。
+    metric_en: Structural consistency, physical plausibility, action completeness, and Spearman correlation with human evaluation.
+    metric_cn: 结构一致性、物理合理性、动作完整性，以及与人类评估的Spearman相关系数。
+    repo: DAGroup-PKU/ReVidgen
+    links:
+    - en: Paper
+      cn: 论文
+      url: https://arxiv.org/abs/2601.15282
+    - en: Code
+      cn: 代码
+      url: https://github.com/DAGroup-PKU/ReVidgen
+  - name: ENACT
+    track: wm
+    year_en: '2025'
+    year_cn: '2025'
+    tests_en: Evaluates embodied cognition via forward and inverse world modeling from egocentric video sequences.
+    tests_cn: 通过第一人称视频序列的前向和逆向世界建模来评估具身认知能力。
+    metric_en: Accuracy on reordering tasks
+    metric_cn: 重排序任务上的准确率
+    repo: mll-lab-nu/ENACT
+    links:
+    - en: Paper
+      cn: 论文
+      url: https://arxiv.org/abs/2511.20937
+    - en: Code
+      cn: 代码
+      url: https://github.com/mll-lab-nu/ENACT

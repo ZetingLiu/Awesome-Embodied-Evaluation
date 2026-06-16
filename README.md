@@ -87,6 +87,8 @@ Common toolkit: [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) provide
 | **ManiSkill2** | 2023 | Generalizable manipulation across diverse objects / skills with high-throughput simulation | Task success / reward-based scores | 1 | 2023-08 | [Paper](https://arxiv.org/abs/2302.04659) · [Code](https://github.com/haosulab/ManiSkill2-task-dev) |
 | **BEHAVIOR-1K** | 2024 | Long-horizon, human-centered household activities with realistic simulation dynamics | Activity success / completion metrics | 1.5k | 2026-06 | [Paper](https://arxiv.org/abs/2403.09227) · [Code](https://github.com/StanfordVL/BEHAVIOR-1K) |
 | **RoboCasa / RoboCasa365** | 2024/2026 | Large-scale everyday kitchen manipulation, from atomic skills to long-horizon composites | Success rate across benchmark suites | 1.5k | 2026-05 | [Paper](https://arxiv.org/abs/2406.02523) · [Code](https://github.com/robocasa/robocasa) |
+| **VLA-Arena** | 2025 | Evaluates vision-language-action models across 170 tasks with three difficulty levels and perturbations in language and visual observations. | Success rate, robustness to perturbations, generalization beyond training, safety constraint adherence, long-horizon composition. | 178 | 2026-03 | [Paper](https://arxiv.org/abs/2512.22539) · [Code](https://github.com/PKU-Alignment/VLA-Arena) |
+| **THE COLOSSEUM** | 2024 | Evaluates robotic manipulation policies across 20 diverse tasks with 14 axes of environmental perturbations including color, texture, size, lighting, distractors, and camera pose. | Success rate | 150 | 2025-03 | [Paper](https://arxiv.org/abs/2402.08191) · [Code](https://github.com/robot-colosseum/robot-colosseum) · [Site](https://robot-colosseum.github.io) |
 <!-- AEE-TABLE:VLA:END -->
 
 Common harness: [vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) runs many of these benchmarks in Docker with a shared protocol.
@@ -101,6 +103,8 @@ Common harness: [vla-evaluation-harness](https://github.com/allenai/vla-evaluati
 | **EWMBench** | 2025 | Embodied world models: scene consistency, motion correctness, semantic alignment | Per-dimension scores | 126 | 2025-06 | [Code](https://github.com/AgibotTech/EWMBench) |
 | **WorldModelBench** | 2025 | World modeling capability under instruction following, commonsense, and physical adherence | Composite world-modeling scores | 41 | 2025-07 | [Paper](https://arxiv.org/abs/2502.20694) · [Code](https://github.com/WorldModelBench-Team/WorldModelBench) |
 | **4DWorldBench** | 2025/2026 | 3D/4D world generation realism: perceptual quality, condition alignment, physics, and consistency | Multi-dimension composite evaluation | — | — | [Paper](https://arxiv.org/abs/2511.19836) |
+| **ReVidgen** | 2026 | Evaluates robot-oriented video generation across five task domains and four embodiments, assessing task-level correctness and visual fidelity. | Structural consistency, physical plausibility, action completeness, and Spearman correlation with human evaluation. | 73 | 2026-06 | [Paper](https://arxiv.org/abs/2601.15282) · [Code](https://github.com/DAGroup-PKU/ReVidgen) |
+| **ENACT** | 2025 | Evaluates embodied cognition via forward and inverse world modeling from egocentric video sequences. | Accuracy on reordering tasks | 51 | 2025-11 | [Paper](https://arxiv.org/abs/2511.20937) · [Code](https://github.com/mll-lab-nu/ENACT) |
 <!-- AEE-TABLE:WM:END -->
 
 ## Related Lists
