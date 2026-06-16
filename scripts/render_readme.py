@@ -5,7 +5,8 @@ Single source of truth: data/benchmarks.yaml (human-curated).
 Machine-managed columns (Stars / Updated) are fetched from the GitHub REST API
 and injected only into the marked table blocks:
 
-    <!-- AEE-TABLE:VLM:START --> ... <!-- AEE-TABLE:VLM:END -->
+    <!-- AEE-TABLE:VLM-PRIMARY:START --> ... <!-- AEE-TABLE:VLM-PRIMARY:END -->
+    <!-- AEE-TABLE:VLM-CONTROL:START --> ... <!-- AEE-TABLE:VLM-CONTROL:END -->
     <!-- AEE-TABLE:VLA:START --> ... <!-- AEE-TABLE:VLA:END -->
     <!-- AEE-TABLE:WM:START -->  ... <!-- AEE-TABLE:WM:END -->
 
@@ -42,11 +43,12 @@ README_CN = REPO_ROOT / "README_CN.md"
 GITHUB_API = "https://api.github.com/repos/{repo}"
 PLACEHOLDER = "—"
 
-# Track render order and the marker key used in the README comment markers.
-TRACKS = [
-    ("vlm", "VLM"),
-    ("vla", "VLA"),
-    ("wm", "WM"),
+# Marker specs: (marker_name, selector function)
+MARKER_SPECS = [
+    ("VLM-PRIMARY", lambda e: e.get("track") == "vlm" and e.get("vlm_group") == "primary"),
+    ("VLM-CONTROL", lambda e: e.get("track") == "vlm" and e.get("vlm_group", "control") == "control"),
+    ("VLA", lambda e: e.get("track") == "vla"),
+    ("WM", lambda e: e.get("track") == "wm"),
 ]
 
 HEADERS = {
@@ -165,12 +167,12 @@ def replace_block(text: str, marker: str, body: str) -> str:
     return pattern.sub(lambda _m: replacement, text)
 
 
-def render_readme(path: Path, entries_by_track: dict, lang: str) -> bool:
+def render_readme(path: Path, entries_by_marker: dict, lang: str) -> bool:
     """Render one README file. Return True if the file content changed."""
     text = path.read_text(encoding="utf-8")
     new_text = text
-    for track, marker in TRACKS:
-        table = render_table(entries_by_track.get(track, []), lang)
+    for marker, _selector in MARKER_SPECS:
+        table = render_table(entries_by_marker.get(marker, []), lang)
         new_text = replace_block(new_text, marker, table)
     if new_text != text:
         path.write_text(new_text, encoding="utf-8")
@@ -196,21 +198,24 @@ def main() -> int:
         entry["_meta"] = fetch_repo_meta(repo, cache) if repo else None
     save_cache(cache)
 
-    entries_by_track: dict[str, list[dict]] = {track: [] for track, _ in TRACKS}
+    entries_by_marker: dict[str, list[dict]] = {marker: [] for marker, _ in MARKER_SPECS}
     for entry in benchmarks:
-        track = entry.get("track")
-        if track in entries_by_track:
-            entries_by_track[track].append(entry)
-        else:
-            print(f"[warn] unknown track '{track}' for entry '{entry.get('name')}'", file=sys.stderr)
+        matched = False
+        for marker, selector in MARKER_SPECS:
+            if selector(entry):
+                entries_by_marker[marker].append(entry)
+                matched = True
+                break
+        if not matched:
+            print(f"[warn] entry not assigned to a marker: '{entry.get('name')}'", file=sys.stderr)
 
     if args.check:
         changed = False
         for path, lang in [(README_EN, "en"), (README_CN, "cn")]:
             text = path.read_text(encoding="utf-8")
             new_text = text
-            for track, marker in TRACKS:
-                table = render_table(entries_by_track.get(track, []), lang)
+            for marker, _selector in MARKER_SPECS:
+                table = render_table(entries_by_marker.get(marker, []), lang)
                 new_text = replace_block(new_text, marker, table)
             if new_text != text:
                 print(f"[check] {path.name} would change")
@@ -219,7 +224,7 @@ def main() -> int:
 
     changed_files = []
     for path, lang in [(README_EN, "en"), (README_CN, "cn")]:
-        if render_readme(path, entries_by_track, lang):
+        if render_readme(path, entries_by_marker, lang):
             changed_files.append(path.name)
 
     if changed_files:

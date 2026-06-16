@@ -1,20 +1,112 @@
-# Single source of truth for the benchmark tables in README.md / README_CN.md.
+# Single source of truth for benchmark tables in README.md / README_CN.md.
 #
 # Human-curated fields: name, track, year_*, tests_*, metric_*, links.
-# Machine-managed fields (Stars / Updated) are NOT stored here; they are fetched
-# at render time from the GitHub API using `repo` and injected by
-# scripts/render_readme.py into the marked table blocks.
+# Machine-managed fields (Stars / Updated) are fetched at render time using
+# `repo` and injected by scripts/render_readme.py.
 #
-# `repo` is "owner/name" of the primary GitHub repository used for stars and
-# last-push date. Set it to null when the entry has no single GitHub repo.
+# `repo` is "owner/name" for GitHub metadata lookup. Use null when there is
+# no single official GitHub repository.
 #
-# List order == table row order. Entries are grouped by `track` (vlm | vla | wm)
-# and rendered in the order they appear here.
+# VLM entries additionally use `vlm_group`:
+#   - primary: embodied-oriented benchmarks (main list)
+#   - control: general multimodal benchmarks (control set)
 
 benchmarks:
-  # ---------------- VLM ----------------
+  # ---------------- VLM (Embodied Primary) ----------------
+  - name: Where2Place
+    track: vlm
+    vlm_group: primary
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "Spatial free-space reference: language-conditioned placement in cluttered real scenes"
+    tests_cn: "空闲空间指代与放置点预测：在杂乱真实场景中根据语言定位可放置区域"
+    metric_en: "Point accuracy"
+    metric_cn: "点位准确率"
+    repo: wentaoyuan/RoboPoint
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2406.10721}
+      - {en: Code, cn: 代码, url: https://github.com/wentaoyuan/RoboPoint}
+      - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/wentao-yuan/where2place}
+
+  - name: RefSpatial-Bench
+    track: vlm
+    vlm_group: primary
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Multi-step spatial referring and placement reasoning in complex 3D scenes"
+    tests_cn: "复杂 3D 场景下的多步空间指代与放置推理"
+    metric_en: "Accuracy (Location / Placement)"
+    metric_cn: "准确率（Location / Placement）"
+    repo: Zhoues/RoboRefer
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2506.04308}
+      - {en: Code, cn: 代码, url: https://github.com/Zhoues/RoboRefer}
+      - {en: Site, cn: 主页, url: https://zhoues.github.io/RoboRefer/}
+
+  - name: VSI-Bench
+    track: vlm
+    vlm_group: primary
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Egocentric video-based visual-spatial intelligence (configurational, measurement, spatiotemporal)"
+    tests_cn: "基于第一视角视频的视觉空间智能评测（配置关系、测量估计、时空记忆）"
+    metric_en: "Accuracy / MRA"
+    metric_cn: "Accuracy / MRA"
+    repo: vision-x-nyu/thinking-in-space
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2412.14171}
+      - {en: Code, cn: 代码, url: https://github.com/vision-x-nyu/thinking-in-space}
+      - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/nyu-visionx/VSI-Bench}
+
+  - name: EgoPlan-Bench2
+    track: vlm
+    vlm_group: primary
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "Egocentric real-world planning across daily scenarios and long-horizon task progress"
+    tests_cn: "第一视角真实日常场景规划，强调长时程任务进度理解与下一步决策"
+    metric_en: "Accuracy"
+    metric_cn: "Accuracy"
+    repo: qiulu66/EgoPlan-Bench2
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2412.04447}
+      - {en: Code, cn: 代码, url: https://github.com/qiulu66/EgoPlan-Bench2/}
+      - {en: Site, cn: 主页, url: https://qiulu66.github.io/egoplanbench2/}
+
+  - name: OpenEQA
+    track: vlm
+    vlm_group: primary
+    year_en: "2024"
+    year_cn: "2024"
+    tests_en: "Embodied question answering with episodic-memory and active-exploration settings"
+    tests_cn: "具身问答：覆盖 episodic memory 与 active exploration 两种设定"
+    metric_en: "LLM-judge score / answer quality"
+    metric_cn: "LLM 裁判分 / 回答质量"
+    repo: facebookresearch/open-eqa
+    links:
+      - {en: Paper, cn: 论文, url: https://openaccess.thecvf.com/content/CVPR2024/html/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.html}
+      - {en: Code, cn: 代码, url: https://github.com/facebookresearch/open-eqa}
+      - {en: Site, cn: 主页, url: https://open-eqa.github.io/}
+
+  - name: PhysBench
+    track: vlm
+    vlm_group: primary
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Physical-world understanding for embodied agents (object physics, relations, scene dynamics)"
+    tests_cn: "面向具身体的物理世界理解（物体属性/关系、场景物理、动态）"
+    metric_en: "Accuracy across physical dimensions"
+    metric_cn: "物理维度综合准确率"
+    repo: physical-superintelligence-lab/PhysBench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2501.16411}
+      - {en: Code, cn: 代码, url: https://github.com/physical-superintelligence-lab/PhysBench}
+      - {en: Site, cn: 主页, url: https://physbench.github.io/}
+
+  # ---------------- VLM (General Control) ----------------
   - name: MMMU
     track: vlm
+    vlm_group: control
     year_en: "2023"
     year_cn: "2023"
     tests_en: "College-level, multi-discipline multimodal reasoning (30 subjects, heterogeneous image types)"
@@ -29,6 +121,7 @@ benchmarks:
 
   - name: MMBench
     track: vlm
+    vlm_group: control
     year_en: "2023"
     year_cn: "2023"
     tests_en: "Fine-grained, multi-ability understanding with CircularEval; EN/ZH"
@@ -42,6 +135,7 @@ benchmarks:
 
   - name: MathVista
     track: vlm
+    vlm_group: control
     year_en: "2023"
     year_cn: "2023"
     tests_en: "Mathematical reasoning in visual contexts (charts, geometry, figures)"
@@ -55,6 +149,7 @@ benchmarks:
 
   - name: Video-MME / Video-MME-v2
     track: vlm
+    vlm_group: control
     year_en: "2024/2026"
     year_cn: "2024/2026"
     tests_en: "Comprehensive video understanding, with v2 targeting robustness, consistency, and reasoning faithfulness"
@@ -71,6 +166,7 @@ benchmarks:
   - name: SEED-Bench series
     name_cn: SEED-Bench 系列
     track: vlm
+    vlm_group: control
     year_en: "2023-2024"
     year_cn: "2023-2024"
     tests_en: "Broad multimodal capability coverage (image/video, generation-oriented comprehension, text-rich understanding)"
@@ -85,6 +181,7 @@ benchmarks:
   - name: DocVQA (RRC track)
     name_cn: DocVQA（RRC 赛道）
     track: vlm
+    vlm_group: control
     year_en: "2020-ongoing"
     year_cn: "2020-持续更新"
     tests_en: "Document visual question answering and document reasoning under challenge protocol"

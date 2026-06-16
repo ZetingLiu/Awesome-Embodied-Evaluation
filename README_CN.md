@@ -39,7 +39,23 @@
 
 ## VLM 评测
 
-<!-- AEE-TABLE:VLM:START -->
+VLM 评测拆成两层：
+
+- **具身 VLM 主榜单（Primary）**：直接评估具身相关能力（空间落地、规划、物理理解、环境级问答）。
+- **通用 VLM 对照集（Control Set）**：用于监控通用多模态能力，避免“具身能力提升但通用能力退化”。
+
+<!-- AEE-TABLE:VLM-PRIMARY:START -->
+| 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
+|---|---|---|---|---|---|---|
+| **Where2Place** | 2024 | 空闲空间指代与放置点预测：在杂乱真实场景中根据语言定位可放置区域 | 点位准确率 | 224 | 2025-07 | [论文](https://arxiv.org/abs/2406.10721) · [代码](https://github.com/wentaoyuan/RoboPoint) · [数据集](https://huggingface.co/datasets/wentao-yuan/where2place) |
+| **RefSpatial-Bench** | 2025 | 复杂 3D 场景下的多步空间指代与放置推理 | 准确率（Location / Placement） | 263 | 2025-12 | [论文](https://arxiv.org/abs/2506.04308) · [代码](https://github.com/Zhoues/RoboRefer) · [主页](https://zhoues.github.io/RoboRefer/) |
+| **VSI-Bench** | 2025 | 基于第一视角视频的视觉空间智能评测（配置关系、测量估计、时空记忆） | Accuracy / MRA | 726 | 2025-08 | [论文](https://arxiv.org/abs/2412.14171) · [代码](https://github.com/vision-x-nyu/thinking-in-space) · [数据集](https://huggingface.co/datasets/nyu-visionx/VSI-Bench) |
+| **EgoPlan-Bench2** | 2024 | 第一视角真实日常场景规划，强调长时程任务进度理解与下一步决策 | Accuracy | 31 | 2025-04 | [论文](https://arxiv.org/abs/2412.04447) · [代码](https://github.com/qiulu66/EgoPlan-Bench2/) · [主页](https://qiulu66.github.io/egoplanbench2/) |
+| **OpenEQA** | 2024 | 具身问答：覆盖 episodic memory 与 active exploration 两种设定 | LLM 裁判分 / 回答质量 | 365 | 2024-09 | [论文](https://openaccess.thecvf.com/content/CVPR2024/html/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.html) · [代码](https://github.com/facebookresearch/open-eqa) · [主页](https://open-eqa.github.io/) |
+| **PhysBench** | 2025 | 面向具身体的物理世界理解（物体属性/关系、场景物理、动态） | 物理维度综合准确率 | 91 | 2026-01 | [论文](https://arxiv.org/abs/2501.16411) · [代码](https://github.com/physical-superintelligence-lab/PhysBench) · [主页](https://physbench.github.io/) |
+<!-- AEE-TABLE:VLM-PRIMARY:END -->
+
+<!-- AEE-TABLE:VLM-CONTROL:START -->
 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|
 | **MMMU** | 2023 | 大学级、多学科多模态推理（30 个学科，图像类型高度异构） | Accuracy | 576 | 2026-02 | [论文](https://arxiv.org/abs/2311.16502) · [代码](https://github.com/MMMU-Benchmark/MMMU) · [主页](https://mmmu-benchmark.github.io/) |
@@ -48,7 +64,7 @@
 | **Video-MME / Video-MME-v2** | 2024/2026 | 全面视频理解评测；v2 进一步强调鲁棒性、一致性与推理可靠性 | Accuracy / 组级评分（v2） | 779 | 2025-12 | [论文 v1](https://arxiv.org/abs/2405.21075) · [代码 v1](https://github.com/MME-Benchmarks/Video-MME) · [论文 v2](https://arxiv.org/abs/2604.05015) · [代码 v2](https://github.com/MME-Benchmarks/Video-MME-v2) |
 | **SEED-Bench 系列** | 2023-2024 | 覆盖更广的多模态能力（图像/视频、生成式理解、富文本视觉理解） | Accuracy | 364 | 2025-01 | [论文](https://arxiv.org/abs/2307.16125) · [代码](https://github.com/AILab-CVC/SEED-Bench) |
 | **DocVQA（RRC 赛道）** | 2020-持续更新 | 文档视觉问答与文档推理，按挑战赛协议评测 | ANLS / Accuracy | — | — | [论文](https://arxiv.org/abs/2007.00398) · [RRC](https://rrc.cvc.uab.es/) |
-<!-- AEE-TABLE:VLM:END -->
+<!-- AEE-TABLE:VLM-CONTROL:END -->
 
 常用工具：[VLMEvalKit](https://github.com/open-compass/VLMEvalKit) 为上述基准及 80+ 其他基准提供标准化评测。
 

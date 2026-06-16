@@ -27,6 +27,14 @@
     "stars": 41,
     "updated": "2025-07"
   },
+  "Zhoues/RoboRefer": {
+    "stars": 263,
+    "updated": "2025-12"
+  },
+  "facebookresearch/open-eqa": {
+    "stars": 365,
+    "updated": "2024-09"
+  },
   "haosulab/ManiSkill2-task-dev": {
     "stars": 1,
     "updated": "2023-08"
@@ -47,6 +55,14 @@
     "stars": 303,
     "updated": "2025-05"
   },
+  "physical-superintelligence-lab/PhysBench": {
+    "stars": 91,
+    "updated": "2026-01"
+  },
+  "qiulu66/EgoPlan-Bench2": {
+    "stars": 31,
+    "updated": "2025-04"
+  },
   "robocasa/robocasa": {
     "stars": 1465,
     "updated": "2026-05"
@@ -58,5 +74,13 @@
   "tsinghua-fib-lab/WorldArena": {
     "stars": 220,
     "updated": "2026-05"
+  },
+  "vision-x-nyu/thinking-in-space": {
+    "stars": 726,
+    "updated": "2025-08"
+  },
+  "wentaoyuan/RoboPoint": {
+    "stars": 224,
+    "updated": "2025-07"
   }
 }
