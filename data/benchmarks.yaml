@@ -375,7 +375,7 @@ benchmarks:
     - en: Site
       cn: 主页
       url: https://robot-colosseum.github.io
-  - name: RBench
+  - name: ReVidgen
     track: wm
     year_en: '2026'
     year_cn: '2026'
