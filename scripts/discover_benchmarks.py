@@ -487,6 +487,13 @@ def main() -> int:
         print("[ok] auto-discovery disabled in config")
         return 0
 
+    llm_cfg = _resolve_llm()
+    if llm_cfg:
+        host = urllib.parse.urlparse(llm_cfg["base"]).netloc
+        print(f"[info] LLM provider: {llm_cfg['protocol']} (host={host}, model={llm_cfg['model']})")
+    else:
+        print("[info] LLM not configured -> rule-based assessment")
+
     existing_repos = {e.get("repo") for e in benchmarks if e.get("repo")}
     existing_names = {(e.get("name") or "").lower() for e in benchmarks}
 

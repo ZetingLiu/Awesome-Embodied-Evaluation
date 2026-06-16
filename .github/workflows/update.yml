@@ -21,6 +21,8 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
+    # LLM credentials live in this GitHub Environment (secrets + variables).
+    environment: LLM_config
     steps:
       - name: Checkout
         uses: actions/checkout@v5
