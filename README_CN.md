@@ -29,6 +29,8 @@
 
 我们优先收录**权威、被广泛采用**的基准——即社区认可度高（star 多）、且**生态完整**（有官方代码、活跃 leaderboard、可复现协议）的工作。
 
+对 **具身 VLM 主榜单（Primary）**，我们采用更严格标准：仅收录任务目标**直接对应具身能力**的基准（空间落地、具身规划、物理推理、环境级具身问答）；通用多模态基准统一放在对照集（Control Set）。
+
 不在范围内：纯导航 / 仅语言的基准（除非与具身评测直接相关），以及没有明确评测协议的论文合集。
 
 ## 条目组织方式
@@ -44,6 +46,8 @@ VLM 评测拆成两层：
 - **具身 VLM 主榜单（Primary）**：直接评估具身相关能力（空间落地、规划、物理理解、环境级问答）。
 - **通用 VLM 对照集（Control Set）**：用于监控通用多模态能力，避免“具身能力提升但通用能力退化”。
 
+### 具身 VLM 主榜单（Primary）
+
 <!-- AEE-TABLE:VLM-PRIMARY:START -->
 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|
@@ -54,6 +58,8 @@ VLM 评测拆成两层：
 | **OpenEQA** | 2024 | 具身问答：覆盖 episodic memory 与 active exploration 两种设定 | LLM 裁判分 / 回答质量 | 365 | 2024-09 | [论文](https://openaccess.thecvf.com/content/CVPR2024/html/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.html) · [代码](https://github.com/facebookresearch/open-eqa) · [主页](https://open-eqa.github.io/) |
 | **PhysBench** | 2025 | 面向具身体的物理世界理解（物体属性/关系、场景物理、动态） | 物理维度综合准确率 | 91 | 2026-01 | [论文](https://arxiv.org/abs/2501.16411) · [代码](https://github.com/physical-superintelligence-lab/PhysBench) · [主页](https://physbench.github.io/) |
 <!-- AEE-TABLE:VLM-PRIMARY:END -->
+
+### 通用 VLM 对照集（Control Set）
 
 <!-- AEE-TABLE:VLM-CONTROL:START -->
 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |

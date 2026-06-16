@@ -29,6 +29,8 @@ This list focuses on evaluation for embodied foundation models:
 
 We prioritize **authoritative, widely-adopted** benchmarks — those with strong community traction (high stars) and a **complete ecosystem** (official code, an active leaderboard, and a reproducible protocol).
 
+For the **Embodied VLM Primary** table specifically, we only include benchmarks whose task objective is directly embodied (spatial grounding, embodied planning, physical reasoning, or environment-level embodied QA). General multimodal benchmarks are kept in the Control Set.
+
 Out of scope: pure navigation/language-only benchmarks (unless tied to embodied evaluation), and paper collections without a concrete evaluation protocol.
 
 ## How Entries Are Organized
@@ -44,6 +46,8 @@ We split VLM evaluation into two layers:
 - **Embodied VLM Benchmarks (Primary)**: directly evaluate embodied capabilities (spatial grounding, planning, physical understanding, environment-level QA).
 - **General VLM Benchmarks (Control Set)**: track broad multimodal competence so gains on embodied tasks are not traded for general capability regressions.
 
+### Embodied VLM Benchmarks (Primary)
+
 <!-- AEE-TABLE:VLM-PRIMARY:START -->
 | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|
@@ -54,6 +58,8 @@ We split VLM evaluation into two layers:
 | **OpenEQA** | 2024 | Embodied question answering with episodic-memory and active-exploration settings | LLM-judge score / answer quality | 365 | 2024-09 | [Paper](https://openaccess.thecvf.com/content/CVPR2024/html/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.html) · [Code](https://github.com/facebookresearch/open-eqa) · [Site](https://open-eqa.github.io/) |
 | **PhysBench** | 2025 | Physical-world understanding for embodied agents (object physics, relations, scene dynamics) | Accuracy across physical dimensions | 91 | 2026-01 | [Paper](https://arxiv.org/abs/2501.16411) · [Code](https://github.com/physical-superintelligence-lab/PhysBench) · [Site](https://physbench.github.io/) |
 <!-- AEE-TABLE:VLM-PRIMARY:END -->
+
+### General VLM Benchmarks (Control Set)
 
 <!-- AEE-TABLE:VLM-CONTROL:START -->
 | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
