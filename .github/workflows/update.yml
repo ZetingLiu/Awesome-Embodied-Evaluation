@@ -36,6 +36,19 @@ jobs:
       - name: Discover benchmark entries
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional LLM to classify benchmarks and write the tests/metric
+          # fields. Without any LLM the script falls back to deterministic
+          # rules (still anchored on arXiv titles).
+          # Anthropic (Messages API):
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
+          ANTHROPIC_BASE_URL: ${{ vars.ANTHROPIC_BASE_URL }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+          # Or OpenAI-compatible (chat completions):
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_API_BASE: ${{ vars.LLM_API_BASE }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          # Optional: enable the citation-count gate (set min_citations > 0).
+          S2_API_KEY: ${{ secrets.S2_API_KEY }}
         run: python scripts/discover_benchmarks.py
 
       - name: Render README tables

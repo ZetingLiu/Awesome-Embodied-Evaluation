@@ -1,3 +1,15 @@
+# Auto-discovery configuration for scripts/discover_benchmarks.py.
+#
+# Discovery no longer scrapes README headings. It anchors on the arXiv paper
+# title (canonical name + year + abstract) and, when an LLM is configured via
+# env, uses it to decide whether a repo is a real evaluation benchmark and to
+# write the `tests_*` / `metric_*` fields. Supported providers:
+#   - Anthropic Messages API: ANTHROPIC_AUTH_TOKEN (+ ANTHROPIC_BASE_URL, ANTHROPIC_MODEL)
+#   - OpenAI-compatible:       LLM_API_KEY (+ LLM_API_BASE, LLM_MODEL)
+# Without any LLM key it falls back to deterministic rules.
+#
+# Optional influence gate: set a track's `min_citations` > 0 AND provide the
+# env var S2_API_KEY (Semantic Scholar) to filter by citation count.
 automation:
   enabled: true
   per_track_limit: 2
@@ -9,10 +21,24 @@ automation:
     - evaluate
     - leaderboard
     - dataset
+  # Repos/papers whose name, description, topics, or paper title match any of
+  # these are rejected outright (they are lists/surveys, not benchmarks).
+  survey_blocklist_terms:
+    - awesome
+    - survey
+    - paper list
+    - paper-list
+    - reading list
+    - reading-list
+    - list of
+    - curated list
+    - collection of
+    - roadmap
   blocked_repos:
     - Hoar012/Awesome-Multimodal-Embodied-AI
     - leofan90/Awesome-World-Models
     - JiahuaDong/Awesome-World-Models
+    - FutureTwT/awesome-world-models-for-vla-agents
 
   tracks:
     vlm:
@@ -20,6 +46,7 @@ automation:
         vlm_group: primary
       min_stars: 20
       min_track_hits: 2
+      min_citations: 0   # >0 requires S2_API_KEY; 0 disables the gate
       queries:
         - embodied vlm benchmark spatial reasoning
         - embodied question answering benchmark
@@ -38,6 +65,7 @@ automation:
     vla:
       min_stars: 30
       min_track_hits: 2
+      min_citations: 0
       queries:
         - vision language action benchmark
         - robot manipulation benchmark evaluation
@@ -55,6 +83,7 @@ automation:
     wm:
       min_stars: 15
       min_track_hits: 2
+      min_citations: 0
       queries:
         - world model benchmark embodied
         - world generation benchmark evaluation

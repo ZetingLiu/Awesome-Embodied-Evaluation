@@ -39,7 +39,7 @@ Each entry lists the paper, the official code, the main metric, and notes on rep
 
 The **Stars** and **Updated** columns are refreshed automatically **twice a week** (Monday and Thursday) by a GitHub Actions workflow, so the popularity and activity signals stay current. Every other field is curated by hand.
 
-The same workflow can also propose newly discovered benchmark entries across VLM / VLA / WM via an automated PR. Auto-insertions are guarded by strict checks (paper link + official code + embodied relevance threshold), and all changes remain reviewable before merge.
+The same workflow can also propose newly discovered benchmark entries across VLM / VLA / WM via an automated PR. Rather than scraping README text, discovery anchors each candidate on its **arXiv paper** (the paper title becomes the canonical name, plus year and abstract) and applies strict guards: an official code repo, a star threshold, embodied-relevance keyword hits, and a survey/awesome-list filter so paper collections are rejected. When an LLM is configured, it makes the final "is this a real benchmark?" call and writes the *What it tests* / *Metric* summaries; otherwise deterministic rules are used. All auto-insertions land in a reviewable PR before merge.
 
 ## VLM Evaluation
 
