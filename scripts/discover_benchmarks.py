@@ -66,7 +66,9 @@ def normalize_text(*parts: str) -> str:
     return " ".join((p or "").lower() for p in parts)
 
 
-def extract_first(patterns: list[str], text: str) -> str | None:
+def extract_first(patterns: list[str], text: str | None) -> str | None:
+    if not text:
+        return None
     for pattern in patterns:
         m = re.search(pattern, text)
         if m:
@@ -194,7 +196,7 @@ def discover_for_track(track: str, cfg: dict, existing_repos: set[str]) -> list[
             if not ok:
                 continue
 
-            paper_url = extract_first(PAPER_PATTERNS, readme_text) or extract_first(PAPER_PATTERNS, item.get("homepage", ""))
+            paper_url = extract_first(PAPER_PATTERNS, readme_text) or extract_first(PAPER_PATTERNS, item.get("homepage") or "")
             if not paper_url:
                 # Hard guard: must include paper link.
                 print(f"[skip] {repo}: no-paper-link", file=sys.stderr)
