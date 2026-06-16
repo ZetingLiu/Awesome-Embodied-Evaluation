@@ -1,8 +1,8 @@
-name: Refresh benchmark metadata
+name: Refresh benchmark lists and metadata
 
-# Re-renders the README tables from data/benchmarks.yaml, refreshing the
-# machine-managed Stars / Updated columns from the GitHub API. Runs weekly and
-# on manual dispatch; commits straight to main only when something changed.
+# 1) Discover new benchmark entries (VLM/VLA/WM) with strict auto-guards
+# 2) Re-render README tables and refresh Stars / Updated metadata
+# 3) Open/update an automated PR when files change
 
 on:
   schedule:
@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: refresh-benchmark-metadata
@@ -22,29 +23,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Discover benchmark entries
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/discover_benchmarks.py
+
       - name: Render README tables
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/render_readme.py
 
-      - name: Commit and push if changed
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add README.md README_CN.md data/.cache/metadata.json
-            git commit -m "chore: refresh benchmark metadata [skip ci]"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+      - name: Create pull request if changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: bot/auto-benchmark-refresh
+          title: "chore: auto-refresh benchmark lists and metadata"
+          commit-message: "chore: auto-refresh benchmark lists and metadata [skip ci]"
+          body: |
+            Automated benchmark refresh:
+            - discover new VLM/VLA/WM benchmark entries (paper+code+relevance guards)
+            - refresh Stars / Updated metadata
+            - re-render README.md and README_CN.md tables
+          labels: |
+            automation
+            benchmark-update
+          add-paths: |
+            data/benchmarks.yaml
+            data/.cache/metadata.json
+            README.md
+            README_CN.md

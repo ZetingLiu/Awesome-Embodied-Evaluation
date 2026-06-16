@@ -1,0 +1,69 @@
+automation:
+  enabled: true
+  per_track_limit: 2
+  search_per_query: 15
+  benchmark_terms:
+    - benchmark
+    - bench
+    - evaluation
+    - evaluate
+    - leaderboard
+    - dataset
+  blocked_repos:
+    - Hoar012/Awesome-Multimodal-Embodied-AI
+    - leofan90/Awesome-World-Models
+    - JiahuaDong/Awesome-World-Models
+
+  tracks:
+    vlm:
+      extra_fields:
+        vlm_group: primary
+      min_stars: 20
+      min_track_hits: 2
+      queries:
+        - embodied vlm benchmark spatial reasoning
+        - embodied question answering benchmark
+        - egocentric planning benchmark multimodal
+        - physical reasoning benchmark vision language
+      track_terms:
+        - embodied
+        - spatial
+        - egocentric
+        - physical
+        - planning
+        - question answering
+        - referring
+        - exploration
+
+    vla:
+      min_stars: 30
+      min_track_hits: 2
+      queries:
+        - vision language action benchmark
+        - robot manipulation benchmark evaluation
+        - embodied agent benchmark navigation manipulation
+      track_terms:
+        - robot
+        - manipulation
+        - policy
+        - action
+        - control
+        - simulation
+        - embodied
+        - navigation
+
+    wm:
+      min_stars: 15
+      min_track_hits: 2
+      queries:
+        - world model benchmark embodied
+        - world generation benchmark evaluation
+        - action-conditioned world model benchmark
+      track_terms:
+        - world model
+        - world generation
+        - dynamics
+        - action-conditioned
+        - embodied
+        - physics
+        - spatiotemporal

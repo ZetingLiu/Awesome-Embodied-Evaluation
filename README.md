@@ -39,6 +39,8 @@ Each entry lists the paper, the official code, the main metric, and notes on rep
 
 The **Stars** and **Updated** columns are refreshed automatically **twice a week** (Monday and Thursday) by a GitHub Actions workflow, so the popularity and activity signals stay current. Every other field is curated by hand.
 
+The same workflow can also propose newly discovered benchmark entries across VLM / VLA / WM via an automated PR. Auto-insertions are guarded by strict checks (paper link + official code + embodied relevance threshold), and all changes remain reviewable before merge.
+
 ## VLM Evaluation
 
 We split VLM evaluation into two layers:
