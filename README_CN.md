@@ -103,7 +103,7 @@ VLM 评测拆成两层：
 | **EWMBench** | 2025 | 具身世界模型：场景一致性、运动正确性、语义对齐 | 各维度分数 | 126 | 2025-06 | [代码](https://github.com/AgibotTech/EWMBench) |
 | **WorldModelBench** | 2025 | 面向世界建模能力的评测：指令遵循、常识一致性、物理一致性 | 综合世界建模分数 | 41 | 2025-07 | [论文](https://arxiv.org/abs/2502.20694) · [代码](https://github.com/WorldModelBench-Team/WorldModelBench) |
 | **4DWorldBench** | 2025/2026 | 3D/4D 世界生成能力评测：感知质量、条件对齐、物理真实性与时空一致性 | 多维综合评测 | — | — | [论文](https://arxiv.org/abs/2511.19836) |
-| **RBench** | 2026 | 评估面向机器人的视频生成，涵盖五个任务领域和四种实体，评价任务级正确性和视觉保真度。 | 结构一致性、物理合理性、动作完整性，以及与人类评估的Spearman相关系数。 | 73 | 2026-06 | [论文](https://arxiv.org/abs/2601.15282) · [代码](https://github.com/DAGroup-PKU/ReVidgen) |
+| **ReVidgen** | 2026 | 评估面向机器人的视频生成，涵盖五个任务领域和四种实体，评价任务级正确性和视觉保真度。 | 结构一致性、物理合理性、动作完整性，以及与人类评估的Spearman相关系数。 | 73 | 2026-06 | [论文](https://arxiv.org/abs/2601.15282) · [代码](https://github.com/DAGroup-PKU/ReVidgen) |
 | **ENACT** | 2025 | 通过第一人称视频序列的前向和逆向世界建模来评估具身认知能力。 | 重排序任务上的准确率 | 51 | 2025-11 | [论文](https://arxiv.org/abs/2511.20937) · [代码](https://github.com/mll-lab-nu/ENACT) |
 <!-- AEE-TABLE:WM:END -->
 
