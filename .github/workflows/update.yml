@@ -6,8 +6,8 @@ name: Refresh benchmark metadata
 
 on:
   schedule:
-    # Every Monday at 03:00 UTC.
-    - cron: "0 3 * * 1"
+    # Twice a week: Monday and Thursday at 03:00 UTC.
+    - cron: "0 3 * * 1,4"
   workflow_dispatch: {}
 
 permissions:
