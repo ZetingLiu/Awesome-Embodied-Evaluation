@@ -7,6 +7,14 @@
     "stars": 126,
     "updated": "2025-06"
   },
+  "DAGroup-PKU/ReVidgen": {
+    "stars": 73,
+    "updated": "2026-06"
+  },
+  "FutureTwT/awesome-world-models-for-vla-agents": {
+    "stars": 47,
+    "updated": "2026-03"
+  },
   "Lifelong-Robot-Learning/LIBERO": {
     "stars": 1952,
     "updated": "2025-03"
@@ -18,6 +26,10 @@
   "MMMU-Benchmark/MMMU": {
     "stars": 576,
     "updated": "2026-02"
+  },
+  "PKU-Alignment/VLA-Arena": {
+    "stars": 178,
+    "updated": "2026-03"
   },
   "StanfordVL/BEHAVIOR-1K": {
     "stars": 1519,
@@ -66,6 +78,10 @@
   "robocasa/robocasa": {
     "stars": 1465,
     "updated": "2026-05"
+  },
+  "robot-colosseum/robot-colosseum": {
+    "stars": 150,
+    "updated": "2025-03"
   },
   "simpler-env/SimplerEnv": {
     "stars": 1089,

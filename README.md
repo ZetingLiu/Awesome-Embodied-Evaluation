@@ -87,6 +87,8 @@ Common toolkit: [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) provide
 | **ManiSkill2** | 2023 | Generalizable manipulation across diverse objects / skills with high-throughput simulation | Task success / reward-based scores | 1 | 2023-08 | [Paper](https://arxiv.org/abs/2302.04659) · [Code](https://github.com/haosulab/ManiSkill2-task-dev) |
 | **BEHAVIOR-1K** | 2024 | Long-horizon, human-centered household activities with realistic simulation dynamics | Activity success / completion metrics | 1.5k | 2026-06 | [Paper](https://arxiv.org/abs/2403.09227) · [Code](https://github.com/StanfordVL/BEHAVIOR-1K) |
 | **RoboCasa / RoboCasa365** | 2024/2026 | Large-scale everyday kitchen manipulation, from atomic skills to long-horizon composites | Success rate across benchmark suites | 1.5k | 2026-05 | [Paper](https://arxiv.org/abs/2406.02523) · [Code](https://github.com/robocasa/robocasa) |
+| **Clone repository** | 2025 | VLA-Arena is an open-source benchmark for systematic evaluation of Vision-Language-Action (VLA) models. | Task-specific benchmark metrics (see official protocol) | 178 | 2026-03 | [Paper](https://arxiv.org/abs/2512.22539) · [Code](https://github.com/PKU-Alignment/VLA-Arena) |
+| **robot colosseum** | 2024 | A Benchmark for Evaluating Generalization for Robotic Manipulation | Task-specific benchmark metrics (see official protocol) | 150 | 2025-03 | [Paper](https://arxiv.org/abs/2402.08191) · [Code](https://github.com/robot-colosseum/robot-colosseum) · [Site](https://robot-colosseum.github.io) |
 <!-- AEE-TABLE:VLA:END -->
 
 Common harness: [vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) runs many of these benchmarks in Docker with a shared protocol.
@@ -101,6 +103,8 @@ Common harness: [vla-evaluation-harness](https://github.com/allenai/vla-evaluati
 | **EWMBench** | 2025 | Embodied world models: scene consistency, motion correctness, semantic alignment | Per-dimension scores | 126 | 2025-06 | [Code](https://github.com/AgibotTech/EWMBench) |
 | **WorldModelBench** | 2025 | World modeling capability under instruction following, commonsense, and physical adherence | Composite world-modeling scores | 41 | 2025-07 | [Paper](https://arxiv.org/abs/2502.20694) · [Code](https://github.com/WorldModelBench-Team/WorldModelBench) |
 | **4DWorldBench** | 2025/2026 | 3D/4D world generation realism: perceptual quality, condition alignment, physics, and consistency | Multi-dimension composite evaluation | — | — | [Paper](https://arxiv.org/abs/2511.19836) |
+| **0. Clone the repo** | 2026 | [ICML 2026🔥]Rethinking Video Generation Model for the Embodied World | Task-specific benchmark metrics (see official protocol) | 73 | 2026-06 | [Paper](https://arxiv.org/abs/2601.15282) · [Code](https://github.com/DAGroup-PKU/ReVidgen) |
+| **Awesome World Models for VLA Agents** | 2023 | Official repository for "Towards Generalist Embodied AI: A Survey on World Models for VLA Agents". This curated list systematically organizes core resources including research papers, foundation models, evaluation metrics, and benchmarks. | Task-specific benchmark metrics (see official protocol) | 47 | 2026-03 | [Paper](https://arxiv.org/abs/2302.00111) · [Code](https://github.com/FutureTwT/awesome-world-models-for-vla-agents) |
 <!-- AEE-TABLE:WM:END -->
 
 ## Related Lists

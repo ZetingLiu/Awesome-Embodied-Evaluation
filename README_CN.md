@@ -87,6 +87,8 @@ VLM 评测拆成两层：
 | **ManiSkill2** | 2023 | 多对象、多技能条件下的泛化操作评测，强调高吞吐仿真 | 任务成功率 / 奖励相关指标 | 1 | 2023-08 | [论文](https://arxiv.org/abs/2302.04659) · [代码](https://github.com/haosulab/ManiSkill2-task-dev) |
 | **BEHAVIOR-1K** | 2024 | 面向真实日常活动的长时程任务评测，强调高保真物理与场景复杂度 | 活动成功率 / 完成度指标 | 1.5k | 2026-06 | [论文](https://arxiv.org/abs/2403.09227) · [代码](https://github.com/StanfordVL/BEHAVIOR-1K) |
 | **RoboCasa / RoboCasa365** | 2024/2026 | 大规模厨房场景日常操作评测，覆盖原子技能到长时程复合任务 | 各套件成功率 | 1.5k | 2026-05 | [论文](https://arxiv.org/abs/2406.02523) · [代码](https://github.com/robocasa/robocasa) |
+| **Clone repository** | 2025 | 自动发现条目：请参考论文与官方仓库中的机器人任务评测设置。 | 任务定义指标（见官方协议） | 178 | 2026-03 | [论文](https://arxiv.org/abs/2512.22539) · [代码](https://github.com/PKU-Alignment/VLA-Arena) |
+| **robot colosseum** | 2024 | 自动发现条目：请参考论文与官方仓库中的机器人任务评测设置。 | 任务定义指标（见官方协议） | 150 | 2025-03 | [论文](https://arxiv.org/abs/2402.08191) · [代码](https://github.com/robot-colosseum/robot-colosseum) · [主页](https://robot-colosseum.github.io) |
 <!-- AEE-TABLE:VLA:END -->
 
 常用框架：[vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) 用 Docker 和统一协议运行上述多个基准。
@@ -101,6 +103,8 @@ VLM 评测拆成两层：
 | **EWMBench** | 2025 | 具身世界模型：场景一致性、运动正确性、语义对齐 | 各维度分数 | 126 | 2025-06 | [代码](https://github.com/AgibotTech/EWMBench) |
 | **WorldModelBench** | 2025 | 面向世界建模能力的评测：指令遵循、常识一致性、物理一致性 | 综合世界建模分数 | 41 | 2025-07 | [论文](https://arxiv.org/abs/2502.20694) · [代码](https://github.com/WorldModelBench-Team/WorldModelBench) |
 | **4DWorldBench** | 2025/2026 | 3D/4D 世界生成能力评测：感知质量、条件对齐、物理真实性与时空一致性 | 多维综合评测 | — | — | [论文](https://arxiv.org/abs/2511.19836) |
+| **0. Clone the repo** | 2026 | 自动发现条目：请参考论文与官方仓库中的世界模型评测维度。 | 任务定义指标（见官方协议） | 73 | 2026-06 | [论文](https://arxiv.org/abs/2601.15282) · [代码](https://github.com/DAGroup-PKU/ReVidgen) |
+| **Awesome World Models for VLA Agents** | 2023 | 自动发现条目：请参考论文与官方仓库中的世界模型评测维度。 | 任务定义指标（见官方协议） | 47 | 2026-03 | [论文](https://arxiv.org/abs/2302.00111) · [代码](https://github.com/FutureTwT/awesome-world-models-for-vla-agents) |
 <!-- AEE-TABLE:WM:END -->
 
 ## 相关清单
