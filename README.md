@@ -1,149 +1,81 @@
-# Awesome Embodied Evaluation
+# Awesome Embodied Evaluation [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> A curated list of **VLM / VLA / World Model** evaluation methods, benchmarks, protocols, and tooling for embodied AI.
+A curated list of **benchmarks and evaluation methods** for embodied foundation models, spanning three tracks: **Vision-Language Models (VLM)**, **Vision-Language-Action models (VLA)**, and **World Models (WM)**.
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Most existing lists cover only one track. This repo puts all three in one place and focuses on **how each benchmark is actually evaluated** — task setup, inputs/outputs, metrics, and what it takes to reproduce the numbers.
 
----
+Contributions are welcome. See [Contributing](#contributing).
 
-## Why This Repo
+## Contents
 
-现有仓库通常只覆盖单条线（只做 VLM、只做 VLA、或只做 World Model）。  
-本仓库目标是做一个统一入口：**把 VLM-VLA-WM 三条评测线放进同一个评测视角里**，并强调可复现协议。
-
----
+- [Scope](#scope)
+- [How Entries Are Organized](#how-entries-are-organized)
+- [VLM Evaluation](#vlm-evaluation)
+- [VLA Evaluation](#vla-evaluation)
+- [World Model Evaluation](#world-model-evaluation)
+- [Related Lists](#related-lists)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Scope
 
-- **VLM Evaluation**: 多模态理解与推理能力评测
-- **VLA Evaluation**: 语言条件机器人操作能力评测
-- **World Model Evaluation**: 世界模型感知质量与功能效用评测
+This list focuses on evaluation for embodied foundation models:
 
-不包含：
-- 纯导航/纯语言 benchmark（除非与 embodied 评测直接相关）
-- 仅论文列表、无评测定义的“模型盘点”
+- **VLM** — multimodal understanding and reasoning.
+- **VLA** — language-conditioned robot manipulation and control.
+- **WM** — perceptual quality and downstream usefulness of world models.
 
----
+Out of scope: pure navigation/language-only benchmarks (unless tied to embodied evaluation), and paper collections without a concrete evaluation protocol.
 
-## Taxonomy: 汇总维度（建议标准）
+## How Entries Are Organized
 
-建议每个 benchmark / 方法都按以下维度记录，便于横向对比：
+Each entry lists the paper, the official code, the main metric, and notes on reproducibility. Where useful, entries also note the input/output format, the evaluator (rule-based, simulator, VLM-as-judge, or human), and the generalization setting (in-distribution, OOD, or sim-to-real).
 
-1. **Task Level**：感知 / 推理 / 操作 / 规划 / 长时序
-2. **Embodiment Level**：offline QA、open-loop rollout、closed-loop control
-3. **Input Modality**：image / video / language / state / action / tactile
-4. **Output Type**：MCQ、free-form text、point/box、action trajectory、success signal
-5. **Metrics**：accuracy、success rate、chain length、correlation、human preference、composite score
-6. **Generalization Axis**：IID / OOD / cross-task / cross-scene / sim2real
-7. **Evaluator Type**：rule-based、simulator-based、VLM-as-judge、human
-8. **Reproducibility**：官方代码、docker、checkpoint、seed、protocol 是否齐全
-9. **Cost Profile**：GPU/CPU、数据规模、单次评测耗时
-10. **License & Access**：开源许可、数据是否需申请、是否可商用
+## VLM Evaluation
 
----
+| Benchmark | Year | What it tests | Metric | Links |
+|---|---|---|---|---|
+| **MMMU** | 2023 | College-level, multi-discipline multimodal reasoning (30 subjects, heterogeneous image types) | Accuracy | [Paper](https://arxiv.org/abs/2311.16502) · [Code](https://github.com/MMMU-Benchmark/MMMU) · [Site](https://mmmu-benchmark.github.io/) |
+| **MMBench** | 2023 | Fine-grained, multi-ability understanding with CircularEval; EN/ZH | Accuracy | [Paper](https://arxiv.org/abs/2307.06281) · [Code](https://github.com/open-compass/MMBench) |
+| **MathVista** | 2023 | Mathematical reasoning in visual contexts (charts, geometry, figures) | Accuracy | [Paper](https://arxiv.org/abs/2310.02255) · [Code](https://github.com/lupantech/MathVista) |
 
-## Recommended Canonical Fields
+Common toolkit: [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) provides standardized evaluation for the benchmarks above and 80+ others.
 
-建议在后续 PR 中统一成如下字段：
+## VLA Evaluation
 
-| Field | Description |
-|---|---|
-| Name | Benchmark / Eval Method 名称 |
-| Track | VLM / VLA / WM |
-| Year | 发布年份 |
-| Task & Setting | 任务定义与场景（offline / sim / real） |
-| Input -> Output | 输入输出格式 |
-| Metric | 主指标 |
-| Official Repo | 官方仓库 |
-| Paper | 论文链接 |
-| Reproducibility | Code/Data/Checkpoint/Protocol 完整度 |
-| Notes | 复现坑点、评测注意事项 |
+| Benchmark | Year | What it tests | Metric | Links |
+|---|---|---|---|---|
+| **LIBERO** | 2023 | Lifelong / language-conditioned tabletop manipulation (Spatial, Object, Goal, Long suites) | Success rate | [Paper](https://arxiv.org/abs/2306.03310) · [Code](https://github.com/Lifelong-Robot-Learning/LIBERO) |
+| **CALVIN** | 2021 | Long-horizon instruction chaining; compositional generalization (ABC→D) | Avg. completed chain length | [Paper](https://arxiv.org/abs/2112.03227) · [Code](https://github.com/mees/calvin) |
+| **SimplerEnv** | 2024 | Real-to-sim evaluation of real-robot policies (Google Robot, WidowX+Bridge) | Success rate, sim↔real correlation (MMRV, Pearson r) | [Paper](https://arxiv.org/abs/2405.05946) · [Code](https://github.com/simpler-env/SimplerEnv) |
 
----
+Common harness: [vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) runs many of these benchmarks in Docker with a shared protocol.
 
-## Quick Start: 先放每条线 3 个权威代表工作
+## World Model Evaluation
 
-> 目标：先有一个最小可用版本（MVP），后续再扩到全面列表。
+| Benchmark | Year | What it tests | Metric | Links |
+|---|---|---|---|---|
+| **WorldArena** | 2026 | Perceptual quality + functional utility (data engine, policy eval, action planning) | EWMScore (composite) | [Paper](https://arxiv.org/abs/2602.08971) · [Site](https://world-arena.ai/) |
+| **WorldScore** | 2025 | Unified world generation across 3D/4D/T2V/I2V; controllability, quality, dynamics | WorldScore (composite) | [Paper](https://arxiv.org/abs/2504.00983) · [Site](https://haoyi-duan.github.io/WorldScore/) |
+| **EWMBench** | 2025 | Embodied world models: scene consistency, motion correctness, semantic alignment | Per-dimension scores | [Code](https://github.com/AgibotTech/EWMBench) |
 
-### 1) VLM Evaluation (Top 3)
+## Related Lists
 
-- **MMMU**  
-  - Paper: https://arxiv.org/abs/2311.16502  
-  - Repo: https://github.com/MMMU-Benchmark/MMMU  
-  - Why: 专家级多学科多模态推理主流基准，长期被主流 VLM 报告。
+- [awesome-vla-wam](https://github.com/DravenALG/awesome-vla-wam) — VLA and World Action Models.
+- [Awesome-World-Action-Model](https://github.com/HyperbolicCurve/Awesome-World-Action-Model) — papers, datasets, and benchmarks for WAM/VLA.
+- [awesome-embodied-vla-va-vln](https://github.com/jonyzhang2023/awesome-embodied-vla-va-vln) — VLA / VA / VLN models and simulators.
 
-- **MMBench**  
-  - Paper: https://arxiv.org/abs/2307.06281  
-  - Repo: https://github.com/open-compass/MMBench  
-  - Why: 中文/英文多维细粒度评估，工程上与 OpenCompass 生态结合紧密。
+## Contributing
 
-- **MathVista**  
-  - Paper: https://arxiv.org/abs/2310.02255  
-  - Repo: https://github.com/lupantech/MathVista  
-  - Why: 视觉数学推理代表 benchmark，能有效拉开模型复杂推理能力差异。
+Pull requests are welcome. For a new entry, please include:
 
-### 2) VLA Evaluation (Top 3)
+- Links to the paper and the official code.
+- Task setup, input/output format, and the main metric.
+- A minimal run command, if you have one.
+- Any reproducibility caveats you ran into (coordinate conventions, normalization stats, ambiguous termination rules, etc.).
 
-- **LIBERO**  
-  - Paper: https://arxiv.org/abs/2306.03310  
-  - Repo: https://github.com/Lifelong-Robot-Learning/LIBERO  
-  - Why: VLA 操作评测事实标准之一，几乎是主流论文必报项。
-
-- **CALVIN**  
-  - Paper: https://arxiv.org/abs/2112.03227  
-  - Repo: https://github.com/mees/calvin  
-  - Why: 长时序 instruction chaining 代表基准，强调组合泛化。
-
-- **SimplerEnv (SIMPLER)**  
-  - Paper: https://arxiv.org/abs/2405.05946  
-  - Repo: https://github.com/simpler-env/SimplerEnv  
-  - Why: 强调 sim-to-real 评测相关性（如相关性指标），是离线策略评估关键补充。
-
-### 3) World Model Evaluation (Top 3)
-
-- **WorldArena**  
-  - Paper: https://arxiv.org/abs/2602.08971  
-  - Website: https://world-arena.ai/  
-  - Why: 同时看感知质量和功能效用（data engine / policy eval / action planning）。
-
-- **WorldScore**  
-  - Paper: https://arxiv.org/abs/2504.00983  
-  - Website: https://haoyi-duan.github.io/WorldScore/  
-  - Why: 提供统一 world generation 评测框架，覆盖 controllability/quality/dynamics。
-
-- **EWMBench**  
-  - Repo: https://github.com/AgibotTech/EWMBench  
-  - Why: 聚焦 embodied world model 的 scene/motion/semantic 三维评测，工程可落地性较强。
-
----
-
-## Existing Repos Closest to This Goal (Reference)
-
-- https://github.com/DravenALG/awesome-vla-wam
-- https://github.com/HyperbolicCurve/Awesome-World-Action-Model
-- https://github.com/jonyzhang2023/awesome-embodied-vla-va-vln
-
-本仓库差异化目标：**不仅列资源，还要统一评测字段与协议可复现信息**。
-
----
-
-## Contribution Guide (Draft)
-
-欢迎 PR，建议每个新增条目附带：
-
-- 官方 repo + paper
-- 任务定义、输入输出、主指标
-- 最小复现命令（可选）
-- 你踩过的复现坑（建议）
-
-PR 标题建议：
-- `add(vlm): MMMU protocol notes`
-- `add(vla): LIBERO reproducibility checklist`
-- `add(wm): WorldArena evaluator details`
-
----
+Keep one entry per row and place it in the matching track table.
 
 ## License
 
-MIT
+[MIT](LICENSE)
