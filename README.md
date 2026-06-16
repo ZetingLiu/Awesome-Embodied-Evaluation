@@ -27,11 +27,15 @@ This list focuses on evaluation for embodied foundation models:
 - **VLA** — language-conditioned robot manipulation and control.
 - **WM** — perceptual quality and downstream usefulness of world models.
 
+We prioritize **authoritative, widely-adopted** benchmarks — those with strong community traction (high stars) and a **complete ecosystem** (official code, an active leaderboard, and a reproducible protocol).
+
 Out of scope: pure navigation/language-only benchmarks (unless tied to embodied evaluation), and paper collections without a concrete evaluation protocol.
 
 ## How Entries Are Organized
 
 Each entry lists the paper, the official code, the main metric, and notes on reproducibility. Where useful, entries also note the input/output format, the evaluator (rule-based, simulator, VLM-as-judge, or human), and the generalization setting (in-distribution, OOD, or sim-to-real).
+
+The **Stars** and **Updated** columns are refreshed automatically **twice a week** (Monday and Thursday) by a GitHub Actions workflow, so the popularity and activity signals stay current. Every other field is curated by hand.
 
 ## VLM Evaluation
 
