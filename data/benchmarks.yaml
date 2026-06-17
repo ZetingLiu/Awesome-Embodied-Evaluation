@@ -5,6 +5,13 @@
 # (Reasoning & Planning / Action / World Modeling each starts at 1).
 # New entries must take the next seq within their track; run `python scripts/render_readme.py --assign-seq`
 # after bulk edits, or let discover_benchmarks.py assign automatically on append.
+# Optional ecosystem completeness fields (fill gradually when evidence is clear):
+#   ecosystem:
+#     paper: public | report | missing
+#     code: official | third_party | missing
+#     data_or_tasks: public | partial | simulator_only | missing
+#     protocol: documented | partial | unclear
+#     leaderboard: available | inactive | absent
 # Machine-managed fields (Stars / Updated) are fetched at render time using
 # `repo` and injected by scripts/render_readme.py.
 #

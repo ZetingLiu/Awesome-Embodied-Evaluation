@@ -12,6 +12,7 @@ Contributions are welcome. See [Contributing](#contributing).
 
 - [Scope](#scope)
 - [How Entries Are Organized](#how-entries-are-organized)
+- [Ecosystem Completeness](#ecosystem-completeness)
 - [Reasoning & Planning Evaluation](#reasoning--planning-evaluation)
 - [Action Evaluation](#action-evaluation)
 - [World Modeling Evaluation](#world-modeling-evaluation)
@@ -40,6 +41,18 @@ Each entry lists the paper, the official code, the main metric, and notes on rep
 Tables are further split by **reasoning / planning capability axis**, **action evaluation environment** (simulation / sim-to-real / real robot), or **world-modeling dimension**. See `data/benchmarks.yaml` for the taxonomy fields (`vlm_category`, `vla_env`, `wm_category`).
 
 The **Stars** and **Updated** columns come from GitHub repository metadata and are refreshed manually by maintainers when the tables are updated. Every other field is curated by hand.
+
+## Ecosystem Completeness
+
+This list treats ecosystem completeness as a practical reproducibility signal. When adding or reviewing entries, maintainers check whether the benchmark provides:
+
+- **Paper**: a peer-reviewed paper, arXiv preprint, or technical report.
+- **Code**: official evaluation code, a harness, or runnable scripts.
+- **Data / Tasks**: public datasets, simulator assets, task definitions, or benchmark splits.
+- **Protocol**: documented metrics, prompts, scoring rules, splits, or submission format.
+- **Leaderboard**: a public leaderboard, standardized submission path, or active challenge.
+
+Benchmarks with missing components can still be included when they are important, but the gap should be visible in the entry links or description and revisited during maintenance.
 
 ## Reasoning & Planning Evaluation
 
@@ -270,6 +283,7 @@ World-model benchmarks are grouped by **what aspect of a world model is measured
 Pull requests are welcome. For a new entry, please include:
 
 - Links to the paper and the official code.
+- Ecosystem status: whether data/tasks, evaluation protocol, and leaderboard are public or missing.
 - Task setup, input/output format, and the main metric.
 - A minimal run command, if you have one.
 - Any reproducibility caveats you ran into (coordinate conventions, normalization stats, ambiguous termination rules, etc.).
