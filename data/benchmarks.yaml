@@ -1,6 +1,9 @@
 # Single source of truth for benchmark tables in README.md / README_CN.md.
 #
-# Human-curated fields: name, track, year_*, tests_*, metric_*, links.
+# Human-curated fields: seq, name, track, year_*, tests_*, metric_*, links.
+# `seq` is the global row number shown as the first table column (1..N, contiguous).
+# New entries must take the next seq; run `python scripts/render_readme.py --assign-seq`
+# after bulk edits, or let discover_benchmarks.py assign automatically on append.
 # Machine-managed fields (Stars / Updated) are fetched at render time using
 # `repo` and injected by scripts/render_readme.py.
 #
@@ -28,6 +31,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/wentaoyuan/RoboPoint}
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/wentao-yuan/where2place}
 
+    seq: 1
   - name: RefSpatial-Bench
     track: vlm
     vlm_group: primary
@@ -44,6 +48,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/Zhoues/RoboRefer}
       - {en: Site, cn: 主页, url: https://zhoues.github.io/RoboRefer/}
 
+    seq: 2
   - name: VSI-Bench
     track: vlm
     vlm_group: primary
@@ -60,6 +65,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/vision-x-nyu/thinking-in-space}
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/nyu-visionx/VSI-Bench}
 
+    seq: 3
   - name: EmbSpatial-Bench
     track: vlm
     vlm_group: primary
@@ -77,6 +83,7 @@ benchmarks:
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/Phineas476/EmbSpatial-Bench}
 
   # ======================== VLM · Embodied Primary · Planning ========================
+    seq: 4
   - name: EgoPlan-Bench2
     track: vlm
     vlm_group: primary
@@ -94,6 +101,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://qiulu66.github.io/egoplanbench2/}
 
   # ======================== VLM · Embodied Primary · Embodied QA ========================
+    seq: 5
   - name: OpenEQA
     track: vlm
     vlm_group: primary
@@ -111,6 +119,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://open-eqa.github.io/}
 
   # ======================== VLM · Embodied Primary · Physical Reasoning ========================
+    seq: 6
   - name: PhysBench
     track: vlm
     vlm_group: primary
@@ -128,6 +137,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://physbench.github.io/}
 
   # ======================== VLM · Embodied Primary · Embodied Reasoning ========================
+    seq: 7
   - name: ERQA
     name_cn: ERQA（具身推理问答）
     track: vlm
@@ -145,6 +155,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/embodiedreasoning/ERQA}
 
   # ======================== VLM · Control · Reasoning ========================
+    seq: 8
   - name: MMMU
     track: vlm
     vlm_group: control
@@ -161,6 +172,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/MMMU-Benchmark/MMMU}
       - {en: Site, cn: 主页, url: https://mmmu-benchmark.github.io/}
 
+    seq: 9
   - name: MathVista
     track: vlm
     vlm_group: control
@@ -177,6 +189,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/lupantech/MathVista}
 
   # ======================== VLM · Control · Perception ========================
+    seq: 10
   - name: MMBench
     track: vlm
     vlm_group: control
@@ -192,6 +205,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.06281}
       - {en: Code, cn: 代码, url: https://github.com/open-compass/MMBench}
 
+    seq: 11
   - name: SEED-Bench series
     name_cn: SEED-Bench 系列
     track: vlm
@@ -209,6 +223,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/AILab-CVC/SEED-Bench}
 
   # ======================== VLM · Control · Video ========================
+    seq: 12
   - name: Video-MME / Video-MME-v2
     track: vlm
     vlm_group: control
@@ -227,6 +242,7 @@ benchmarks:
       - {en: Code v2, cn: 代码 v2, url: https://github.com/MME-Benchmarks/Video-MME-v2}
 
   # ======================== VLM · Control · Document ========================
+    seq: 13
   - name: DocVQA (RRC track)
     name_cn: DocVQA（RRC 赛道）
     track: vlm
@@ -238,12 +254,13 @@ benchmarks:
     tests_cn: "文档视觉问答与文档推理，按挑战赛协议评测"
     metric_en: "ANLS / Accuracy"
     metric_cn: "ANLS / Accuracy"
-    repo: null
+    repo:
     links:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2007.00398}
       - {en: RRC, cn: RRC, url: https://rrc.cvc.uab.es/}
 
   # ======================== VLA · Simulation · Core Suites ========================
+    seq: 14
   - name: LIBERO
     track: vla
     vla_env: simulation
@@ -259,6 +276,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2306.03310}
       - {en: Code, cn: 代码, url: https://github.com/Lifelong-Robot-Learning/LIBERO}
 
+    seq: 15
   - name: LIBERO-PRO
     track: vla
     vla_env: simulation
@@ -275,13 +293,15 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/Zxy-MLlab/LIBERO-PRO}
       - {en: Site, cn: 主页, url: https://zxy-mllab.github.io/LIBERO-PRO-Webpage/}
 
+    seq: 20
   - name: LIBERO-Plus
     track: vla
     vla_env: simulation
     vla_category: robustness
     year_en: "2025"
     year_cn: "2025"
-    tests_en: "LIBERO robustness benchmark with 10,030 tasks across seven perturbation factors (camera, robot state, language, lighting, texture, noise, layout)"
+    tests_en: "LIBERO robustness benchmark with 10,030 tasks across seven perturbation factors (camera, robot state, language,
+      lighting, texture, noise, layout)"
     tests_cn: "LIBERO 鲁棒性基准：10030 个任务，覆盖相机、机器人初始状态、语言、光照、纹理、噪声、物体布局等七类扰动"
     metric_en: "Success rate by perturbation axis"
     metric_cn: "按扰动维度统计的成功率"
@@ -292,6 +312,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://sylvestf.github.io/LIBERO-plus}
       - {en: LeRobot, cn: LeRobot, url: https://huggingface.co/docs/lerobot/main/libero_plus}
 
+    seq: 21
   - name: CALVIN
     track: vla
     vla_env: simulation
@@ -307,6 +328,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2112.03227}
       - {en: Code, cn: 代码, url: https://github.com/mees/calvin}
 
+    seq: 16
   - name: RoboTwin 2.0
     track: vla
     vla_env: simulation
@@ -324,6 +346,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://robotwin-platform.github.io/}
       - {en: Leaderboard, cn: 排行榜, url: https://robotwin-platform.github.io/leaderboard}
 
+    seq: 31
   - name: VLA-Arena
     track: vla
     vla_env: simulation
@@ -340,6 +363,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/PKU-Alignment/VLA-Arena}
       - {en: Site, cn: 主页, url: https://vla-arena.github.io/}
 
+    seq: 22
   - name: THE COLOSSEUM
     track: vla
     vla_env: simulation
@@ -356,6 +380,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/robot-colosseum/robot-colosseum}
       - {en: Site, cn: 主页, url: https://robot-colosseum.github.io}
 
+    seq: 23
   - name: RLBench
     track: vla
     vla_env: simulation
@@ -371,6 +396,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/1909.12271}
       - {en: Code, cn: 代码, url: https://github.com/stepjam/RLBench}
 
+    seq: 17
   - name: ManiSkill2
     track: vla
     vla_env: simulation
@@ -386,6 +412,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2302.04659}
       - {en: Code, cn: 代码, url: https://github.com/haosulab/ManiSkill2-task-dev}
 
+    seq: 18
   - name: BEHAVIOR-1K
     track: vla
     vla_env: simulation
@@ -401,6 +428,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2403.09227}
       - {en: Code, cn: 代码, url: https://github.com/StanfordVL/BEHAVIOR-1K}
 
+    seq: 19
   - name: RoboCasa / RoboCasa365
     track: vla
     vla_env: simulation
@@ -416,13 +444,15 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2406.02523}
       - {en: Code, cn: 代码, url: https://github.com/robocasa/robocasa}
 
+    seq: 27
   - name: VLABench
     track: vla
     vla_env: simulation
     vla_category: long_horizon
     year_en: "2024/2025"
     year_cn: "2024/2025"
-    tests_en: "Language-conditioned manipulation with long-horizon reasoning, implicit intentions, world knowledge, and 100 task categories"
+    tests_en: "Language-conditioned manipulation with long-horizon reasoning, implicit intentions, world knowledge, and 100
+      task categories"
     tests_cn: "语言条件机器人操作：长程推理、隐式人类意图、世界知识迁移，覆盖 100 类任务与 2000+ 物体"
     metric_en: "Success rate and capability breakdown"
     metric_cn: "成功率与能力维度分解"
@@ -432,13 +462,15 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/OpenMOSS/VLABench}
       - {en: Site, cn: 主页, url: https://vlabench.github.io/}
 
+    seq: 28
   - name: RoboCerebra
     track: vla
     vla_env: simulation
     vla_category: long_horizon
     year_en: "2025"
     year_cn: "2025"
-    tests_en: "Long-horizon robotic manipulation with System-2 planning, reflection, memory, and VLM-planner + VLA-controller interaction"
+    tests_en: "Long-horizon robotic manipulation with System-2 planning, reflection, memory, and VLM-planner + VLA-controller
+      interaction"
     tests_cn: "长程机器人操作：评测 System-2 高层规划、反思、记忆，以及 VLM planner 与 VLA controller 的层级交互"
     metric_en: "Task success and reasoning/planning breakdown"
     metric_cn: "任务成功率与推理/规划维度分解"
@@ -448,6 +480,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/qiuboxiang/RoboCerebra}
       - {en: Site, cn: 主页, url: https://robocerebra.github.io/}
 
+    seq: 29
   - name: EmbodiedBench
     track: vla
     vla_env: simulation
@@ -465,6 +498,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://embodiedbench.github.io/}
 
   # ======================== VLA · Simulation · Memory ========================
+    seq: 30
   - name: LIBERO-Mem
     track: vla
     vla_env: simulation
@@ -481,6 +515,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/libero-mem/libero-mem}
       - {en: Site, cn: 主页, url: https://libero-mem.github.io/}
 
+    seq: 24
   - name: RoboMME
     track: vla
     vla_env: simulation
@@ -498,6 +533,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://robomme.github.io/}
       - {en: Leaderboard, cn: 排行榜, url: https://robomme.github.io/leaderboard.html}
 
+    seq: 25
   - name: MIKASA-Robo-VLA
     track: vla
     vla_env: simulation
@@ -515,13 +551,15 @@ benchmarks:
       - {en: Docs, cn: 文档, url: https://mikasarobo.github.io/}
 
   # ======================== VLA · Simulation · Task-Generalist ========================
+    seq: 26
   - name: RoboLab
     track: vla
     vla_env: simulation
     vla_category: task_generalist
     year_en: "2026"
     year_cn: "2026"
-    tests_en: "High-fidelity Isaac Lab benchmark for DROID-trained task-generalist policies; 120 tasks across visual, procedural, and relational axes"
+    tests_en: "High-fidelity Isaac Lab benchmark for DROID-trained task-generalist policies; 120 tasks across visual, procedural,
+      and relational axes"
     tests_cn: "高保真 Isaac Lab 仿真基准：评测 DROID 训练的通用任务策略，120 任务覆盖视觉、程序、关系三类能力"
     metric_en: "SR%, progress score, EE speed, EE SPARC"
     metric_cn: "SR%、进度分、末端速度、EE SPARC"
@@ -532,6 +570,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://research.nvidia.com/labs/srl/projects/robolab/}
       - {en: Leaderboard, cn: 排行榜, url: https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html}
 
+    seq: 32
   - name: Kinetix
     track: vla
     vla_env: simulation
@@ -547,13 +586,15 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2410.23208}
       - {en: Site, cn: 主页, url: https://kinetix-env.github.io/}
 
+    seq: 33
   - name: MolmoSpaces-Bench
     track: vla
     vla_env: simulation
     vla_category: task_generalist
     year_en: "2026"
     year_cn: "2026"
-    tests_en: "Zero-shot navigation and manipulation benchmark over procedurally generated spaces with pick, place, open, close, and door tasks"
+    tests_en: "Zero-shot navigation and manipulation benchmark over procedurally generated spaces with pick, place, open,
+      close, and door tasks"
     tests_cn: "程序化生成空间中的零样本导航与操作基准，覆盖 pick/place/open/close/open-door 等任务"
     metric_en: "Task success rate"
     metric_cn: "任务成功率"
@@ -564,6 +605,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://allenai.github.io/molmospaces/}
 
   # ======================== VLA · Sim-to-Real Proxy ========================
+    seq: 34
   - name: SimplerEnv
     track: vla
     vla_env: sim2real
@@ -578,6 +620,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2405.05946}
       - {en: Code, cn: 代码, url: https://github.com/simpler-env/SimplerEnv}
 
+    seq: 35
   - name: REALM
     track: vla
     vla_env: sim2real
@@ -594,6 +637,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://martin-sedlacek.com/realm/}
 
   # ======================== VLA · Real Robot ========================
+    seq: 36
   - name: DROID
     track: vla
     vla_env: real
@@ -609,12 +653,14 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/droid-dataset/droid_policy_learning}
       - {en: Site, cn: 主页, url: https://droid-dataset.github.io/}
 
+    seq: 37
   - name: RoboArena
     track: vla
     vla_env: real
     year_en: "2025"
     year_cn: "2025"
-    tests_en: "Distributed real-world evaluation of generalist robot policies via double-blind pairwise comparisons on DROID robots"
+    tests_en: "Distributed real-world evaluation of generalist robot policies via double-blind pairwise comparisons on DROID
+      robots"
     tests_cn: "分布式真机评测：在 DROID 机器人平台上通过双盲 pairwise comparison 排名通用机器人策略"
     metric_en: "Pairwise preference / Elo-style ranking"
     metric_cn: "成对偏好 / Elo 风格排名"
@@ -624,21 +670,24 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/robo-arena/roboarena}
       - {en: Site, cn: 主页, url: https://robo-arena.github.io/}
 
+    seq: 38
   - name: VLA-REPLICA
     track: vla
     vla_env: real
     year_en: "2026"
     year_cn: "2026"
-    tests_en: "Low-cost reproducible real-world VLA benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD manipulation tasks"
+    tests_en: "Low-cost reproducible real-world VLA benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD
+      manipulation tasks"
     tests_cn: "低成本可复现实验室真机 VLA 基准：SO-101 机械臂、RGB-D 相机、标准化 ID/OOD 操作任务"
     metric_en: "Real-world success rate (ID / OOD)"
     metric_cn: "真机成功率（ID / OOD）"
-    repo: null
+    repo:
     links:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.20774}
       - {en: Site, cn: 主页, url: https://irvlutd.github.io/VLAReplica/}
 
   # ======================== WM · Perceptual Quality ========================
+    seq: 39
   - name: VBench
     track: wm
     wm_category: perceptual
@@ -655,6 +704,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://vchitect.github.io/VBench-project/}
 
   # ======================== WM · World Generation ========================
+    seq: 40
   - name: WorldScore
     track: wm
     wm_category: generation
@@ -669,6 +719,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2504.00983}
       - {en: Site, cn: 主页, url: https://haoyi-duan.github.io/WorldScore/}
 
+    seq: 41
   - name: 4DWorldBench
     track: wm
     wm_category: generation
@@ -678,11 +729,12 @@ benchmarks:
     tests_cn: "3D/4D 世界生成能力评测：感知质量、条件对齐、物理真实性与时空一致性"
     metric_en: "Multi-dimension composite evaluation"
     metric_cn: "多维综合评测"
-    repo: null
+    repo:
     links:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2511.19836}
 
   # ======================== WM · Interactive / Multi-turn ========================
+    seq: 42
   - name: WBench
     track: wm
     wm_category: interactive
@@ -699,6 +751,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://meituan-longcat.github.io/WBench/}
 
   # ======================== WM · Embodied Utility ========================
+    seq: 43
   - name: WorldArena
     track: wm
     wm_category: embodied_utility
@@ -713,12 +766,14 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2602.08971}
       - {en: Site, cn: 主页, url: https://world-arena.ai/}
 
+    seq: 44
   - name: RoboWM-Bench
     track: wm
     wm_category: embodied_utility
     year_en: "2026"
     year_cn: "2026"
-    tests_en: "Manipulation-centric world-model evaluation: generated human/robot videos are converted to executable robot actions and validated in simulation"
+    tests_en: "Manipulation-centric world-model evaluation: generated human/robot videos are converted to executable robot
+      actions and validated in simulation"
     tests_cn: "面向机器人操作的世界模型评测：将生成的人手/机器人视频转为可执行动作，并在仿真中验证任务完成"
     metric_en: "Step-level executability and final task success"
     metric_cn: "逐步可执行性与最终任务成功率"
@@ -729,6 +784,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://robowm-bench.github.io/RoboWM-Bench/}
 
   # ======================== WM · Physical / Instruction Adherence ========================
+    seq: 45
   - name: WorldModelBench
     track: wm
     wm_category: physical
@@ -743,6 +799,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2502.20694}
       - {en: Code, cn: 代码, url: https://github.com/WorldModelBench-Team/WorldModelBench}
 
+    seq: 46
   - name: EWMBench
     track: wm
     wm_category: physical
@@ -756,16 +813,19 @@ benchmarks:
     links:
       - {en: Code, cn: 代码, url: https://github.com/AgibotTech/EWMBench}
 
+    seq: 47
   - name: MiraBench
     track: wm
     wm_category: physical
     year_en: "2026"
     year_cn: "2026"
-    tests_en: "Action-conditioned reliability in robotic world models: physics adherence, action-following fidelity, and optimism-bias detection"
+    tests_en: "Action-conditioned reliability in robotic world models: physics adherence, action-following fidelity, and optimism-bias
+      detection"
     tests_cn: "机器人世界模型的动作条件可靠性：物理遵循、动作跟随一致性与成功幻觉/乐观偏差检测"
     metric_en: "Physics adherence, action-following fidelity, optimism-bias score"
     metric_cn: "物理遵循分、动作跟随一致性、乐观偏差分"
-    repo: null
+    repo:
     links:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.29360}
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/Anonymous-nips-submissions/Anonymous-nips-submissions}
+    seq: 48

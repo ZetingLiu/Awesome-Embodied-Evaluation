@@ -35,8 +35,8 @@ GITHUB_API = "https://api.github.com/repos/{repo}"
 PLACEHOLDER = "—"
 
 HEADERS = {
-    "en": ["Benchmark", "Year", "What it tests", "Metric", "Stars", "Updated", "Links"],
-    "cn": ["基准", "年份", "评什么", "指标", "Stars", "最近更新", "链接"],
+    "en": ["No.", "Benchmark", "Year", "What it tests", "Metric", "Stars", "Updated", "Links"],
+    "cn": ["序号", "基准", "年份", "评什么", "指标", "Stars", "最近更新", "链接"],
 }
 
 
@@ -158,6 +158,43 @@ def render_links(links: list[dict], lang: str) -> str:
     return " · ".join(parts)
 
 
+def global_ordered_entries(benchmarks: list[dict]) -> list[dict]:
+    """Stable global order: MARKER_SPECS order, then YAML list order within each table."""
+    ordered: list[dict] = []
+    seen: set[int] = set()
+    for _marker, selector in MARKER_SPECS:
+        for entry in benchmarks:
+            key = id(entry)
+            if key in seen:
+                continue
+            if selector(entry):
+                ordered.append(entry)
+                seen.add(key)
+    for entry in benchmarks:
+        if id(entry) not in seen:
+            print(
+                f"[warn] entry not assigned to a marker: '{entry.get('name')}'",
+                file=sys.stderr,
+            )
+    return ordered
+
+
+def validate_sequences(benchmarks: list[dict]) -> None:
+    seqs = [entry.get("seq") for entry in benchmarks]
+    missing = [entry.get("name") for entry in benchmarks if entry.get("seq") is None]
+    if missing:
+        raise ValueError(
+            "Missing seq for entries: "
+            + ", ".join(str(name) for name in missing)
+            + ". Run: python scripts/render_readme.py --assign-seq"
+        )
+    numeric = [int(s) for s in seqs]
+    if len(set(numeric)) != len(numeric):
+        raise ValueError("Duplicate seq values in benchmarks.yaml")
+    if sorted(numeric) != list(range(1, len(numeric) + 1)):
+        raise ValueError("seq must be a contiguous run starting at 1")
+
+
 def render_row(entry: dict, lang: str) -> str:
     if lang == "en":
         name = entry["name"]
@@ -179,7 +216,8 @@ def render_row(entry: dict, lang: str) -> str:
         updated = PLACEHOLDER
 
     links = render_links(entry.get("links"), lang)
-    cells = [f"**{name}**", year, tests, metric, stars, updated, links]
+    seq = entry["seq"]
+    cells = [str(seq), f"**{name}**", year, tests, metric, stars, updated, links]
     return "| " + " | ".join(cells) + " |"
 
 
@@ -188,7 +226,7 @@ def render_table(entries: list[dict], lang: str) -> str:
         return "_No entries yet._" if lang == "en" else "_暂无条目。_"
     header = "| " + " | ".join(HEADERS[lang]) + " |"
     sep = "|" + "|".join(["---"] * len(HEADERS[lang])) + "|"
-    rows = [render_row(e, lang) for e in entries]
+    rows = [render_row(e, lang) for e in sorted(entries, key=lambda e: int(e["seq"]))]
     return "\n".join([header, sep, *rows])
 
 
@@ -214,6 +252,28 @@ def render_readme(path: Path, entries_by_marker: dict, lang: str) -> bool:
     return False
 
 
+def assign_sequences() -> int:
+    """Write contiguous seq: 1..N into benchmarks.yaml (preserves comments)."""
+    try:
+        from ruamel.yaml import YAML
+    except ImportError:
+        print("[error] ruamel.yaml is required for --assign-seq", file=sys.stderr)
+        return 1
+
+    yaml = YAML()
+    yaml.preserve_quotes = True
+    yaml.width = 120
+    yaml.indent(mapping=2, sequence=4, offset=2)
+    data = yaml.load(YAML_PATH.read_text(encoding="utf-8"))
+    benchmarks = data.get("benchmarks", [])
+    for idx, entry in enumerate(global_ordered_entries(benchmarks), start=1):
+        entry["seq"] = idx
+    with YAML_PATH.open("w", encoding="utf-8") as fh:
+        yaml.dump(data, fh)
+    print(f"[ok] assigned seq 1..{len(benchmarks)} in {YAML_PATH.name}")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -221,10 +281,19 @@ def main() -> int:
         action="store_true",
         help="Do not write; exit 1 if the rendered output differs from on-disk files.",
     )
+    parser.add_argument(
+        "--assign-seq",
+        action="store_true",
+        help="Assign contiguous seq: 1..N in benchmarks.yaml, then exit.",
+    )
     args = parser.parse_args()
+
+    if args.assign_seq:
+        return assign_sequences()
 
     data = yaml.safe_load(YAML_PATH.read_text(encoding="utf-8"))
     benchmarks = data.get("benchmarks", [])
+    validate_sequences(benchmarks)
 
     cache = load_cache()
     for entry in benchmarks:
@@ -234,14 +303,10 @@ def main() -> int:
 
     entries_by_marker: dict[str, list[dict]] = {marker: [] for marker, _ in MARKER_SPECS}
     for entry in benchmarks:
-        matched = False
         for marker, selector in MARKER_SPECS:
             if selector(entry):
                 entries_by_marker[marker].append(entry)
-                matched = True
                 break
-        if not matched:
-            print(f"[warn] entry not assigned to a marker: '{entry.get('name')}'", file=sys.stderr)
 
     if args.check:
         changed = False

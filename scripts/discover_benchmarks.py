@@ -508,6 +508,18 @@ def discover_for_track(track: str, cfg: dict, existing_repos: set[str], existing
 # --------------------------------------------------------------------------- #
 # Append-only YAML writing (preserves existing comments/formatting)
 # --------------------------------------------------------------------------- #
+def next_seq(benchmarks: list[dict], count: int = 1) -> int:
+    existing = [int(e["seq"]) for e in benchmarks if e.get("seq") is not None]
+    start = max(existing, default=0) + 1
+    return start if count == 1 else start + count - 1
+
+
+def assign_new_sequences(benchmarks: list[dict], new_entries: list[dict]) -> None:
+    start = next_seq(benchmarks, len(new_entries))
+    for offset, entry in enumerate(new_entries):
+        entry["seq"] = start + offset
+
+
 def yaml_snippet(entries: list[dict]) -> str:
     dumped = yaml.safe_dump(entries, sort_keys=False, allow_unicode=True, width=120)
     # Indent list items by 2 spaces to match the existing `benchmarks:` block.
@@ -563,6 +575,7 @@ def main() -> int:
         print("[ok] no new benchmark entries discovered")
         return 0
 
+    assign_new_sequences(benchmarks, all_new)
     append_entries(all_new)
     print(f"[ok] appended {len(all_new)} new benchmark entries")
     return 0

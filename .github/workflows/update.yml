@@ -5,9 +5,6 @@ name: Refresh benchmark lists and metadata
 # 3) Open/update an automated PR when files change
 
 on:
-  schedule:
-    # Twice a week: Monday and Thursday at 03:00 UTC.
-    - cron: "0 3 * * 1,4"
   workflow_dispatch: {}
 
 permissions:
