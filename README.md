@@ -2,9 +2,9 @@
 
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![简体中文](https://img.shields.io/badge/lang-简体中文-lightgrey.svg)](README_CN.md)
 
-A curated list of **benchmarks and evaluation methods** for embodied foundation models, spanning three tracks: **Vision-Language Models (VLM)**, **Action Models**, and **World Models (WM)**.
+A curated list of **benchmarks and evaluation methods** for unified / omni embodied models, spanning three core capabilities: **Reasoning & Planning**, **Action**, and **World Modeling**.
 
-Most existing lists cover only one or two tracks. This repo puts all three in one place and focuses on **how each benchmark is actually evaluated** — task setup, inputs/outputs, metrics, and what it takes to reproduce the numbers.
+Most existing lists cover only one or two capabilities. This repo puts all three in one place and focuses on **how each benchmark is actually evaluated** — task setup, inputs/outputs, metrics, and what it takes to reproduce the numbers.
 
 Contributions are welcome. See [Contributing](#contributing).
 
@@ -12,24 +12,24 @@ Contributions are welcome. See [Contributing](#contributing).
 
 - [Scope](#scope)
 - [How Entries Are Organized](#how-entries-are-organized)
-- [VLM Evaluation](#vlm-evaluation)
-- [Action Model Evaluation](#action-model-evaluation)
-- [World Model Evaluation](#world-model-evaluation)
+- [Reasoning & Planning Evaluation](#reasoning--planning-evaluation)
+- [Action Evaluation](#action-evaluation)
+- [World Modeling Evaluation](#world-modeling-evaluation)
 - [Related Lists](#related-lists)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Scope
 
-This list focuses on evaluation for embodied foundation models:
+This list focuses on evaluation for unified / omni embodied models across three core capabilities:
 
-- **VLM** — multimodal understanding and reasoning.
-- **Action Model** — action-generating embodied policies, including VLA models and world-action models.
-- **WM** — perceptual quality and downstream usefulness of world models.
+- **Reasoning & Planning** — multimodal perception, spatial / physical reasoning, embodied QA, task planning, and next-step prediction.
+- **Action** — action-generating embodied policies for simulation and real-robot control, including VLA models and world-action models.
+- **World Modeling** — predictive or generative models of environment dynamics, physical consistency, controllability, and downstream utility.
 
 We prioritize **authoritative, widely-adopted** benchmarks — those with strong community traction (high stars) and a **complete ecosystem** (official code, an active leaderboard, and a reproducible protocol).
 
-For the **Embodied VLM Primary** table specifically, we only include benchmarks whose task objective is directly embodied (spatial grounding, embodied planning, physical reasoning, or environment-level embodied QA). General multimodal benchmarks are kept in the Control Set.
+For the **Reasoning & Planning Primary** table specifically, we only include benchmarks whose task objective is directly embodied (spatial grounding, embodied planning, physical reasoning, or environment-level embodied QA). General multimodal benchmarks are kept in the Control Set.
 
 Out of scope: pure navigation/language-only benchmarks (unless tied to embodied evaluation), and paper collections without a concrete evaluation protocol.
 
@@ -37,18 +37,18 @@ Out of scope: pure navigation/language-only benchmarks (unless tied to embodied 
 
 Each entry lists the paper, the official code, the main metric, and notes on reproducibility. Where useful, entries also note the input/output format, the evaluator (rule-based, simulator, VLM-as-judge, or human), and the generalization setting (in-distribution, OOD, or sim-to-real).
 
-Tables are further split by **capability axis** (VLM), **evaluation environment** (Action Model: simulation / sim-to-real / real robot), or **world-model dimension** (WM). See `data/benchmarks.yaml` for the taxonomy fields (`vlm_category`, `vla_env`, `wm_category`).
+Tables are further split by **reasoning / planning capability axis**, **action evaluation environment** (simulation / sim-to-real / real robot), or **world-modeling dimension**. See `data/benchmarks.yaml` for the taxonomy fields (`vlm_category`, `vla_env`, `wm_category`).
 
 The **Stars** and **Updated** columns come from GitHub repository metadata and are refreshed manually by maintainers when the tables are updated. Every other field is curated by hand.
 
-## VLM Evaluation
+## Reasoning & Planning Evaluation
 
-We split VLM evaluation into two layers:
+We split reasoning & planning evaluation into two layers:
 
-- **Embodied VLM Benchmarks (Primary)**: directly evaluate embodied capabilities (spatial grounding, planning, physical understanding, environment-level QA).
-- **General VLM Benchmarks (Control Set)**: track broad multimodal competence so gains on embodied tasks are not traded for general capability regressions.
+- **Embodied Reasoning & Planning Benchmarks (Primary)**: directly evaluate embodied capabilities (spatial grounding, planning, physical understanding, environment-level QA).
+- **General Multimodal Benchmarks (Control Set)**: track broad multimodal competence so gains on embodied tasks are not traded for general capability regressions.
 
-### Embodied VLM Benchmarks (Primary)
+### Embodied Reasoning & Planning Benchmarks (Primary)
 
 #### Spatial grounding & 3D scene understanding
 
@@ -93,7 +93,7 @@ We split VLM evaluation into two layers:
 | 8 | **ERQA** | 2025 | Multimodal embodied reasoning QA (spatial reasoning, world knowledge) in real-world robotic scenarios | Accuracy (MCQ) | 275 | 2025-03 | [Report](https://storage.googleapis.com/deepmind-media/gemini-robotics/gemini_robotics_report.pdf) · [Code](https://github.com/embodiedreasoning/ERQA) |
 <!-- AEE-TABLE:VLM-PRIMARY-REASONING:END -->
 
-### General VLM Benchmarks (Control Set)
+### General Multimodal Benchmarks (Control Set)
 
 #### Reasoning
 
@@ -131,9 +131,9 @@ We split VLM evaluation into two layers:
 
 Common toolkit: [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) provides standardized evaluation for the benchmarks above and 80+ others.
 
-## Action Model Evaluation
+## Action Evaluation
 
-Action Model benchmarks are grouped first by **where the policy is evaluated**: closed-loop simulation, real-to-sim proxy, or real hardware. Simulation benchmarks are further split by the failure mode or capability they are designed to expose.
+Action benchmarks are grouped first by **where the policy is evaluated**: closed-loop simulation, real-to-sim proxy, or real hardware. Simulation benchmarks are further split by the failure mode or capability they are designed to expose.
 
 ### Simulation · Core suites
 
@@ -211,7 +211,7 @@ Action Model benchmarks are grouped first by **where the policy is evaluated**: 
 
 Common harness: [vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) runs many of these benchmarks in Docker with a shared protocol.
 
-## World Model Evaluation
+## World Modeling Evaluation
 
 World-model benchmarks are grouped by **what aspect of a world model is measured**: perceptual quality, world generation, interactive control, embodied downstream utility, or physical / instruction adherence.
 
@@ -274,7 +274,7 @@ Pull requests are welcome. For a new entry, please include:
 - A minimal run command, if you have one.
 - Any reproducibility caveats you ran into (coordinate conventions, normalization stats, ambiguous termination rules, etc.).
 
-Keep one entry per row and place it in the matching track table. Assign a **per-track, contiguous `seq`** in `data/benchmarks.yaml` (shown as the first table column; VLM / Action Model / WM each starts at 1). After manual bulk edits, run `python scripts/render_readme.py --assign-seq` before re-rendering.
+Keep one entry per row and place it in the matching capability table. Assign a **per-capability, contiguous `seq`** in `data/benchmarks.yaml` (shown as the first table column; Reasoning & Planning / Action / World Modeling each starts at 1). After manual bulk edits, run `python scripts/render_readme.py --assign-seq` before re-rendering.
 
 ## License
 

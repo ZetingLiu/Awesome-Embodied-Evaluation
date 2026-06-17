@@ -2,9 +2,9 @@
 
 [![English](https://img.shields.io/badge/lang-English-lightgrey.svg)](README.md) [![简体中文](https://img.shields.io/badge/lang-简体中文-blue.svg)](README_CN.md)
 
-面向具身基础模型的**评测基准与评测方法**清单，覆盖三条线：**视觉语言模型（VLM）**、**动作模型（Action Model）**、**世界模型（WM）**。
+面向统一 / Omni 具身模型的**评测基准与评测方法**清单，覆盖三类核心能力：**Reasoning & Planning（推理与规划）**、**Action（动作）**、**World Modeling（世界建模）**。
 
-多数现有清单只覆盖其中 1-2 条线。本仓库把三条线放在一起，重点说清**每个基准到底是怎么评的**——任务设置、输入输出、指标，以及复现这些数字需要哪些条件。
+多数现有清单只覆盖其中 1-2 类能力。本仓库把三类能力放在一起，重点说清**每个基准到底是怎么评的**——任务设置、输入输出、指标，以及复现这些数字需要哪些条件。
 
 欢迎贡献，详见 [贡献指南](#贡献指南)。
 
@@ -12,24 +12,24 @@
 
 - [范围](#范围)
 - [条目组织方式](#条目组织方式)
-- [VLM 评测](#vlm-评测)
-- [Action Model 评测](#action-model-评测)
-- [世界模型评测](#世界模型评测)
+- [Reasoning & Planning 评测](#reasoning--planning-评测)
+- [Action 评测](#action-评测)
+- [World Modeling 评测](#world-modeling-评测)
 - [相关清单](#相关清单)
 - [贡献指南](#贡献指南)
 - [许可证](#许可证)
 
 ## 范围
 
-本清单聚焦具身基础模型的评测：
+本清单聚焦统一 / Omni 具身模型的三类核心能力评测：
 
-- **VLM** —— 多模态理解与推理。
-- **Action Model** —— 生成动作的具身策略，覆盖 VLA 模型与世界动作模型。
-- **WM** —— 世界模型的感知质量与下游可用性。
+- **Reasoning & Planning（推理与规划）** —— 多模态感知、空间 / 物理推理、具身问答、任务规划与下一步预测。
+- **Action（动作）** —— 在仿真或真机中生成并执行动作的具身策略，覆盖 VLA 模型与世界动作模型。
+- **World Modeling（世界建模）** —— 对环境动态、物理一致性、可控性与下游任务效用进行预测或生成建模。
 
 我们优先收录**权威、被广泛采用**的基准——即社区认可度高（star 多）、且**生态完整**（有官方代码、活跃 leaderboard、可复现协议）的工作。
 
-对 **具身 VLM 主榜单（Primary）**，我们采用更严格标准：仅收录任务目标**直接对应具身能力**的基准（空间落地、具身规划、物理推理、环境级具身问答）；通用多模态基准统一放在对照集（Control Set）。
+对 **Reasoning & Planning 主榜单（Primary）**，我们采用更严格标准：仅收录任务目标**直接对应具身能力**的基准（空间落地、具身规划、物理推理、环境级具身问答）；通用多模态基准统一放在对照集（Control Set）。
 
 不在范围内：纯导航 / 仅语言的基准（除非与具身评测直接相关），以及没有明确评测协议的论文合集。
 
@@ -37,18 +37,18 @@
 
 每个条目都给出论文、官方代码、主要指标，以及复现相关的说明。在有必要时，条目还会标注输入/输出格式、评分方式（基于规则、仿真器、VLM 充当裁判，或人工），以及泛化设置（同分布、OOD、或 sim-to-real）。
 
-表格进一步按 **能力维度**（VLM）、**评测环境**（Action Model：仿真 / sim-to-real / 真机）、或 **世界模型维度**（WM）拆分。分类字段见 `data/benchmarks.yaml`（`vlm_category`、`vla_env`、`wm_category`）。
+表格进一步按 **推理 / 规划能力维度**、**动作评测环境**（仿真 / sim-to-real / 真机）、或 **世界建模维度** 拆分。分类字段见 `data/benchmarks.yaml`（`vlm_category`、`vla_env`、`wm_category`）。
 
 表中的 **Stars** 与 **最近更新** 两列来自 GitHub 仓库元数据，由维护者在更新表格时手动刷新；其余字段全部人工策展。
 
-## VLM 评测
+## Reasoning & Planning 评测
 
-VLM 评测拆成两层：
+Reasoning & Planning 评测拆成两层：
 
-- **具身 VLM 主榜单（Primary）**：直接评估具身相关能力（空间落地、规划、物理理解、环境级问答）。
-- **通用 VLM 对照集（Control Set）**：用于监控通用多模态能力，避免“具身能力提升但通用能力退化”。
+- **具身 Reasoning & Planning 主榜单（Primary）**：直接评估具身相关能力（空间落地、规划、物理理解、环境级问答）。
+- **通用多模态对照集（Control Set）**：用于监控通用多模态能力，避免“具身能力提升但通用能力退化”。
 
-### 具身 VLM 主榜单（Primary）
+### 具身 Reasoning & Planning 主榜单（Primary）
 
 #### 空间定位与 3D 场景理解
 
@@ -93,7 +93,7 @@ VLM 评测拆成两层：
 | 8 | **ERQA（具身推理问答）** | 2025 | 真实机器人场景下的多模态具身推理问答（空间推理与世界知识） | Accuracy（选择题） | 275 | 2025-03 | [技术报告](https://storage.googleapis.com/deepmind-media/gemini-robotics/gemini_robotics_report.pdf) · [代码](https://github.com/embodiedreasoning/ERQA) |
 <!-- AEE-TABLE:VLM-PRIMARY-REASONING:END -->
 
-### 通用 VLM 对照集（Control Set）
+### 通用多模态对照集（Control Set）
 
 #### 推理
 
@@ -131,9 +131,9 @@ VLM 评测拆成两层：
 
 常用工具：[VLMEvalKit](https://github.com/open-compass/VLMEvalKit) 为上述基准及 80+ 其他基准提供标准化评测。
 
-## Action Model 评测
+## Action 评测
 
-Action Model 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-real 代理、真机硬件。仿真基准进一步按它主要暴露的能力或失败模式拆分。
+Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-real 代理、真机硬件。仿真基准进一步按它主要暴露的能力或失败模式拆分。
 
 ### 仿真 · 核心套件
 
@@ -211,7 +211,7 @@ Action Model 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-
 
 常用框架：[vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) 用 Docker 和统一协议运行上述多个基准。
 
-## 世界模型评测
+## World Modeling 评测
 
 世界模型基准按 **测什么维度** 分组：感知质量、世界生成、交互控制、具身下游效用、物理/指令一致性。
 
@@ -274,7 +274,7 @@ Action Model 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-
 - 如果有，给一条最小运行命令。
 - 你遇到过的复现坑（坐标约定、归一化统计、模糊的终止规则等）。
 
-新增条目请在 `data/benchmarks.yaml` 中分配**赛道内唯一、递增的 `seq`**（表格第一列序号；VLM / Action Model / WM 各自从 1 开始）；手工批量添加后运行 `python scripts/render_readme.py --assign-seq` 再渲染 README。
+新增条目请在 `data/benchmarks.yaml` 中分配**能力内唯一、递增的 `seq`**（表格第一列序号；Reasoning & Planning / Action / World Modeling 各自从 1 开始）；手工批量添加后运行 `python scripts/render_readme.py --assign-seq` 再渲染 README。
 
 ## 许可证
 

@@ -1,20 +1,22 @@
 # Single source of truth for benchmark tables in README.md / README_CN.md.
 #
 # Human-curated fields: seq, name, track, year_*, tests_*, metric_*, links.
-# `seq` is the per-track row number shown as the first table column (VLM / Action Model / WM each starts at 1).
+# `seq` is the per-capability row number shown as the first table column
+# (Reasoning & Planning / Action / World Modeling each starts at 1).
 # New entries must take the next seq within their track; run `python scripts/render_readme.py --assign-seq`
 # after bulk edits, or let discover_benchmarks.py assign automatically on append.
 # Machine-managed fields (Stars / Updated) are fetched at render time using
 # `repo` and injected by scripts/render_readme.py.
 #
 # Subcategory fields (for fine-grained tables):
-#   vlm_group + vlm_category  — VLM primary vs control, and capability axis
-#   vla_env + vla_category    — Action Model evaluation environment plus simulation subtype
+#   vlm_group + vlm_category  — Reasoning & Planning primary vs control, and capability axis
+#   vla_env + vla_category    — Action evaluation environment plus simulation subtype
 #                                core | robustness | memory | long_horizon | task_generalist
-#   wm_category               — perceptual | generation | interactive | embodied_utility | physical
+#   wm_category               — World Modeling dimension:
+#                                perceptual | generation | interactive | embodied_utility | physical
 
 benchmarks:
-  # ======================== VLM · Embodied Primary · Spatial ========================
+  # ======================== Reasoning & Planning · Embodied Primary · Spatial ========================
   - name: Where2Place
     track: vlm
     vlm_group: primary
@@ -82,7 +84,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/mengfeidu/EmbSpatial-Bench}
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/Phineas476/EmbSpatial-Bench}
 
-  # ======================== VLM · Embodied Primary · Planning ========================
+  # ======================== Reasoning & Planning · Embodied Primary · Planning ========================
     seq: 4
   - name: EgoPlan-Bench2
     track: vlm
@@ -100,7 +102,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/qiulu66/EgoPlan-Bench2/}
       - {en: Site, cn: 主页, url: https://qiulu66.github.io/egoplanbench2/}
 
-  # ======================== VLM · Embodied Primary · Embodied QA ========================
+  # ======================== Reasoning & Planning · Embodied Primary · Embodied QA ========================
     seq: 5
   - name: OpenEQA
     track: vlm
@@ -118,7 +120,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/facebookresearch/open-eqa}
       - {en: Site, cn: 主页, url: https://open-eqa.github.io/}
 
-  # ======================== VLM · Embodied Primary · Physical Reasoning ========================
+  # ======================== Reasoning & Planning · Embodied Primary · Physical Reasoning ========================
     seq: 6
   - name: PhysBench
     track: vlm
@@ -136,7 +138,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/physical-superintelligence-lab/PhysBench}
       - {en: Site, cn: 主页, url: https://physbench.github.io/}
 
-  # ======================== VLM · Embodied Primary · Embodied Reasoning ========================
+  # ======================== Reasoning & Planning · Embodied Primary · Embodied Reasoning ========================
     seq: 7
   - name: ERQA
     name_cn: ERQA（具身推理问答）
@@ -154,7 +156,7 @@ benchmarks:
       - {en: Report, cn: 技术报告, url: https://storage.googleapis.com/deepmind-media/gemini-robotics/gemini_robotics_report.pdf}
       - {en: Code, cn: 代码, url: https://github.com/embodiedreasoning/ERQA}
 
-  # ======================== VLM · Control · Reasoning ========================
+  # ======================== Reasoning & Planning · Control · Reasoning ========================
     seq: 8
   - name: MMMU
     track: vlm
@@ -188,7 +190,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2310.02255}
       - {en: Code, cn: 代码, url: https://github.com/lupantech/MathVista}
 
-  # ======================== VLM · Control · Perception ========================
+  # ======================== Reasoning & Planning · Control · Perception ========================
     seq: 10
   - name: MMBench
     track: vlm
@@ -222,7 +224,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.16125}
       - {en: Code, cn: 代码, url: https://github.com/AILab-CVC/SEED-Bench}
 
-  # ======================== VLM · Control · Video ========================
+  # ======================== Reasoning & Planning · Control · Video ========================
     seq: 12
   - name: Video-MME / Video-MME-v2
     track: vlm
@@ -241,7 +243,7 @@ benchmarks:
       - {en: Paper v2, cn: 论文 v2, url: https://arxiv.org/abs/2604.05015}
       - {en: Code v2, cn: 代码 v2, url: https://github.com/MME-Benchmarks/Video-MME-v2}
 
-  # ======================== VLM · Control · Document ========================
+  # ======================== Reasoning & Planning · Control · Document ========================
     seq: 13
   - name: DocVQA (RRC track)
     name_cn: DocVQA（RRC 赛道）
@@ -686,7 +688,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.20774}
       - {en: Site, cn: 主页, url: https://irvlutd.github.io/VLAReplica/}
 
-  # ======================== WM · Perceptual Quality ========================
+  # ======================== World Modeling · Perceptual Quality ========================
     seq: 25
   - name: VBench
     track: wm
@@ -703,7 +705,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/Vchitect/VBench}
       - {en: Site, cn: 主页, url: https://vchitect.github.io/VBench-project/}
 
-  # ======================== WM · World Generation ========================
+  # ======================== World Modeling · World Generation ========================
     seq: 1
   - name: WorldScore
     track: wm
@@ -733,7 +735,7 @@ benchmarks:
     links:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2511.19836}
 
-  # ======================== WM · Interactive / Multi-turn ========================
+  # ======================== World Modeling · Interactive / Multi-turn ========================
     seq: 3
   - name: WBench
     track: wm
@@ -750,7 +752,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/meituan-longcat/WBench}
       - {en: Site, cn: 主页, url: https://meituan-longcat.github.io/WBench/}
 
-  # ======================== WM · Embodied Utility ========================
+  # ======================== World Modeling · Embodied Utility ========================
     seq: 4
   - name: WorldArena
     track: wm
@@ -783,7 +785,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/flyingGH/RoboWM-Bench}
       - {en: Site, cn: 主页, url: https://robowm-bench.github.io/RoboWM-Bench/}
 
-  # ======================== WM · Physical / Instruction Adherence ========================
+  # ======================== World Modeling · Physical / Instruction Adherence ========================
     seq: 6
   - name: WorldModelBench
     track: wm
