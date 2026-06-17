@@ -11,6 +11,10 @@
     "stars": 112,
     "updated": "2026-06"
   },
+  "ESI-Bench/ESI-Bench": {
+    "stars": 107,
+    "updated": "2026-06"
+  },
   "EmbodiedBench/EmbodiedBench": {
     "stars": 311,
     "updated": "2026-05"
@@ -18,6 +22,10 @@
   "FLAIROx/Kinetix": {
     "stars": 258,
     "updated": "2026-05"
+  },
+  "GenieReasoner/ERIQ": {
+    "stars": 15,
+    "updated": "2026-01"
   },
   "Lifelong-Robot-Learning/LIBERO": {
     "stars": 1956,
@@ -42,6 +50,14 @@
   "PKU-Alignment/VLA-Arena": {
     "stars": 178,
     "updated": "2026-03"
+  },
+  "Princeton-Robot-Planning-and-Learning/kindergarden": {
+    "stars": 35,
+    "updated": "2026-06"
+  },
+  "RoboChallenge/RoboChallengeInference": {
+    "stars": 146,
+    "updated": "2026-06"
   },
   "RoboMME/robomme_benchmark": {
     "stars": 113,
@@ -68,8 +84,12 @@
     "updated": "2025-12"
   },
   "Zxy-MLlab/LIBERO-PRO": {
-    "stars": 267,
+    "stars": 268,
     "updated": "2026-03"
+  },
+  "alaya-studio/WorldMark": {
+    "stars": 0,
+    "updated": "2026-04"
   },
   "allenai/molmospaces": {
     "stars": 365,
@@ -106,6 +126,10 @@
   "lupantech/MathVista": {
     "stars": 363,
     "updated": "2025-09"
+  },
+  "maniparena/maniparena-repo": {
+    "stars": 53,
+    "updated": "2026-05"
   },
   "martin-sedlacek/REALM": {
     "stars": 60,
@@ -164,7 +188,7 @@
     "updated": "2026-01"
   },
   "tsinghua-fib-lab/WorldArena": {
-    "stars": 220,
+    "stars": 221,
     "updated": "2026-05"
   },
   "vision-x-nyu/thinking-in-space": {

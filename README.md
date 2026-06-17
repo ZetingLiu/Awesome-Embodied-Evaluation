@@ -72,6 +72,7 @@ We split reasoning & planning evaluation into two layers:
 | 2 | **EmbSpatial-Bench** | 2024 | Egocentric spatial relationships (above/below/left/right/close/far) in embodied 3D scenes | Accuracy | 31 | 2024-06 | [Paper](https://arxiv.org/abs/2406.05756) · [Code](https://github.com/mengfeidu/EmbSpatial-Bench) · [Dataset](https://huggingface.co/datasets/Phineas476/EmbSpatial-Bench) |
 | 3 | **RefSpatial-Bench** | 2025 | Multi-step spatial referring and placement reasoning in complex 3D scenes | Accuracy (Location / Placement) | 263 | 2025-12 | [Paper](https://arxiv.org/abs/2506.04308) · [Code](https://github.com/Zhoues/RoboRefer) · [Site](https://zhoues.github.io/RoboRefer/) |
 | 4 | **VSI-Bench** | 2025 | Egocentric video-based visual-spatial intelligence (configurational, measurement, spatiotemporal) | Accuracy / MRA | 726 | 2025-08 | [Paper](https://arxiv.org/abs/2412.14171) · [Code](https://github.com/vision-x-nyu/thinking-in-space) · [Dataset](https://huggingface.co/datasets/nyu-visionx/VSI-Bench) |
+| 5 | **ESI-Bench** | 2026 | Embodied spatial intelligence with active perception, locomotion, and manipulation across 10 categories and 29 subcategories | Accuracy under passive / active / oracle observation settings | 107 | 2026-06 | [Paper](https://arxiv.org/abs/2605.18746) · [Code](https://github.com/ESI-Bench/ESI-Bench) · [Site](https://esi-bench.github.io/) · [Dataset](https://huggingface.co/datasets/ESI-Bench/esi-bench) |
 <!-- AEE-TABLE:VLM-PRIMARY-SPATIAL:END -->
 
 #### Planning & next-step reasoning
@@ -79,7 +80,8 @@ We split reasoning & planning evaluation into two layers:
 <!-- AEE-TABLE:VLM-PRIMARY-PLANNING:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 5 | **EgoPlan-Bench2** | 2024 | Egocentric real-world planning across daily scenarios and long-horizon task progress | Accuracy | 31 | 2025-04 | [Paper](https://arxiv.org/abs/2412.04447) · [Code](https://github.com/qiulu66/EgoPlan-Bench2/) · [Site](https://qiulu66.github.io/egoplanbench2/) |
+| 6 | **EgoPlan-Bench2** | 2024 | Egocentric real-world planning across daily scenarios and long-horizon task progress | Accuracy | 31 | 2025-04 | [Paper](https://arxiv.org/abs/2412.04447) · [Code](https://github.com/qiulu66/EgoPlan-Bench2/) · [Site](https://qiulu66.github.io/egoplanbench2/) |
+| 7 | **GroundedPlanBench** | 2026 | Spatially grounded long-horizon action planning in real-world manipulation scenes | Task success rate / action recall rate / spatial grounding accuracy | — | — | [Paper](https://arxiv.org/abs/2603.13433) · [Microsoft Research](https://www.microsoft.com/en-us/research/blog/groundedplanbench-spatially-grounded-long-horizon-task-planning-for-robot-manipulation/) · [Site](https://groundedplanning.github.io/GroundedPlanning/) |
 <!-- AEE-TABLE:VLM-PRIMARY-PLANNING:END -->
 
 #### Embodied question answering
@@ -87,7 +89,7 @@ We split reasoning & planning evaluation into two layers:
 <!-- AEE-TABLE:VLM-PRIMARY-QA:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 6 | **OpenEQA** | 2024 | Embodied question answering with episodic-memory and active-exploration settings | LLM-judge score / answer quality | 365 | 2024-09 | [Paper](https://openaccess.thecvf.com/content/CVPR2024/html/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.html) · [Code](https://github.com/facebookresearch/open-eqa) · [Site](https://open-eqa.github.io/) |
+| 8 | **OpenEQA** | 2024 | Embodied question answering with episodic-memory and active-exploration settings | LLM-judge score / answer quality | 365 | 2024-09 | [Paper](https://openaccess.thecvf.com/content/CVPR2024/html/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.html) · [Code](https://github.com/facebookresearch/open-eqa) · [Site](https://open-eqa.github.io/) |
 <!-- AEE-TABLE:VLM-PRIMARY-QA:END -->
 
 #### Physical reasoning
@@ -95,7 +97,8 @@ We split reasoning & planning evaluation into two layers:
 <!-- AEE-TABLE:VLM-PRIMARY-PHYSICAL:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 7 | **PhysBench** | 2025 | Physical-world understanding for embodied agents (object physics, relations, scene dynamics) | Accuracy across physical dimensions | 91 | 2026-01 | [Paper](https://arxiv.org/abs/2501.16411) · [Code](https://github.com/physical-superintelligence-lab/PhysBench) · [Site](https://physbench.github.io/) |
+| 9 | **PhysBench** | 2025 | Physical-world understanding for embodied agents (object physics, relations, scene dynamics) | Accuracy across physical dimensions | 91 | 2026-01 | [Paper](https://arxiv.org/abs/2501.16411) · [Code](https://github.com/physical-superintelligence-lab/PhysBench) · [Site](https://physbench.github.io/) |
+| 10 | **KinDER** | 2026 | Kinematic and dynamic embodied reasoning across 25 procedurally generated robot environments | Success / reward / benchmark scores across TAMP, RL, IL, and foundation-model baselines | 35 | 2026-06 | [Paper](https://arxiv.org/abs/2604.25788) · [Code](https://github.com/Princeton-Robot-Planning-and-Learning/kindergarden) · [Site](https://prpl-group.com/kinder-site/) · [Baselines](https://github.com/Princeton-Robot-Planning-and-Learning/kinder-baselines) |
 <!-- AEE-TABLE:VLM-PRIMARY-PHYSICAL:END -->
 
 #### Embodied reasoning (multimodal QA)
@@ -103,7 +106,8 @@ We split reasoning & planning evaluation into two layers:
 <!-- AEE-TABLE:VLM-PRIMARY-REASONING:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 8 | **ERQA** | 2025 | Multimodal embodied reasoning QA (spatial reasoning, world knowledge) in real-world robotic scenarios | Accuracy (MCQ) | 275 | 2025-03 | [Report](https://storage.googleapis.com/deepmind-media/gemini-robotics/gemini_robotics_report.pdf) · [Code](https://github.com/embodiedreasoning/ERQA) |
+| 11 | **ERQA** | 2025 | Multimodal embodied reasoning QA (spatial reasoning, world knowledge) in real-world robotic scenarios | Accuracy (MCQ) | 275 | 2025-03 | [Report](https://storage.googleapis.com/deepmind-media/gemini-robotics/gemini_robotics_report.pdf) · [Code](https://github.com/embodiedreasoning/ERQA) |
+| 12 | **ERIQ** | 2025/2026 | Embodied reasoning independent of motor execution: spatial perception, planning, error recovery, and human intent | Accuracy over multiple-choice and binary QA | 15 | 2026-01 | [Paper](https://arxiv.org/abs/2512.24125) · [Code](https://github.com/GenieReasoner/ERIQ) · [Dataset](https://huggingface.co/datasets/KineMind/ERIQ) · [Site](https://geniereasoner.github.io/GenieReasoner/) |
 <!-- AEE-TABLE:VLM-PRIMARY-REASONING:END -->
 
 ### General Multimodal Benchmarks (Control Set)
@@ -113,8 +117,8 @@ We split reasoning & planning evaluation into two layers:
 <!-- AEE-TABLE:VLM-CONTROL-REASONING:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 9 | **MMMU** | 2023 | College-level, multi-discipline multimodal reasoning (30 subjects, heterogeneous image types) | Accuracy | 576 | 2026-02 | [Paper](https://arxiv.org/abs/2311.16502) · [Code](https://github.com/MMMU-Benchmark/MMMU) · [Site](https://mmmu-benchmark.github.io/) |
-| 10 | **MathVista** | 2023 | Mathematical reasoning in visual contexts (charts, geometry, figures) | Accuracy | 363 | 2025-09 | [Paper](https://arxiv.org/abs/2310.02255) · [Code](https://github.com/lupantech/MathVista) |
+| 13 | **MMMU** | 2023 | College-level, multi-discipline multimodal reasoning (30 subjects, heterogeneous image types) | Accuracy | 576 | 2026-02 | [Paper](https://arxiv.org/abs/2311.16502) · [Code](https://github.com/MMMU-Benchmark/MMMU) · [Site](https://mmmu-benchmark.github.io/) |
+| 14 | **MathVista** | 2023 | Mathematical reasoning in visual contexts (charts, geometry, figures) | Accuracy | 363 | 2025-09 | [Paper](https://arxiv.org/abs/2310.02255) · [Code](https://github.com/lupantech/MathVista) |
 <!-- AEE-TABLE:VLM-CONTROL-REASONING:END -->
 
 #### Perception & understanding
@@ -122,8 +126,8 @@ We split reasoning & planning evaluation into two layers:
 <!-- AEE-TABLE:VLM-CONTROL-PERCEPTION:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 11 | **MMBench** | 2023 | Fine-grained, multi-ability understanding with CircularEval; EN/ZH | Accuracy | 303 | 2025-05 | [Paper](https://arxiv.org/abs/2307.06281) · [Code](https://github.com/open-compass/MMBench) |
-| 12 | **SEED-Bench series** | 2023-2024 | Broad multimodal capability coverage (image/video, generation-oriented comprehension, text-rich understanding) | Accuracy | 364 | 2025-01 | [Paper](https://arxiv.org/abs/2307.16125) · [Code](https://github.com/AILab-CVC/SEED-Bench) |
+| 15 | **MMBench** | 2023 | Fine-grained, multi-ability understanding with CircularEval; EN/ZH | Accuracy | 303 | 2025-05 | [Paper](https://arxiv.org/abs/2307.06281) · [Code](https://github.com/open-compass/MMBench) |
+| 16 | **SEED-Bench series** | 2023-2024 | Broad multimodal capability coverage (image/video, generation-oriented comprehension, text-rich understanding) | Accuracy | 364 | 2025-01 | [Paper](https://arxiv.org/abs/2307.16125) · [Code](https://github.com/AILab-CVC/SEED-Bench) |
 <!-- AEE-TABLE:VLM-CONTROL-PERCEPTION:END -->
 
 #### Video understanding
@@ -131,7 +135,7 @@ We split reasoning & planning evaluation into two layers:
 <!-- AEE-TABLE:VLM-CONTROL-VIDEO:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 13 | **Video-MME / Video-MME-v2** | 2024/2026 | Comprehensive video understanding, with v2 targeting robustness, consistency, and reasoning faithfulness | Accuracy / Group-based score (v2) | 779 | 2025-12 | [Paper v1](https://arxiv.org/abs/2405.21075) · [Code v1](https://github.com/MME-Benchmarks/Video-MME) · [Paper v2](https://arxiv.org/abs/2604.05015) · [Code v2](https://github.com/MME-Benchmarks/Video-MME-v2) |
+| 17 | **Video-MME / Video-MME-v2** | 2024/2026 | Comprehensive video understanding, with v2 targeting robustness, consistency, and reasoning faithfulness | Accuracy / Group-based score (v2) | 779 | 2025-12 | [Paper v1](https://arxiv.org/abs/2405.21075) · [Code v1](https://github.com/MME-Benchmarks/Video-MME) · [Paper v2](https://arxiv.org/abs/2604.05015) · [Code v2](https://github.com/MME-Benchmarks/Video-MME-v2) |
 <!-- AEE-TABLE:VLM-CONTROL-VIDEO:END -->
 
 #### Document understanding
@@ -139,7 +143,7 @@ We split reasoning & planning evaluation into two layers:
 <!-- AEE-TABLE:VLM-CONTROL-DOCUMENT:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 14 | **DocVQA (RRC track)** | 2020-ongoing | Document visual question answering and document reasoning under challenge protocol | ANLS / Accuracy | — | — | [Paper](https://arxiv.org/abs/2007.00398) · [RRC](https://rrc.cvc.uab.es/) |
+| 18 | **DocVQA (RRC track)** | 2020-ongoing | Document visual question answering and document reasoning under challenge protocol | ANLS / Accuracy | — | — | [Paper](https://arxiv.org/abs/2007.00398) · [RRC](https://rrc.cvc.uab.es/) |
 <!-- AEE-TABLE:VLM-CONTROL-DOCUMENT:END -->
 
 Common toolkit: [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) provides standardized evaluation for the benchmarks above and 80+ others.
@@ -166,7 +170,7 @@ Action benchmarks are grouped first by **where the policy is evaluated**: closed
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
 | 6 | **THE COLOSSEUM** | 2024 | Generalization in robotic manipulation under visual/semantic/execution perturbations | Success rate | 149 | 2025-03 | [Paper](https://arxiv.org/abs/2402.08191) · [Code](https://github.com/robot-colosseum/robot-colosseum) · [Site](https://robot-colosseum.github.io) |
-| 7 | **LIBERO-PRO** | 2025 | Robust LIBERO extension with perturbations on objects, initial states, instructions, and environments | Success rate under perturbations | 267 | 2026-03 | [Paper](https://arxiv.org/abs/2510.03827) · [Code](https://github.com/Zxy-MLlab/LIBERO-PRO) · [Site](https://zxy-mllab.github.io/LIBERO-PRO-Webpage/) |
+| 7 | **LIBERO-PRO** | 2025 | Robust LIBERO extension with perturbations on objects, initial states, instructions, and environments | Success rate under perturbations | 268 | 2026-03 | [Paper](https://arxiv.org/abs/2510.03827) · [Code](https://github.com/Zxy-MLlab/LIBERO-PRO) · [Site](https://zxy-mllab.github.io/LIBERO-PRO-Webpage/) |
 | 8 | **LIBERO-Plus** | 2025 | LIBERO robustness benchmark with 10,030 tasks across seven perturbation factors (camera, robot state, language, lighting, texture, noise, layout) | Success rate by perturbation axis | 349 | 2026-01 | [Paper](https://arxiv.org/abs/2510.13626) · [Code](https://github.com/sylvestf/LIBERO-plus) · [Site](https://sylvestf.github.io/LIBERO-plus) · [LeRobot](https://huggingface.co/docs/lerobot/main/libero_plus) |
 | 9 | **VLA-Arena** | 2025 | Structured action-model eval across task structure, language, and vision axes (170 tasks; Safety/Distractor/Extrapolation/Long-Horizon) | Success rate by difficulty level (L0–L2) | 178 | 2026-03 | [Paper](https://arxiv.org/abs/2512.22539) · [Code](https://github.com/PKU-Alignment/VLA-Arena) · [Site](https://vla-arena.github.io/) |
 <!-- AEE-TABLE:VLA-SIM-ROBUSTNESS:END -->
@@ -219,7 +223,9 @@ Action benchmarks are grouped first by **where the policy is evaluated**: closed
 |---|---|---|---|---|---|---|---|
 | 23 | **DROID** | 2024 | In-the-wild Franka manipulation eval on real hardware; multi-scene generalization protocol | Success rate (ID / OOD) | 289 | 2025-04 | [Paper](https://arxiv.org/abs/2403.12945) · [Code](https://github.com/droid-dataset/droid_policy_learning) · [Site](https://droid-dataset.github.io/) |
 | 24 | **RoboArena** | 2025 | Distributed real-world evaluation of generalist robot policies via double-blind pairwise comparisons on DROID robots | Pairwise preference / Elo-style ranking | 104 | 2026-04 | [Paper](https://arxiv.org/abs/2506.18123) · [Code](https://github.com/robo-arena/roboarena) · [Site](https://robo-arena.github.io/) |
-| 25 | **VLA-REPLICA** | 2026 | Low-cost reproducible real-world action-model benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD manipulation tasks | Real-world success rate (ID / OOD) | — | — | [Paper](https://arxiv.org/abs/2605.20774) · [Site](https://irvlutd.github.io/VLAReplica/) |
+| 25 | **RoboChallenge / Table30** | 2025/2026 | Large-scale remote real-robot evaluation across Table30 / Table30 V2 tasks and multiple robot embodiments | Success rate, progress score, and leaderboard ranking | 146 | 2026-06 | [Paper](https://arxiv.org/abs/2510.17950) · [Code](https://github.com/RoboChallenge/RoboChallengeInference) · [Site / Leaderboard](https://robochallenge.ai/) · [Table30](https://huggingface.co/datasets/RoboChallenge/Table30) · [Table30 V2](https://huggingface.co/datasets/RoboChallenge/Table30v2) |
+| 26 | **VLA-REPLICA** | 2026 | Low-cost reproducible real-world action-model benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD manipulation tasks | Real-world success rate (ID / OOD) | — | — | [Paper](https://arxiv.org/abs/2605.20774) · [Site](https://irvlutd.github.io/VLAReplica/) |
+| 27 | **ManipArena** | 2026 | Real-world bimanual and mobile manipulation with reasoning-oriented tasks, OOD generalization, and sensory diagnostics | Task success rate and process diagnostics | 53 | 2026-05 | [Paper](https://arxiv.org/abs/2603.28545) · [Code](https://github.com/maniparena/maniparena-repo) · [Site](https://maniparena.x2robot.com/) · [Dataset](https://huggingface.co/datasets/ManipArena/maniparena-dataset) · [Simulation](https://github.com/maniparena/maniparena-sim) |
 <!-- AEE-TABLE:VLA-REAL:END -->
 
 Common harness: [vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) runs many of these benchmarks in Docker with a shared protocol.
@@ -251,6 +257,7 @@ World-model benchmarks are grouped by **what aspect of a world model is measured
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
 | 4 | **WBench** | 2026 | Multi-turn interactive video world models (navigation, subject action, event editing, perspective switch) | 22 sub-metrics across 5 dimensions | 146 | 2026-06 | [Paper](https://arxiv.org/abs/2605.25874) · [Code](https://github.com/meituan-longcat/WBench) · [Site](https://meituan-longcat.github.io/WBench/) |
+| 5 | **WorldMark** | 2026 | Interactive image-to-video world models under shared scenes, action sequences, and unified WASD-style controls | Visual quality, control alignment, and world consistency | 0 | 2026-04 | [Paper](https://arxiv.org/abs/2604.21686) · [Code](https://github.com/alaya-studio/WorldMark) · [Site](https://alaya-studio.github.io/WorldMark/) · [Arena](https://warena.ai/) |
 <!-- AEE-TABLE:WM-INTERACTIVE:END -->
 
 ### Embodied downstream utility
@@ -258,8 +265,8 @@ World-model benchmarks are grouped by **what aspect of a world model is measured
 <!-- AEE-TABLE:WM-EMBODIED:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 5 | **WorldArena** | 2026 | Perceptual quality + functional utility (data engine, policy eval, action planning) | EWMScore (composite) | 220 | 2026-05 | [Paper](https://arxiv.org/abs/2602.08971) · [Site](https://world-arena.ai/) |
-| 6 | **RoboWM-Bench** | 2026 | Manipulation-centric world-model evaluation: generated human/robot videos are converted to executable robot actions and validated in simulation | Step-level executability and final task success | 0 | 2026-05 | [Paper](https://arxiv.org/abs/2604.19092) · [Code](https://github.com/flyingGH/RoboWM-Bench) · [Site](https://robowm-bench.github.io/RoboWM-Bench/) |
+| 6 | **WorldArena** | 2026 | Perceptual quality + functional utility (data engine, policy eval, action planning) | EWMScore (composite) | 221 | 2026-05 | [Paper](https://arxiv.org/abs/2602.08971) · [Site](https://world-arena.ai/) |
+| 7 | **RoboWM-Bench** | 2026 | Manipulation-centric world-model evaluation: generated human/robot videos are converted to executable robot actions and validated in simulation | Step-level executability and final task success | 0 | 2026-05 | [Paper](https://arxiv.org/abs/2604.19092) · [Code](https://github.com/flyingGH/RoboWM-Bench) · [Site](https://robowm-bench.github.io/RoboWM-Bench/) |
 <!-- AEE-TABLE:WM-EMBODIED:END -->
 
 ### Physical consistency & instruction adherence
@@ -267,9 +274,9 @@ World-model benchmarks are grouped by **what aspect of a world model is measured
 <!-- AEE-TABLE:WM-PHYSICAL:START -->
 | No. | Benchmark | Year | What it tests | Metric | Stars | Updated | Links |
 |---|---|---|---|---|---|---|---|
-| 7 | **WorldModelBench** | 2025 | World modeling capability under instruction following, commonsense, and physical adherence | Composite world-modeling scores | 41 | 2025-07 | [Paper](https://arxiv.org/abs/2502.20694) · [Code](https://github.com/WorldModelBench-Team/WorldModelBench) |
-| 8 | **EWMBench** | 2025 | Embodied world models: scene consistency, motion correctness, semantic alignment | Per-dimension scores | 126 | 2025-06 | [Code](https://github.com/AgibotTech/EWMBench) |
-| 9 | **MiraBench** | 2026 | Action-conditioned reliability in robotic world models: physics adherence, action-following fidelity, and optimism-bias detection | Physics adherence, action-following fidelity, optimism-bias score | — | — | [Paper](https://arxiv.org/abs/2605.29360) · [Dataset](https://huggingface.co/datasets/Anonymous-nips-submissions/Anonymous-nips-submissions) |
+| 8 | **WorldModelBench** | 2025 | World modeling capability under instruction following, commonsense, and physical adherence | Composite world-modeling scores | 41 | 2025-07 | [Paper](https://arxiv.org/abs/2502.20694) · [Code](https://github.com/WorldModelBench-Team/WorldModelBench) |
+| 9 | **EWMBench** | 2025 | Embodied world models: scene consistency, motion correctness, semantic alignment | Per-dimension scores | 126 | 2025-06 | [Code](https://github.com/AgibotTech/EWMBench) |
+| 10 | **MiraBench** | 2026 | Action-conditioned reliability in robotic world models: physics adherence, action-following fidelity, and optimism-bias detection | Physics adherence, action-following fidelity, optimism-bias score | — | — | [Paper](https://arxiv.org/abs/2605.29360) · [Dataset](https://huggingface.co/datasets/Anonymous-nips-submissions/Anonymous-nips-submissions) |
 <!-- AEE-TABLE:WM-PHYSICAL:END -->
 
 ## Related Lists

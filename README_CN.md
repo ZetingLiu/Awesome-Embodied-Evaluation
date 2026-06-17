@@ -72,6 +72,7 @@ Reasoning & Planning 评测拆成两层：
 | 2 | **EmbSpatial-Bench** | 2024 | 具身 3D 场景中的第一视角空间关系理解（上下左右/远近等 6 类关系） | Accuracy | 31 | 2024-06 | [论文](https://arxiv.org/abs/2406.05756) · [代码](https://github.com/mengfeidu/EmbSpatial-Bench) · [数据集](https://huggingface.co/datasets/Phineas476/EmbSpatial-Bench) |
 | 3 | **RefSpatial-Bench** | 2025 | 复杂 3D 场景下的多步空间指代与放置推理 | 准确率（Location / Placement） | 263 | 2025-12 | [论文](https://arxiv.org/abs/2506.04308) · [代码](https://github.com/Zhoues/RoboRefer) · [主页](https://zhoues.github.io/RoboRefer/) |
 | 4 | **VSI-Bench** | 2025 | 基于第一视角视频的视觉空间智能评测（配置关系、测量估计、时空记忆） | Accuracy / MRA | 726 | 2025-08 | [论文](https://arxiv.org/abs/2412.14171) · [代码](https://github.com/vision-x-nyu/thinking-in-space) · [数据集](https://huggingface.co/datasets/nyu-visionx/VSI-Bench) |
+| 5 | **ESI-Bench** | 2026 | 具身空间智能评测：通过主动感知、移动与操作闭合感知-行动环，覆盖 10 类任务与 29 个子类 | 被动 / 主动 / oracle 观察设置下的准确率 | 107 | 2026-06 | [论文](https://arxiv.org/abs/2605.18746) · [代码](https://github.com/ESI-Bench/ESI-Bench) · [主页](https://esi-bench.github.io/) · [数据集](https://huggingface.co/datasets/ESI-Bench/esi-bench) |
 <!-- AEE-TABLE:VLM-PRIMARY-SPATIAL:END -->
 
 #### 规划与下一步推理
@@ -79,7 +80,8 @@ Reasoning & Planning 评测拆成两层：
 <!-- AEE-TABLE:VLM-PRIMARY-PLANNING:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 5 | **EgoPlan-Bench2** | 2024 | 第一视角真实日常场景规划，强调长时程任务进度理解与下一步决策 | Accuracy | 31 | 2025-04 | [论文](https://arxiv.org/abs/2412.04447) · [代码](https://github.com/qiulu66/EgoPlan-Bench2/) · [主页](https://qiulu66.github.io/egoplanbench2/) |
+| 6 | **EgoPlan-Bench2** | 2024 | 第一视角真实日常场景规划，强调长时程任务进度理解与下一步决策 | Accuracy | 31 | 2025-04 | [论文](https://arxiv.org/abs/2412.04447) · [代码](https://github.com/qiulu66/EgoPlan-Bench2/) · [主页](https://qiulu66.github.io/egoplanbench2/) |
+| 7 | **GroundedPlanBench** | 2026 | 真实操作场景中的空间落地长程动作规划：同时评估子动作规划与 where-to-act 空间 grounding | 任务成功率 / 动作召回率 / 空间 grounding 准确率 | — | — | [论文](https://arxiv.org/abs/2603.13433) · [Microsoft Research](https://www.microsoft.com/en-us/research/blog/groundedplanbench-spatially-grounded-long-horizon-task-planning-for-robot-manipulation/) · [主页](https://groundedplanning.github.io/GroundedPlanning/) |
 <!-- AEE-TABLE:VLM-PRIMARY-PLANNING:END -->
 
 #### 具身问答
@@ -87,7 +89,7 @@ Reasoning & Planning 评测拆成两层：
 <!-- AEE-TABLE:VLM-PRIMARY-QA:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 6 | **OpenEQA** | 2024 | 具身问答：覆盖 episodic memory 与 active exploration 两种设定 | LLM 裁判分 / 回答质量 | 365 | 2024-09 | [论文](https://openaccess.thecvf.com/content/CVPR2024/html/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.html) · [代码](https://github.com/facebookresearch/open-eqa) · [主页](https://open-eqa.github.io/) |
+| 8 | **OpenEQA** | 2024 | 具身问答：覆盖 episodic memory 与 active exploration 两种设定 | LLM 裁判分 / 回答质量 | 365 | 2024-09 | [论文](https://openaccess.thecvf.com/content/CVPR2024/html/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.html) · [代码](https://github.com/facebookresearch/open-eqa) · [主页](https://open-eqa.github.io/) |
 <!-- AEE-TABLE:VLM-PRIMARY-QA:END -->
 
 #### 物理推理
@@ -95,7 +97,8 @@ Reasoning & Planning 评测拆成两层：
 <!-- AEE-TABLE:VLM-PRIMARY-PHYSICAL:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 7 | **PhysBench** | 2025 | 面向具身体的物理世界理解（物体属性/关系、场景物理、动态） | 物理维度综合准确率 | 91 | 2026-01 | [论文](https://arxiv.org/abs/2501.16411) · [代码](https://github.com/physical-superintelligence-lab/PhysBench) · [主页](https://physbench.github.io/) |
+| 9 | **PhysBench** | 2025 | 面向具身体的物理世界理解（物体属性/关系、场景物理、动态） | 物理维度综合准确率 | 91 | 2026-01 | [论文](https://arxiv.org/abs/2501.16411) · [代码](https://github.com/physical-superintelligence-lab/PhysBench) · [主页](https://physbench.github.io/) |
+| 10 | **KinDER** | 2026 | 机器人运动学与动力学具身推理：25 个程序生成环境，覆盖空间关系、工具使用、几何约束与动态约束 | TAMP、RL、IL 与基础模型 baseline 的成功率 / 奖励 / 综合 benchmark 分数 | 35 | 2026-06 | [论文](https://arxiv.org/abs/2604.25788) · [代码](https://github.com/Princeton-Robot-Planning-and-Learning/kindergarden) · [主页](https://prpl-group.com/kinder-site/) · [Baselines](https://github.com/Princeton-Robot-Planning-and-Learning/kinder-baselines) |
 <!-- AEE-TABLE:VLM-PRIMARY-PHYSICAL:END -->
 
 #### 具身推理（多模态 QA）
@@ -103,7 +106,8 @@ Reasoning & Planning 评测拆成两层：
 <!-- AEE-TABLE:VLM-PRIMARY-REASONING:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 8 | **ERQA（具身推理问答）** | 2025 | 真实机器人场景下的多模态具身推理问答（空间推理与世界知识） | Accuracy（选择题） | 275 | 2025-03 | [技术报告](https://storage.googleapis.com/deepmind-media/gemini-robotics/gemini_robotics_report.pdf) · [代码](https://github.com/embodiedreasoning/ERQA) |
+| 11 | **ERQA（具身推理问答）** | 2025 | 真实机器人场景下的多模态具身推理问答（空间推理与世界知识） | Accuracy（选择题） | 275 | 2025-03 | [技术报告](https://storage.googleapis.com/deepmind-media/gemini-robotics/gemini_robotics_report.pdf) · [代码](https://github.com/embodiedreasoning/ERQA) |
+| 12 | **ERIQ** | 2025/2026 | 独立于低层控制的具身推理评测：空间感知、规划监控、错误恢复与人类意图理解 | 多选与二分类 QA 准确率 | 15 | 2026-01 | [论文](https://arxiv.org/abs/2512.24125) · [代码](https://github.com/GenieReasoner/ERIQ) · [数据集](https://huggingface.co/datasets/KineMind/ERIQ) · [主页](https://geniereasoner.github.io/GenieReasoner/) |
 <!-- AEE-TABLE:VLM-PRIMARY-REASONING:END -->
 
 ### 通用多模态对照集（Control Set）
@@ -113,8 +117,8 @@ Reasoning & Planning 评测拆成两层：
 <!-- AEE-TABLE:VLM-CONTROL-REASONING:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 9 | **MMMU** | 2023 | 大学级、多学科多模态推理（30 个学科，图像类型高度异构） | Accuracy | 576 | 2026-02 | [论文](https://arxiv.org/abs/2311.16502) · [代码](https://github.com/MMMU-Benchmark/MMMU) · [主页](https://mmmu-benchmark.github.io/) |
-| 10 | **MathVista** | 2023 | 视觉情境下的数学推理（图表、几何、图形） | Accuracy | 363 | 2025-09 | [论文](https://arxiv.org/abs/2310.02255) · [代码](https://github.com/lupantech/MathVista) |
+| 13 | **MMMU** | 2023 | 大学级、多学科多模态推理（30 个学科，图像类型高度异构） | Accuracy | 576 | 2026-02 | [论文](https://arxiv.org/abs/2311.16502) · [代码](https://github.com/MMMU-Benchmark/MMMU) · [主页](https://mmmu-benchmark.github.io/) |
+| 14 | **MathVista** | 2023 | 视觉情境下的数学推理（图表、几何、图形） | Accuracy | 363 | 2025-09 | [论文](https://arxiv.org/abs/2310.02255) · [代码](https://github.com/lupantech/MathVista) |
 <!-- AEE-TABLE:VLM-CONTROL-REASONING:END -->
 
 #### 感知与理解
@@ -122,8 +126,8 @@ Reasoning & Planning 评测拆成两层：
 <!-- AEE-TABLE:VLM-CONTROL-PERCEPTION:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 11 | **MMBench** | 2023 | 细粒度、多能力维度理解，含 CircularEval；中英双语 | Accuracy | 303 | 2025-05 | [论文](https://arxiv.org/abs/2307.06281) · [代码](https://github.com/open-compass/MMBench) |
-| 12 | **SEED-Bench 系列** | 2023-2024 | 覆盖更广的多模态能力（图像/视频、生成式理解、富文本视觉理解） | Accuracy | 364 | 2025-01 | [论文](https://arxiv.org/abs/2307.16125) · [代码](https://github.com/AILab-CVC/SEED-Bench) |
+| 15 | **MMBench** | 2023 | 细粒度、多能力维度理解，含 CircularEval；中英双语 | Accuracy | 303 | 2025-05 | [论文](https://arxiv.org/abs/2307.06281) · [代码](https://github.com/open-compass/MMBench) |
+| 16 | **SEED-Bench 系列** | 2023-2024 | 覆盖更广的多模态能力（图像/视频、生成式理解、富文本视觉理解） | Accuracy | 364 | 2025-01 | [论文](https://arxiv.org/abs/2307.16125) · [代码](https://github.com/AILab-CVC/SEED-Bench) |
 <!-- AEE-TABLE:VLM-CONTROL-PERCEPTION:END -->
 
 #### 视频理解
@@ -131,7 +135,7 @@ Reasoning & Planning 评测拆成两层：
 <!-- AEE-TABLE:VLM-CONTROL-VIDEO:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 13 | **Video-MME / Video-MME-v2** | 2024/2026 | 全面视频理解评测；v2 进一步强调鲁棒性、一致性与推理可靠性 | Accuracy / 组级评分（v2） | 779 | 2025-12 | [论文 v1](https://arxiv.org/abs/2405.21075) · [代码 v1](https://github.com/MME-Benchmarks/Video-MME) · [论文 v2](https://arxiv.org/abs/2604.05015) · [代码 v2](https://github.com/MME-Benchmarks/Video-MME-v2) |
+| 17 | **Video-MME / Video-MME-v2** | 2024/2026 | 全面视频理解评测；v2 进一步强调鲁棒性、一致性与推理可靠性 | Accuracy / 组级评分（v2） | 779 | 2025-12 | [论文 v1](https://arxiv.org/abs/2405.21075) · [代码 v1](https://github.com/MME-Benchmarks/Video-MME) · [论文 v2](https://arxiv.org/abs/2604.05015) · [代码 v2](https://github.com/MME-Benchmarks/Video-MME-v2) |
 <!-- AEE-TABLE:VLM-CONTROL-VIDEO:END -->
 
 #### 文档理解
@@ -139,7 +143,7 @@ Reasoning & Planning 评测拆成两层：
 <!-- AEE-TABLE:VLM-CONTROL-DOCUMENT:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 14 | **DocVQA（RRC 赛道）** | 2020-持续更新 | 文档视觉问答与文档推理，按挑战赛协议评测 | ANLS / Accuracy | — | — | [论文](https://arxiv.org/abs/2007.00398) · [RRC](https://rrc.cvc.uab.es/) |
+| 18 | **DocVQA（RRC 赛道）** | 2020-持续更新 | 文档视觉问答与文档推理，按挑战赛协议评测 | ANLS / Accuracy | — | — | [论文](https://arxiv.org/abs/2007.00398) · [RRC](https://rrc.cvc.uab.es/) |
 <!-- AEE-TABLE:VLM-CONTROL-DOCUMENT:END -->
 
 常用工具：[VLMEvalKit](https://github.com/open-compass/VLMEvalKit) 为上述基准及 80+ 其他基准提供标准化评测。
@@ -166,7 +170,7 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
 | 6 | **THE COLOSSEUM** | 2024 | 机器人操作泛化评测：视觉/语义/执行多类扰动下的策略鲁棒性 | 成功率 | 149 | 2025-03 | [论文](https://arxiv.org/abs/2402.08191) · [代码](https://github.com/robot-colosseum/robot-colosseum) · [主页](https://robot-colosseum.github.io) |
-| 7 | **LIBERO-PRO** | 2025 | LIBERO 鲁棒性扩展：在物体、初始状态、指令、环境四维度施加扰动，诊断记忆化问题 | 扰动下成功率 | 267 | 2026-03 | [论文](https://arxiv.org/abs/2510.03827) · [代码](https://github.com/Zxy-MLlab/LIBERO-PRO) · [主页](https://zxy-mllab.github.io/LIBERO-PRO-Webpage/) |
+| 7 | **LIBERO-PRO** | 2025 | LIBERO 鲁棒性扩展：在物体、初始状态、指令、环境四维度施加扰动，诊断记忆化问题 | 扰动下成功率 | 268 | 2026-03 | [论文](https://arxiv.org/abs/2510.03827) · [代码](https://github.com/Zxy-MLlab/LIBERO-PRO) · [主页](https://zxy-mllab.github.io/LIBERO-PRO-Webpage/) |
 | 8 | **LIBERO-Plus** | 2025 | LIBERO 鲁棒性基准：10030 个任务，覆盖相机、机器人初始状态、语言、光照、纹理、噪声、物体布局等七类扰动 | 按扰动维度统计的成功率 | 349 | 2026-01 | [论文](https://arxiv.org/abs/2510.13626) · [代码](https://github.com/sylvestf/LIBERO-plus) · [主页](https://sylvestf.github.io/LIBERO-plus) · [LeRobot](https://huggingface.co/docs/lerobot/main/libero_plus) |
 | 9 | **VLA-Arena** | 2025 | 结构化动作模型评测：任务结构/语言/视觉三轴、170 任务（Safety/Distractor/Extrapolation/Long-Horizon） | 按难度等级（L0–L2）的成功率 | 178 | 2026-03 | [论文](https://arxiv.org/abs/2512.22539) · [代码](https://github.com/PKU-Alignment/VLA-Arena) · [主页](https://vla-arena.github.io/) |
 <!-- AEE-TABLE:VLA-SIM-ROBUSTNESS:END -->
@@ -219,7 +223,9 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 |---|---|---|---|---|---|---|---|
 | 23 | **DROID** | 2024 | 真实 Franka 硬件上的 in-the-wild 操作评测；多场景泛化协议 | 成功率（同分布 / OOD） | 289 | 2025-04 | [论文](https://arxiv.org/abs/2403.12945) · [代码](https://github.com/droid-dataset/droid_policy_learning) · [主页](https://droid-dataset.github.io/) |
 | 24 | **RoboArena** | 2025 | 分布式真机评测：在 DROID 机器人平台上通过双盲 pairwise comparison 排名通用机器人策略 | 成对偏好 / Elo 风格排名 | 104 | 2026-04 | [论文](https://arxiv.org/abs/2506.18123) · [代码](https://github.com/robo-arena/roboarena) · [主页](https://robo-arena.github.io/) |
-| 25 | **VLA-REPLICA** | 2026 | 低成本可复现实验室真机动作模型基准：SO-101 机械臂、RGB-D 相机、标准化 ID/OOD 操作任务 | 真机成功率（ID / OOD） | — | — | [论文](https://arxiv.org/abs/2605.20774) · [主页](https://irvlutd.github.io/VLAReplica/) |
+| 25 | **RoboChallenge / Table30** | 2025/2026 | 大规模远程真机评测：Table30 / Table30 V2 任务，覆盖多种机器人本体与标准化操作任务 | 成功率、过程进度分与排行榜排名 | 146 | 2026-06 | [论文](https://arxiv.org/abs/2510.17950) · [代码](https://github.com/RoboChallenge/RoboChallengeInference) · [主页 / 排行榜](https://robochallenge.ai/) · [Table30 数据集](https://huggingface.co/datasets/RoboChallenge/Table30) · [Table30 V2 数据集](https://huggingface.co/datasets/RoboChallenge/Table30v2) |
+| 26 | **VLA-REPLICA** | 2026 | 低成本可复现实验室真机动作模型基准：SO-101 机械臂、RGB-D 相机、标准化 ID/OOD 操作任务 | 真机成功率（ID / OOD） | — | — | [论文](https://arxiv.org/abs/2605.20774) · [主页](https://irvlutd.github.io/VLAReplica/) |
+| 27 | **ManipArena** | 2026 | 真实双臂与移动操作评测：推理导向任务、OOD 泛化与多模态传感诊断 | 任务成功率与过程诊断指标 | 53 | 2026-05 | [论文](https://arxiv.org/abs/2603.28545) · [代码](https://github.com/maniparena/maniparena-repo) · [主页](https://maniparena.x2robot.com/) · [数据集](https://huggingface.co/datasets/ManipArena/maniparena-dataset) · [仿真](https://github.com/maniparena/maniparena-sim) |
 <!-- AEE-TABLE:VLA-REAL:END -->
 
 常用框架：[vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) 用 Docker 和统一协议运行上述多个基准。
@@ -251,6 +257,7 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
 | 4 | **WBench** | 2026 | 多轮交互式视频世界模型评测（导航、主体动作、事件编辑、视角切换） | 5 维度共 22 项子指标 | 146 | 2026-06 | [论文](https://arxiv.org/abs/2605.25874) · [代码](https://github.com/meituan-longcat/WBench) · [主页](https://meituan-longcat.github.io/WBench/) |
+| 5 | **WorldMark** | 2026 | 交互式图像到视频世界模型评测：统一场景、动作序列与 WASD 风格控制接口 | 视觉质量、控制对齐与世界一致性 | 0 | 2026-04 | [论文](https://arxiv.org/abs/2604.21686) · [代码](https://github.com/alaya-studio/WorldMark) · [主页](https://alaya-studio.github.io/WorldMark/) · [Arena](https://warena.ai/) |
 <!-- AEE-TABLE:WM-INTERACTIVE:END -->
 
 ### 具身下游效用
@@ -258,8 +265,8 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 <!-- AEE-TABLE:WM-EMBODIED:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 5 | **WorldArena** | 2026 | 感知质量 + 功能效用（数据引擎、策略评测、动作规划） | EWMScore（综合） | 220 | 2026-05 | [论文](https://arxiv.org/abs/2602.08971) · [主页](https://world-arena.ai/) |
-| 6 | **RoboWM-Bench** | 2026 | 面向机器人操作的世界模型评测：将生成的人手/机器人视频转为可执行动作，并在仿真中验证任务完成 | 逐步可执行性与最终任务成功率 | 0 | 2026-05 | [论文](https://arxiv.org/abs/2604.19092) · [代码](https://github.com/flyingGH/RoboWM-Bench) · [主页](https://robowm-bench.github.io/RoboWM-Bench/) |
+| 6 | **WorldArena** | 2026 | 感知质量 + 功能效用（数据引擎、策略评测、动作规划） | EWMScore（综合） | 221 | 2026-05 | [论文](https://arxiv.org/abs/2602.08971) · [主页](https://world-arena.ai/) |
+| 7 | **RoboWM-Bench** | 2026 | 面向机器人操作的世界模型评测：将生成的人手/机器人视频转为可执行动作，并在仿真中验证任务完成 | 逐步可执行性与最终任务成功率 | 0 | 2026-05 | [论文](https://arxiv.org/abs/2604.19092) · [代码](https://github.com/flyingGH/RoboWM-Bench) · [主页](https://robowm-bench.github.io/RoboWM-Bench/) |
 <!-- AEE-TABLE:WM-EMBODIED:END -->
 
 ### 物理一致性与指令遵循
@@ -267,9 +274,9 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 <!-- AEE-TABLE:WM-PHYSICAL:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 7 | **WorldModelBench** | 2025 | 面向世界建模能力的评测：指令遵循、常识一致性、物理一致性 | 综合世界建模分数 | 41 | 2025-07 | [论文](https://arxiv.org/abs/2502.20694) · [代码](https://github.com/WorldModelBench-Team/WorldModelBench) |
-| 8 | **EWMBench** | 2025 | 具身世界模型：场景一致性、运动正确性、语义对齐 | 各维度分数 | 126 | 2025-06 | [代码](https://github.com/AgibotTech/EWMBench) |
-| 9 | **MiraBench** | 2026 | 机器人世界模型的动作条件可靠性：物理遵循、动作跟随一致性与成功幻觉/乐观偏差检测 | 物理遵循分、动作跟随一致性、乐观偏差分 | — | — | [论文](https://arxiv.org/abs/2605.29360) · [数据集](https://huggingface.co/datasets/Anonymous-nips-submissions/Anonymous-nips-submissions) |
+| 8 | **WorldModelBench** | 2025 | 面向世界建模能力的评测：指令遵循、常识一致性、物理一致性 | 综合世界建模分数 | 41 | 2025-07 | [论文](https://arxiv.org/abs/2502.20694) · [代码](https://github.com/WorldModelBench-Team/WorldModelBench) |
+| 9 | **EWMBench** | 2025 | 具身世界模型：场景一致性、运动正确性、语义对齐 | 各维度分数 | 126 | 2025-06 | [代码](https://github.com/AgibotTech/EWMBench) |
+| 10 | **MiraBench** | 2026 | 机器人世界模型的动作条件可靠性：物理遵循、动作跟随一致性与成功幻觉/乐观偏差检测 | 物理遵循分、动作跟随一致性、乐观偏差分 | — | — | [论文](https://arxiv.org/abs/2605.29360) · [数据集](https://huggingface.co/datasets/Anonymous-nips-submissions/Anonymous-nips-submissions) |
 <!-- AEE-TABLE:WM-PHYSICAL:END -->
 
 ## 相关清单

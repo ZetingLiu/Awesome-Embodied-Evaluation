@@ -110,7 +110,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://qiulu66.github.io/egoplanbench2/}
 
   # ======================== Reasoning & Planning · Embodied Primary · Embodied QA ========================
-    seq: 5
+    seq: 6
   - name: OpenEQA
     track: vlm
     vlm_group: primary
@@ -128,7 +128,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://open-eqa.github.io/}
 
   # ======================== Reasoning & Planning · Embodied Primary · Physical Reasoning ========================
-    seq: 6
+    seq: 8
   - name: PhysBench
     track: vlm
     vlm_group: primary
@@ -146,7 +146,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://physbench.github.io/}
 
   # ======================== Reasoning & Planning · Embodied Primary · Embodied Reasoning ========================
-    seq: 7
+    seq: 9
   - name: ERQA
     name_cn: ERQA（具身推理问答）
     track: vlm
@@ -164,7 +164,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/embodiedreasoning/ERQA}
 
   # ======================== Reasoning & Planning · Control · Reasoning ========================
-    seq: 8
+    seq: 11
   - name: MMMU
     track: vlm
     vlm_group: control
@@ -181,7 +181,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/MMMU-Benchmark/MMMU}
       - {en: Site, cn: 主页, url: https://mmmu-benchmark.github.io/}
 
-    seq: 9
+    seq: 13
   - name: MathVista
     track: vlm
     vlm_group: control
@@ -198,7 +198,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/lupantech/MathVista}
 
   # ======================== Reasoning & Planning · Control · Perception ========================
-    seq: 10
+    seq: 14
   - name: MMBench
     track: vlm
     vlm_group: control
@@ -214,7 +214,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2307.06281}
       - {en: Code, cn: 代码, url: https://github.com/open-compass/MMBench}
 
-    seq: 11
+    seq: 15
   - name: SEED-Bench series
     name_cn: SEED-Bench 系列
     track: vlm
@@ -232,7 +232,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/AILab-CVC/SEED-Bench}
 
   # ======================== Reasoning & Planning · Control · Video ========================
-    seq: 12
+    seq: 16
   - name: Video-MME / Video-MME-v2
     track: vlm
     vlm_group: control
@@ -251,7 +251,7 @@ benchmarks:
       - {en: Code v2, cn: 代码 v2, url: https://github.com/MME-Benchmarks/Video-MME-v2}
 
   # ======================== Reasoning & Planning · Control · Document ========================
-    seq: 13
+    seq: 17
   - name: DocVQA (RRC track)
     name_cn: DocVQA（RRC 赛道）
     track: vlm
@@ -269,7 +269,7 @@ benchmarks:
       - {en: RRC, cn: RRC, url: https://rrc.cvc.uab.es/}
 
   # ======================== Action Model · Simulation · Core Suites ========================
-    seq: 14
+    seq: 18
   - name: LIBERO
     track: vla
     vla_env: simulation
@@ -696,7 +696,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://irvlutd.github.io/VLAReplica/}
 
   # ======================== World Modeling · Perceptual Quality ========================
-    seq: 25
+    seq: 26
   - name: VBench
     track: wm
     wm_category: perceptual
@@ -775,7 +775,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2602.08971}
       - {en: Site, cn: 主页, url: https://world-arena.ai/}
 
-    seq: 5
+    seq: 6
   - name: RoboWM-Bench
     track: wm
     wm_category: embodied_utility
@@ -793,7 +793,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://robowm-bench.github.io/RoboWM-Bench/}
 
   # ======================== World Modeling · Physical / Instruction Adherence ========================
-    seq: 6
+    seq: 7
   - name: WorldModelBench
     track: wm
     wm_category: physical
@@ -808,7 +808,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2502.20694}
       - {en: Code, cn: 代码, url: https://github.com/WorldModelBench-Team/WorldModelBench}
 
-    seq: 7
+    seq: 8
   - name: EWMBench
     track: wm
     wm_category: physical
@@ -822,7 +822,7 @@ benchmarks:
     links:
       - {en: Code, cn: 代码, url: https://github.com/AgibotTech/EWMBench}
 
-    seq: 8
+    seq: 9
   - name: MiraBench
     track: wm
     wm_category: physical
@@ -837,4 +837,174 @@ benchmarks:
     links:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.29360}
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/Anonymous-nips-submissions/Anonymous-nips-submissions}
-    seq: 9
+    seq: 10
+
+  # ======================== Newly added · Reasoning & Planning / Action / World Modeling ========================
+  - name: ESI-Bench
+    track: vlm
+    vlm_group: primary
+    vlm_category: spatial
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Embodied spatial intelligence with active perception, locomotion, and manipulation across 10 categories and
+      29 subcategories"
+    tests_cn: "具身空间智能评测：通过主动感知、移动与操作闭合感知-行动环，覆盖 10 类任务与 29 个子类"
+    metric_en: "Accuracy under passive / active / oracle observation settings"
+    metric_cn: "被动 / 主动 / oracle 观察设置下的准确率"
+    repo: ESI-Bench/ESI-Bench
+    ecosystem:
+      paper: public
+      code: official
+      data_or_tasks: public
+      protocol: documented
+      leaderboard: absent
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.18746}
+      - {en: Code, cn: 代码, url: https://github.com/ESI-Bench/ESI-Bench}
+      - {en: Site, cn: 主页, url: https://esi-bench.github.io/}
+      - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/ESI-Bench/esi-bench}
+
+    seq: 5
+  - name: GroundedPlanBench
+    track: vlm
+    vlm_group: primary
+    vlm_category: planning
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Spatially grounded long-horizon action planning in real-world manipulation scenes"
+    tests_cn: "真实操作场景中的空间落地长程动作规划：同时评估子动作规划与 where-to-act 空间 grounding"
+    metric_en: "Task success rate / action recall rate / spatial grounding accuracy"
+    metric_cn: "任务成功率 / 动作召回率 / 空间 grounding 准确率"
+    repo:
+    ecosystem:
+      paper: public
+      code: missing
+      data_or_tasks: partial
+      protocol: partial
+      leaderboard: absent
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2603.13433}
+      - {en: Microsoft Research, cn: Microsoft Research, url: https://www.microsoft.com/en-us/research/blog/groundedplanbench-spatially-grounded-long-horizon-task-planning-for-robot-manipulation/}
+      - {en: Site, cn: 主页, url: https://groundedplanning.github.io/GroundedPlanning/}
+
+    seq: 7
+  - name: KinDER
+    track: vlm
+    vlm_group: primary
+    vlm_category: physical
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Kinematic and dynamic embodied reasoning across 25 procedurally generated robot environments"
+    tests_cn: "机器人运动学与动力学具身推理：25 个程序生成环境，覆盖空间关系、工具使用、几何约束与动态约束"
+    metric_en: "Success / reward / benchmark scores across TAMP, RL, IL, and foundation-model baselines"
+    metric_cn: "TAMP、RL、IL 与基础模型 baseline 的成功率 / 奖励 / 综合 benchmark 分数"
+    repo: Princeton-Robot-Planning-and-Learning/kindergarden
+    ecosystem:
+      paper: public
+      code: official
+      data_or_tasks: public
+      protocol: documented
+      leaderboard: absent
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2604.25788}
+      - {en: Code, cn: 代码, url: https://github.com/Princeton-Robot-Planning-and-Learning/kindergarden}
+      - {en: Site, cn: 主页, url: https://prpl-group.com/kinder-site/}
+      - {en: Baselines, cn: Baselines, url: https://github.com/Princeton-Robot-Planning-and-Learning/kinder-baselines}
+
+    seq: 10
+  - name: ERIQ
+    track: vlm
+    vlm_group: primary
+    vlm_category: reasoning
+    year_en: "2025/2026"
+    year_cn: "2025/2026"
+    tests_en: "Embodied reasoning independent of motor execution: spatial perception, planning, error recovery, and human
+      intent"
+    tests_cn: "独立于低层控制的具身推理评测：空间感知、规划监控、错误恢复与人类意图理解"
+    metric_en: "Accuracy over multiple-choice and binary QA"
+    metric_cn: "多选与二分类 QA 准确率"
+    repo: GenieReasoner/ERIQ
+    ecosystem:
+      paper: public
+      code: official
+      data_or_tasks: public
+      protocol: documented
+      leaderboard: absent
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2512.24125}
+      - {en: Code, cn: 代码, url: https://github.com/GenieReasoner/ERIQ}
+      - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/KineMind/ERIQ}
+      - {en: Site, cn: 主页, url: https://geniereasoner.github.io/GenieReasoner/}
+
+    seq: 12
+  - name: RoboChallenge / Table30
+    track: vla
+    vla_env: real
+    year_en: "2025/2026"
+    year_cn: "2025/2026"
+    tests_en: "Large-scale remote real-robot evaluation across Table30 / Table30 V2 tasks and multiple robot embodiments"
+    tests_cn: "大规模远程真机评测：Table30 / Table30 V2 任务，覆盖多种机器人本体与标准化操作任务"
+    metric_en: "Success rate, progress score, and leaderboard ranking"
+    metric_cn: "成功率、过程进度分与排行榜排名"
+    repo: RoboChallenge/RoboChallengeInference
+    ecosystem:
+      paper: public
+      code: official
+      data_or_tasks: public
+      protocol: documented
+      leaderboard: available
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2510.17950}
+      - {en: Code, cn: 代码, url: https://github.com/RoboChallenge/RoboChallengeInference}
+      - {en: Site / Leaderboard, cn: 主页 / 排行榜, url: https://robochallenge.ai/}
+      - {en: Table30, cn: Table30 数据集, url: https://huggingface.co/datasets/RoboChallenge/Table30}
+      - {en: Table30 V2, cn: Table30 V2 数据集, url: https://huggingface.co/datasets/RoboChallenge/Table30v2}
+
+    seq: 25
+  - name: ManipArena
+    track: vla
+    vla_env: real
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Real-world bimanual and mobile manipulation with reasoning-oriented tasks, OOD generalization, and sensory
+      diagnostics"
+    tests_cn: "真实双臂与移动操作评测：推理导向任务、OOD 泛化与多模态传感诊断"
+    metric_en: "Task success rate and process diagnostics"
+    metric_cn: "任务成功率与过程诊断指标"
+    repo: maniparena/maniparena-repo
+    ecosystem:
+      paper: public
+      code: official
+      data_or_tasks: public
+      protocol: documented
+      leaderboard: available
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2603.28545}
+      - {en: Code, cn: 代码, url: https://github.com/maniparena/maniparena-repo}
+      - {en: Site, cn: 主页, url: https://maniparena.x2robot.com/}
+      - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/ManipArena/maniparena-dataset}
+      - {en: Simulation, cn: 仿真, url: https://github.com/maniparena/maniparena-sim}
+
+    seq: 27
+  - name: WorldMark
+    track: wm
+    wm_category: interactive
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Interactive image-to-video world models under shared scenes, action sequences, and unified WASD-style controls"
+    tests_cn: "交互式图像到视频世界模型评测：统一场景、动作序列与 WASD 风格控制接口"
+    metric_en: "Visual quality, control alignment, and world consistency"
+    metric_cn: "视觉质量、控制对齐与世界一致性"
+    repo: alaya-studio/WorldMark
+    ecosystem:
+      paper: public
+      code: official
+      data_or_tasks: public
+      protocol: documented
+      leaderboard: available
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2604.21686}
+      - {en: Code, cn: 代码, url: https://github.com/alaya-studio/WorldMark}
+      - {en: Site, cn: 主页, url: https://alaya-studio.github.io/WorldMark/}
+      - {en: Arena, cn: Arena, url: https://warena.ai/}
+    seq: 5
