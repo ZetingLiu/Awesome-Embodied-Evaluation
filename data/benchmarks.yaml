@@ -1,7 +1,7 @@
 # Single source of truth for benchmark tables in README.md / README_CN.md.
 #
 # Human-curated fields: seq, name, track, year_*, tests_*, metric_*, links.
-# `seq` is the per-track row number shown as the first table column (VLM/VLA/WM each starts at 1).
+# `seq` is the per-track row number shown as the first table column (VLM / Action Model / WM each starts at 1).
 # New entries must take the next seq within their track; run `python scripts/render_readme.py --assign-seq`
 # after bulk edits, or let discover_benchmarks.py assign automatically on append.
 # Machine-managed fields (Stars / Updated) are fetched at render time using
@@ -9,7 +9,7 @@
 #
 # Subcategory fields (for fine-grained tables):
 #   vlm_group + vlm_category  — VLM primary vs control, and capability axis
-#   vla_env + vla_category    — evaluation environment plus simulation subtype
+#   vla_env + vla_category    — Action Model evaluation environment plus simulation subtype
 #                                core | robustness | memory | long_horizon | task_generalist
 #   wm_category               — perceptual | generation | interactive | embodied_utility | physical
 
@@ -259,7 +259,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2007.00398}
       - {en: RRC, cn: RRC, url: https://rrc.cvc.uab.es/}
 
-  # ======================== VLA · Simulation · Core Suites ========================
+  # ======================== Action Model · Simulation · Core Suites ========================
     seq: 14
   - name: LIBERO
     track: vla
@@ -336,7 +336,7 @@ benchmarks:
     year_en: "2025"
     year_cn: "2025"
     tests_en: "Dual-arm manipulation benchmark with domain randomization; 50 tasks, 5 robot embodiments, sim-to-real protocol"
-    tests_cn: "双臂操作基准：50 任务、5 种机器人本体、强域随机化；社区 VLA 评测常用（含 CVPR 挑战赛）"
+    tests_cn: "双臂操作基准：50 任务、5 种机器人本体、强域随机化；社区动作模型评测常用（含 CVPR 挑战赛）"
     metric_en: "Task success rate"
     metric_cn: "任务成功率"
     repo: RoboTwin-Platform/RoboTwin
@@ -353,8 +353,8 @@ benchmarks:
     vla_category: robustness
     year_en: "2025"
     year_cn: "2025"
-    tests_en: "Structured VLA eval across task structure, language, and vision axes (170 tasks; Safety/Distractor/Extrapolation/Long-Horizon)"
-    tests_cn: "结构化 VLA 评测：任务结构/语言/视觉三轴、170 任务（Safety/Distractor/Extrapolation/Long-Horizon）"
+    tests_en: "Structured action-model eval across task structure, language, and vision axes (170 tasks; Safety/Distractor/Extrapolation/Long-Horizon)"
+    tests_cn: "结构化动作模型评测：任务结构/语言/视觉三轴、170 任务（Safety/Distractor/Extrapolation/Long-Horizon）"
     metric_en: "Success rate by difficulty level (L0–L2)"
     metric_cn: "按难度等级（L0–L2）的成功率"
     repo: PKU-Alignment/VLA-Arena
@@ -387,8 +387,8 @@ benchmarks:
     vla_category: core
     year_en: "2020"
     year_cn: "2020"
-    tests_en: "100+ language-conditioned manipulation tasks in CoppeliaSim (Franka Panda); widely used VLA baseline"
-    tests_cn: "CoppeliaSim 中 100+ 语言条件操作任务（Franka Panda）；VLA/操作学习长期基线"
+    tests_en: "100+ language-conditioned manipulation tasks in CoppeliaSim (Franka Panda); widely used action-model baseline"
+    tests_cn: "CoppeliaSim 中 100+ 语言条件操作任务（Franka Panda）；动作模型/操作学习长期基线"
     metric_en: "Success rate"
     metric_cn: "成功率"
     repo: stepjam/RLBench
@@ -469,9 +469,9 @@ benchmarks:
     vla_category: long_horizon
     year_en: "2025"
     year_cn: "2025"
-    tests_en: "Long-horizon robotic manipulation with System-2 planning, reflection, memory, and VLM-planner + VLA-controller
+    tests_en: "Long-horizon robotic manipulation with System-2 planning, reflection, memory, and VLM-planner + action-controller
       interaction"
-    tests_cn: "长程机器人操作：评测 System-2 高层规划、反思、记忆，以及 VLM planner 与 VLA controller 的层级交互"
+    tests_cn: "长程机器人操作：评测 System-2 高层规划、反思、记忆，以及 VLM planner 与动作 controller 的层级交互"
     metric_en: "Task success and reasoning/planning breakdown"
     metric_cn: "任务成功率与推理/规划维度分解"
     repo: qiuboxiang/RoboCerebra
@@ -497,7 +497,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/EmbodiedBench/EmbodiedBench}
       - {en: Site, cn: 主页, url: https://embodiedbench.github.io/}
 
-  # ======================== VLA · Simulation · Memory ========================
+  # ======================== Action Model · Simulation · Memory ========================
     seq: 16
   - name: LIBERO-Mem
     track: vla
@@ -540,8 +540,8 @@ benchmarks:
     vla_category: memory
     year_en: "2026"
     year_cn: "2026"
-    tests_en: "Memory-intensive tabletop manipulation for VLA: 90 language-conditioned tasks across 10 memory types"
-    tests_cn: "面向 VLA 的记忆密集桌面操作：90 个语言条件任务，覆盖 10 类记忆类型"
+    tests_en: "Memory-intensive tabletop manipulation for action models: 90 language-conditioned tasks across 10 memory types"
+    tests_cn: "面向动作模型的记忆密集桌面操作：90 个语言条件任务，覆盖 10 类记忆类型"
     metric_en: "Success rate by horizon and memory type"
     metric_cn: "按任务时长与记忆类型统计的成功率"
     repo: CognitiveAISystems/MIKASA-Robo
@@ -550,7 +550,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/CognitiveAISystems/MIKASA-Robo}
       - {en: Docs, cn: 文档, url: https://mikasarobo.github.io/}
 
-  # ======================== VLA · Simulation · Task-Generalist ========================
+  # ======================== Action Model · Simulation · Task-Generalist ========================
     seq: 12
   - name: RoboLab
     track: vla
@@ -604,7 +604,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/allenai/molmospaces}
       - {en: Site, cn: 主页, url: https://allenai.github.io/molmospaces/}
 
-  # ======================== VLA · Sim-to-Real Proxy ========================
+  # ======================== Action Model · Sim-to-Real Proxy ========================
     seq: 20
   - name: SimplerEnv
     track: vla
@@ -636,7 +636,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/martin-sedlacek/REALM}
       - {en: Site, cn: 主页, url: https://martin-sedlacek.com/realm/}
 
-  # ======================== VLA · Real Robot ========================
+  # ======================== Action Model · Real Robot ========================
     seq: 22
   - name: DROID
     track: vla
@@ -676,9 +676,9 @@ benchmarks:
     vla_env: real
     year_en: "2026"
     year_cn: "2026"
-    tests_en: "Low-cost reproducible real-world VLA benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD
+    tests_en: "Low-cost reproducible real-world action-model benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD
       manipulation tasks"
-    tests_cn: "低成本可复现实验室真机 VLA 基准：SO-101 机械臂、RGB-D 相机、标准化 ID/OOD 操作任务"
+    tests_cn: "低成本可复现实验室真机动作模型基准：SO-101 机械臂、RGB-D 相机、标准化 ID/OOD 操作任务"
     metric_en: "Real-world success rate (ID / OOD)"
     metric_cn: "真机成功率（ID / OOD）"
     repo:

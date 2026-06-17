@@ -2,7 +2,7 @@
 
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![简体中文](https://img.shields.io/badge/lang-简体中文-lightgrey.svg)](README_CN.md)
 
-A curated list of **benchmarks and evaluation methods** for embodied foundation models, spanning three tracks: **Vision-Language Models (VLM)**, **Vision-Language-Action models (VLA)**, and **World Models (WM)**.
+A curated list of **benchmarks and evaluation methods** for embodied foundation models, spanning three tracks: **Vision-Language Models (VLM)**, **Action Models**, and **World Models (WM)**.
 
 Most existing lists cover only one or two tracks. This repo puts all three in one place and focuses on **how each benchmark is actually evaluated** — task setup, inputs/outputs, metrics, and what it takes to reproduce the numbers.
 
@@ -13,7 +13,7 @@ Contributions are welcome. See [Contributing](#contributing).
 - [Scope](#scope)
 - [How Entries Are Organized](#how-entries-are-organized)
 - [VLM Evaluation](#vlm-evaluation)
-- [VLA Evaluation](#vla-evaluation)
+- [Action Model Evaluation](#action-model-evaluation)
 - [World Model Evaluation](#world-model-evaluation)
 - [Related Lists](#related-lists)
 - [Contributing](#contributing)
@@ -24,7 +24,7 @@ Contributions are welcome. See [Contributing](#contributing).
 This list focuses on evaluation for embodied foundation models:
 
 - **VLM** — multimodal understanding and reasoning.
-- **VLA** — language-conditioned robot manipulation and control.
+- **Action Model** — action-generating embodied policies, including VLA models and world-action models.
 - **WM** — perceptual quality and downstream usefulness of world models.
 
 We prioritize **authoritative, widely-adopted** benchmarks — those with strong community traction (high stars) and a **complete ecosystem** (official code, an active leaderboard, and a reproducible protocol).
@@ -37,7 +37,7 @@ Out of scope: pure navigation/language-only benchmarks (unless tied to embodied 
 
 Each entry lists the paper, the official code, the main metric, and notes on reproducibility. Where useful, entries also note the input/output format, the evaluator (rule-based, simulator, VLM-as-judge, or human), and the generalization setting (in-distribution, OOD, or sim-to-real).
 
-Tables are further split by **capability axis** (VLM), **evaluation environment** (VLA: simulation / sim-to-real / real robot), or **world-model dimension** (WM). See `data/benchmarks.yaml` for the taxonomy fields (`vlm_category`, `vla_env`, `wm_category`).
+Tables are further split by **capability axis** (VLM), **evaluation environment** (Action Model: simulation / sim-to-real / real robot), or **world-model dimension** (WM). See `data/benchmarks.yaml` for the taxonomy fields (`vlm_category`, `vla_env`, `wm_category`).
 
 The **Stars** and **Updated** columns come from GitHub repository metadata and are refreshed manually by maintainers when the tables are updated. Every other field is curated by hand.
 
@@ -131,9 +131,9 @@ We split VLM evaluation into two layers:
 
 Common toolkit: [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) provides standardized evaluation for the benchmarks above and 80+ others.
 
-## VLA Evaluation
+## Action Model Evaluation
 
-VLA benchmarks are grouped first by **where the policy is evaluated**: closed-loop simulation, real-to-sim proxy, or real hardware. Simulation benchmarks are further split by the failure mode or capability they are designed to expose.
+Action Model benchmarks are grouped first by **where the policy is evaluated**: closed-loop simulation, real-to-sim proxy, or real hardware. Simulation benchmarks are further split by the failure mode or capability they are designed to expose.
 
 ### Simulation · Core suites
 
@@ -142,7 +142,7 @@ VLA benchmarks are grouped first by **where the policy is evaluated**: closed-lo
 |---|---|---|---|---|---|---|---|
 | 1 | **LIBERO** | 2023 | Lifelong / language-conditioned tabletop manipulation (Spatial, Object, Goal, Long suites) | Success rate | 2.0k | 2025-03 | [Paper](https://arxiv.org/abs/2306.03310) · [Code](https://github.com/Lifelong-Robot-Learning/LIBERO) |
 | 2 | **CALVIN** | 2021 | Long-horizon instruction chaining; compositional generalization (ABC→D) | Avg. completed chain length | 942 | 2025-09 | [Paper](https://arxiv.org/abs/2112.03227) · [Code](https://github.com/mees/calvin) |
-| 3 | **RLBench** | 2020 | 100+ language-conditioned manipulation tasks in CoppeliaSim (Franka Panda); widely used VLA baseline | Success rate | 1.8k | 2025-01 | [Paper](https://arxiv.org/abs/1909.12271) · [Code](https://github.com/stepjam/RLBench) |
+| 3 | **RLBench** | 2020 | 100+ language-conditioned manipulation tasks in CoppeliaSim (Franka Panda); widely used action-model baseline | Success rate | 1.8k | 2025-01 | [Paper](https://arxiv.org/abs/1909.12271) · [Code](https://github.com/stepjam/RLBench) |
 | 4 | **ManiSkill2** | 2023 | Generalizable manipulation across diverse objects / skills with high-throughput simulation | Task success / reward-based scores | 1 | 2023-08 | [Paper](https://arxiv.org/abs/2302.04659) · [Code](https://github.com/haosulab/ManiSkill2-task-dev) |
 | 5 | **BEHAVIOR-1K** | 2024 | Long-horizon, human-centered household activities with realistic simulation dynamics | Activity success / completion metrics | 1.5k | 2026-06 | [Paper](https://arxiv.org/abs/2403.09227) · [Code](https://github.com/StanfordVL/BEHAVIOR-1K) |
 <!-- AEE-TABLE:VLA-SIM-CORE:END -->
@@ -154,7 +154,7 @@ VLA benchmarks are grouped first by **where the policy is evaluated**: closed-lo
 |---|---|---|---|---|---|---|---|
 | 6 | **LIBERO-PRO** | 2025 | Robust LIBERO extension with perturbations on objects, initial states, instructions, and environments | Success rate under perturbations | 267 | 2026-03 | [Paper](https://arxiv.org/abs/2510.03827) · [Code](https://github.com/Zxy-MLlab/LIBERO-PRO) · [Site](https://zxy-mllab.github.io/LIBERO-PRO-Webpage/) |
 | 7 | **LIBERO-Plus** | 2025 | LIBERO robustness benchmark with 10,030 tasks across seven perturbation factors (camera, robot state, language, lighting, texture, noise, layout) | Success rate by perturbation axis | 348 | 2026-01 | [Paper](https://arxiv.org/abs/2510.13626) · [Code](https://github.com/sylvestf/LIBERO-plus) · [Site](https://sylvestf.github.io/LIBERO-plus) · [LeRobot](https://huggingface.co/docs/lerobot/main/libero_plus) |
-| 8 | **VLA-Arena** | 2025 | Structured VLA eval across task structure, language, and vision axes (170 tasks; Safety/Distractor/Extrapolation/Long-Horizon) | Success rate by difficulty level (L0–L2) | 178 | 2026-03 | [Paper](https://arxiv.org/abs/2512.22539) · [Code](https://github.com/PKU-Alignment/VLA-Arena) · [Site](https://vla-arena.github.io/) |
+| 8 | **VLA-Arena** | 2025 | Structured action-model eval across task structure, language, and vision axes (170 tasks; Safety/Distractor/Extrapolation/Long-Horizon) | Success rate by difficulty level (L0–L2) | 178 | 2026-03 | [Paper](https://arxiv.org/abs/2512.22539) · [Code](https://github.com/PKU-Alignment/VLA-Arena) · [Site](https://vla-arena.github.io/) |
 | 9 | **THE COLOSSEUM** | 2024 | Generalization in robotic manipulation under visual/semantic/execution perturbations | Success rate | 149 | 2025-03 | [Paper](https://arxiv.org/abs/2402.08191) · [Code](https://github.com/robot-colosseum/robot-colosseum) · [Site](https://robot-colosseum.github.io) |
 <!-- AEE-TABLE:VLA-SIM-ROBUSTNESS:END -->
 
@@ -165,7 +165,7 @@ VLA benchmarks are grouped first by **where the policy is evaluated**: closed-lo
 |---|---|---|---|---|---|---|---|
 | 10 | **LIBERO-Mem** | 2025 | Object-level memory in partially observable manipulation: motion, sequence, relations, and occlusion | Success rate under temporal scaling | 22 | 2025-11 | [Paper](https://arxiv.org/abs/2511.11478) · [Code](https://github.com/libero-mem/libero-mem) · [Site](https://libero-mem.github.io/) |
 | 11 | **RoboMME** | 2026 | Memory-augmented manipulation across temporal, spatial, object, and procedural memory suites | Success rate across 16 tasks | 113 | 2026-06 | [Paper](https://arxiv.org/abs/2603.04639) · [Code](https://github.com/RoboMME/robomme_benchmark) · [Site](https://robomme.github.io/) · [Leaderboard](https://robomme.github.io/leaderboard.html) |
-| 12 | **MIKASA-Robo-VLA** | 2026 | Memory-intensive tabletop manipulation for VLA: 90 language-conditioned tasks across 10 memory types | Success rate by horizon and memory type | 112 | 2026-06 | [Paper](https://arxiv.org/abs/2502.10550) · [Code](https://github.com/CognitiveAISystems/MIKASA-Robo) · [Docs](https://mikasarobo.github.io/) |
+| 12 | **MIKASA-Robo-VLA** | 2026 | Memory-intensive tabletop manipulation for action models: 90 language-conditioned tasks across 10 memory types | Success rate by horizon and memory type | 112 | 2026-06 | [Paper](https://arxiv.org/abs/2502.10550) · [Code](https://github.com/CognitiveAISystems/MIKASA-Robo) · [Docs](https://mikasarobo.github.io/) |
 <!-- AEE-TABLE:VLA-SIM-MEMORY:END -->
 
 ### Simulation · Long-horizon reasoning
@@ -175,7 +175,7 @@ VLA benchmarks are grouped first by **where the policy is evaluated**: closed-lo
 |---|---|---|---|---|---|---|---|
 | 13 | **RoboCasa / RoboCasa365** | 2024/2026 | Large-scale everyday kitchen manipulation, from atomic skills to long-horizon composites | Success rate across benchmark suites | 1.5k | 2026-05 | [Paper](https://arxiv.org/abs/2406.02523) · [Code](https://github.com/robocasa/robocasa) |
 | 14 | **VLABench** | 2024/2025 | Language-conditioned manipulation with long-horizon reasoning, implicit intentions, world knowledge, and 100 task categories | Success rate and capability breakdown | 442 | 2025-11 | [Paper](https://arxiv.org/abs/2412.18194) · [Code](https://github.com/OpenMOSS/VLABench) · [Site](https://vlabench.github.io/) |
-| 15 | **RoboCerebra** | 2025 | Long-horizon robotic manipulation with System-2 planning, reflection, memory, and VLM-planner + VLA-controller interaction | Task success and reasoning/planning breakdown | 65 | 2026-04 | [Paper](https://arxiv.org/abs/2506.06677) · [Code](https://github.com/qiuboxiang/RoboCerebra) · [Site](https://robocerebra.github.io/) |
+| 15 | **RoboCerebra** | 2025 | Long-horizon robotic manipulation with System-2 planning, reflection, memory, and VLM-planner + action-controller interaction | Task success and reasoning/planning breakdown | 65 | 2026-04 | [Paper](https://arxiv.org/abs/2506.06677) · [Code](https://github.com/qiuboxiang/RoboCerebra) · [Site](https://robocerebra.github.io/) |
 | 16 | **EmbodiedBench** | 2025 | MLLM-as-agent eval across 1,128 tasks in 4 sim environments (high/low-level; 6 capability subsets) | Task success rate | 311 | 2026-05 | [Paper](https://arxiv.org/abs/2502.09560) · [Code](https://github.com/EmbodiedBench/EmbodiedBench) · [Site](https://embodiedbench.github.io/) |
 <!-- AEE-TABLE:VLA-SIM-LONG-HORIZON:END -->
 
@@ -206,7 +206,7 @@ VLA benchmarks are grouped first by **where the policy is evaluated**: closed-lo
 |---|---|---|---|---|---|---|---|
 | 23 | **DROID** | 2024 | In-the-wild Franka manipulation eval on real hardware; multi-scene generalization protocol | Success rate (ID / OOD) | 289 | 2025-04 | [Paper](https://arxiv.org/abs/2403.12945) · [Code](https://github.com/droid-dataset/droid_policy_learning) · [Site](https://droid-dataset.github.io/) |
 | 24 | **RoboArena** | 2025 | Distributed real-world evaluation of generalist robot policies via double-blind pairwise comparisons on DROID robots | Pairwise preference / Elo-style ranking | 104 | 2026-04 | [Paper](https://arxiv.org/abs/2506.18123) · [Code](https://github.com/robo-arena/roboarena) · [Site](https://robo-arena.github.io/) |
-| 25 | **VLA-REPLICA** | 2026 | Low-cost reproducible real-world VLA benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD manipulation tasks | Real-world success rate (ID / OOD) | — | — | [Paper](https://arxiv.org/abs/2605.20774) · [Site](https://irvlutd.github.io/VLAReplica/) |
+| 25 | **VLA-REPLICA** | 2026 | Low-cost reproducible real-world action-model benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD manipulation tasks | Real-world success rate (ID / OOD) | — | — | [Paper](https://arxiv.org/abs/2605.20774) · [Site](https://irvlutd.github.io/VLAReplica/) |
 <!-- AEE-TABLE:VLA-REAL:END -->
 
 Common harness: [vla-evaluation-harness](https://github.com/allenai/vla-evaluation-harness) runs many of these benchmarks in Docker with a shared protocol.
@@ -262,7 +262,7 @@ World-model benchmarks are grouped by **what aspect of a world model is measured
 ## Related Lists
 
 - [awesome-vla-wam](https://github.com/DravenALG/awesome-vla-wam) — VLA and World Action Models.
-- [Awesome-World-Action-Model](https://github.com/HyperbolicCurve/Awesome-World-Action-Model) — papers, datasets, and benchmarks for WAM/VLA.
+- [Awesome-World-Action-Model](https://github.com/HyperbolicCurve/Awesome-World-Action-Model) — papers, datasets, and benchmarks for action models, including WAM/VLA.
 - [awesome-embodied-vla-va-vln](https://github.com/jonyzhang2023/awesome-embodied-vla-va-vln) — VLA / VA / VLN models and simulators.
 
 ## Contributing
@@ -274,7 +274,7 @@ Pull requests are welcome. For a new entry, please include:
 - A minimal run command, if you have one.
 - Any reproducibility caveats you ran into (coordinate conventions, normalization stats, ambiguous termination rules, etc.).
 
-Keep one entry per row and place it in the matching track table. Assign a **per-track, contiguous `seq`** in `data/benchmarks.yaml` (shown as the first table column; VLM/VLA/WM each starts at 1). After manual bulk edits, run `python scripts/render_readme.py --assign-seq` before re-rendering.
+Keep one entry per row and place it in the matching track table. Assign a **per-track, contiguous `seq`** in `data/benchmarks.yaml` (shown as the first table column; VLM / Action Model / WM each starts at 1). After manual bulk edits, run `python scripts/render_readme.py --assign-seq` before re-rendering.
 
 ## License
 
