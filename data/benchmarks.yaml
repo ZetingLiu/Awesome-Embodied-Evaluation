@@ -1,8 +1,8 @@
 # Single source of truth for benchmark tables in README.md / README_CN.md.
 #
 # Human-curated fields: seq, name, track, year_*, tests_*, metric_*, links.
-# `seq` is the global row number shown as the first table column (1..N, contiguous).
-# New entries must take the next seq; run `python scripts/render_readme.py --assign-seq`
+# `seq` is the per-track row number shown as the first table column (VLM/VLA/WM each starts at 1).
+# New entries must take the next seq within their track; run `python scripts/render_readme.py --assign-seq`
 # after bulk edits, or let discover_benchmarks.py assign automatically on append.
 # Machine-managed fields (Stars / Updated) are fetched at render time using
 # `repo` and injected by scripts/render_readme.py.
@@ -276,7 +276,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2306.03310}
       - {en: Code, cn: 代码, url: https://github.com/Lifelong-Robot-Learning/LIBERO}
 
-    seq: 15
+    seq: 1
   - name: LIBERO-PRO
     track: vla
     vla_env: simulation
@@ -293,7 +293,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/Zxy-MLlab/LIBERO-PRO}
       - {en: Site, cn: 主页, url: https://zxy-mllab.github.io/LIBERO-PRO-Webpage/}
 
-    seq: 20
+    seq: 6
   - name: LIBERO-Plus
     track: vla
     vla_env: simulation
@@ -312,7 +312,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://sylvestf.github.io/LIBERO-plus}
       - {en: LeRobot, cn: LeRobot, url: https://huggingface.co/docs/lerobot/main/libero_plus}
 
-    seq: 21
+    seq: 7
   - name: CALVIN
     track: vla
     vla_env: simulation
@@ -328,7 +328,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2112.03227}
       - {en: Code, cn: 代码, url: https://github.com/mees/calvin}
 
-    seq: 16
+    seq: 2
   - name: RoboTwin 2.0
     track: vla
     vla_env: simulation
@@ -346,7 +346,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://robotwin-platform.github.io/}
       - {en: Leaderboard, cn: 排行榜, url: https://robotwin-platform.github.io/leaderboard}
 
-    seq: 31
+    seq: 17
   - name: VLA-Arena
     track: vla
     vla_env: simulation
@@ -363,7 +363,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/PKU-Alignment/VLA-Arena}
       - {en: Site, cn: 主页, url: https://vla-arena.github.io/}
 
-    seq: 22
+    seq: 8
   - name: THE COLOSSEUM
     track: vla
     vla_env: simulation
@@ -380,7 +380,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/robot-colosseum/robot-colosseum}
       - {en: Site, cn: 主页, url: https://robot-colosseum.github.io}
 
-    seq: 23
+    seq: 9
   - name: RLBench
     track: vla
     vla_env: simulation
@@ -396,7 +396,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/1909.12271}
       - {en: Code, cn: 代码, url: https://github.com/stepjam/RLBench}
 
-    seq: 17
+    seq: 3
   - name: ManiSkill2
     track: vla
     vla_env: simulation
@@ -412,7 +412,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2302.04659}
       - {en: Code, cn: 代码, url: https://github.com/haosulab/ManiSkill2-task-dev}
 
-    seq: 18
+    seq: 4
   - name: BEHAVIOR-1K
     track: vla
     vla_env: simulation
@@ -428,7 +428,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2403.09227}
       - {en: Code, cn: 代码, url: https://github.com/StanfordVL/BEHAVIOR-1K}
 
-    seq: 19
+    seq: 5
   - name: RoboCasa / RoboCasa365
     track: vla
     vla_env: simulation
@@ -444,7 +444,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2406.02523}
       - {en: Code, cn: 代码, url: https://github.com/robocasa/robocasa}
 
-    seq: 27
+    seq: 13
   - name: VLABench
     track: vla
     vla_env: simulation
@@ -462,7 +462,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/OpenMOSS/VLABench}
       - {en: Site, cn: 主页, url: https://vlabench.github.io/}
 
-    seq: 28
+    seq: 14
   - name: RoboCerebra
     track: vla
     vla_env: simulation
@@ -480,7 +480,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/qiuboxiang/RoboCerebra}
       - {en: Site, cn: 主页, url: https://robocerebra.github.io/}
 
-    seq: 29
+    seq: 15
   - name: EmbodiedBench
     track: vla
     vla_env: simulation
@@ -498,7 +498,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://embodiedbench.github.io/}
 
   # ======================== VLA · Simulation · Memory ========================
-    seq: 30
+    seq: 16
   - name: LIBERO-Mem
     track: vla
     vla_env: simulation
@@ -515,7 +515,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/libero-mem/libero-mem}
       - {en: Site, cn: 主页, url: https://libero-mem.github.io/}
 
-    seq: 24
+    seq: 10
   - name: RoboMME
     track: vla
     vla_env: simulation
@@ -533,7 +533,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://robomme.github.io/}
       - {en: Leaderboard, cn: 排行榜, url: https://robomme.github.io/leaderboard.html}
 
-    seq: 25
+    seq: 11
   - name: MIKASA-Robo-VLA
     track: vla
     vla_env: simulation
@@ -551,7 +551,7 @@ benchmarks:
       - {en: Docs, cn: 文档, url: https://mikasarobo.github.io/}
 
   # ======================== VLA · Simulation · Task-Generalist ========================
-    seq: 26
+    seq: 12
   - name: RoboLab
     track: vla
     vla_env: simulation
@@ -570,7 +570,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://research.nvidia.com/labs/srl/projects/robolab/}
       - {en: Leaderboard, cn: 排行榜, url: https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html}
 
-    seq: 32
+    seq: 18
   - name: Kinetix
     track: vla
     vla_env: simulation
@@ -586,7 +586,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2410.23208}
       - {en: Site, cn: 主页, url: https://kinetix-env.github.io/}
 
-    seq: 33
+    seq: 19
   - name: MolmoSpaces-Bench
     track: vla
     vla_env: simulation
@@ -605,7 +605,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://allenai.github.io/molmospaces/}
 
   # ======================== VLA · Sim-to-Real Proxy ========================
-    seq: 34
+    seq: 20
   - name: SimplerEnv
     track: vla
     vla_env: sim2real
@@ -620,7 +620,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2405.05946}
       - {en: Code, cn: 代码, url: https://github.com/simpler-env/SimplerEnv}
 
-    seq: 35
+    seq: 21
   - name: REALM
     track: vla
     vla_env: sim2real
@@ -637,7 +637,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://martin-sedlacek.com/realm/}
 
   # ======================== VLA · Real Robot ========================
-    seq: 36
+    seq: 22
   - name: DROID
     track: vla
     vla_env: real
@@ -653,7 +653,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/droid-dataset/droid_policy_learning}
       - {en: Site, cn: 主页, url: https://droid-dataset.github.io/}
 
-    seq: 37
+    seq: 23
   - name: RoboArena
     track: vla
     vla_env: real
@@ -670,7 +670,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/robo-arena/roboarena}
       - {en: Site, cn: 主页, url: https://robo-arena.github.io/}
 
-    seq: 38
+    seq: 24
   - name: VLA-REPLICA
     track: vla
     vla_env: real
@@ -687,7 +687,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://irvlutd.github.io/VLAReplica/}
 
   # ======================== WM · Perceptual Quality ========================
-    seq: 39
+    seq: 25
   - name: VBench
     track: wm
     wm_category: perceptual
@@ -704,7 +704,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://vchitect.github.io/VBench-project/}
 
   # ======================== WM · World Generation ========================
-    seq: 40
+    seq: 1
   - name: WorldScore
     track: wm
     wm_category: generation
@@ -719,7 +719,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2504.00983}
       - {en: Site, cn: 主页, url: https://haoyi-duan.github.io/WorldScore/}
 
-    seq: 41
+    seq: 2
   - name: 4DWorldBench
     track: wm
     wm_category: generation
@@ -734,7 +734,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2511.19836}
 
   # ======================== WM · Interactive / Multi-turn ========================
-    seq: 42
+    seq: 3
   - name: WBench
     track: wm
     wm_category: interactive
@@ -751,7 +751,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://meituan-longcat.github.io/WBench/}
 
   # ======================== WM · Embodied Utility ========================
-    seq: 43
+    seq: 4
   - name: WorldArena
     track: wm
     wm_category: embodied_utility
@@ -766,7 +766,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2602.08971}
       - {en: Site, cn: 主页, url: https://world-arena.ai/}
 
-    seq: 44
+    seq: 5
   - name: RoboWM-Bench
     track: wm
     wm_category: embodied_utility
@@ -784,7 +784,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://robowm-bench.github.io/RoboWM-Bench/}
 
   # ======================== WM · Physical / Instruction Adherence ========================
-    seq: 45
+    seq: 6
   - name: WorldModelBench
     track: wm
     wm_category: physical
@@ -799,7 +799,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2502.20694}
       - {en: Code, cn: 代码, url: https://github.com/WorldModelBench-Team/WorldModelBench}
 
-    seq: 46
+    seq: 7
   - name: EWMBench
     track: wm
     wm_category: physical
@@ -813,7 +813,7 @@ benchmarks:
     links:
       - {en: Code, cn: 代码, url: https://github.com/AgibotTech/EWMBench}
 
-    seq: 47
+    seq: 8
   - name: MiraBench
     track: wm
     wm_category: physical
@@ -828,4 +828,4 @@ benchmarks:
     links:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.29360}
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/Anonymous-nips-submissions/Anonymous-nips-submissions}
-    seq: 48
+    seq: 9

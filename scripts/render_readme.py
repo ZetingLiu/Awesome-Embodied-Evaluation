@@ -158,17 +158,18 @@ def render_links(links: list[dict], lang: str) -> str:
     return " · ".join(parts)
 
 
-def global_ordered_entries(benchmarks: list[dict]) -> list[dict]:
-    """Stable global order: MARKER_SPECS order, then YAML list order within each table."""
-    ordered: list[dict] = []
+def ordered_entries_by_track(benchmarks: list[dict]) -> dict[str, list[dict]]:
+    """Stable order per track: MARKER_SPECS order, then YAML list order within each table."""
+    ordered: dict[str, list[dict]] = {"vlm": [], "vla": [], "wm": []}
     seen: set[int] = set()
-    for _marker, selector in MARKER_SPECS:
+    for marker, selector in MARKER_SPECS:
+        track = marker.split("-", 1)[0].lower()
         for entry in benchmarks:
             key = id(entry)
             if key in seen:
                 continue
             if selector(entry):
-                ordered.append(entry)
+                ordered.setdefault(track, []).append(entry)
                 seen.add(key)
     for entry in benchmarks:
         if id(entry) not in seen:
@@ -180,7 +181,6 @@ def global_ordered_entries(benchmarks: list[dict]) -> list[dict]:
 
 
 def validate_sequences(benchmarks: list[dict]) -> None:
-    seqs = [entry.get("seq") for entry in benchmarks]
     missing = [entry.get("name") for entry in benchmarks if entry.get("seq") is None]
     if missing:
         raise ValueError(
@@ -188,11 +188,12 @@ def validate_sequences(benchmarks: list[dict]) -> None:
             + ", ".join(str(name) for name in missing)
             + ". Run: python scripts/render_readme.py --assign-seq"
         )
-    numeric = [int(s) for s in seqs]
-    if len(set(numeric)) != len(numeric):
-        raise ValueError("Duplicate seq values in benchmarks.yaml")
-    if sorted(numeric) != list(range(1, len(numeric) + 1)):
-        raise ValueError("seq must be a contiguous run starting at 1")
+    for track in ("vlm", "vla", "wm"):
+        numeric = [int(entry["seq"]) for entry in benchmarks if entry.get("track") == track]
+        if len(set(numeric)) != len(numeric):
+            raise ValueError(f"Duplicate seq values in {track.upper()} entries")
+        if sorted(numeric) != list(range(1, len(numeric) + 1)):
+            raise ValueError(f"{track.upper()} seq must be a contiguous run starting at 1")
 
 
 def render_row(entry: dict, lang: str) -> str:
@@ -253,7 +254,7 @@ def render_readme(path: Path, entries_by_marker: dict, lang: str) -> bool:
 
 
 def assign_sequences() -> int:
-    """Write contiguous seq: 1..N into benchmarks.yaml (preserves comments)."""
+    """Write per-track contiguous seq values into benchmarks.yaml (preserves comments)."""
     try:
         from ruamel.yaml import YAML
     except ImportError:
@@ -266,11 +267,15 @@ def assign_sequences() -> int:
     yaml.indent(mapping=2, sequence=4, offset=2)
     data = yaml.load(YAML_PATH.read_text(encoding="utf-8"))
     benchmarks = data.get("benchmarks", [])
-    for idx, entry in enumerate(global_ordered_entries(benchmarks), start=1):
-        entry["seq"] = idx
+    counts = {}
+    for track, entries in ordered_entries_by_track(benchmarks).items():
+        for idx, entry in enumerate(entries, start=1):
+            entry["seq"] = idx
+        counts[track] = len(entries)
     with YAML_PATH.open("w", encoding="utf-8") as fh:
         yaml.dump(data, fh)
-    print(f"[ok] assigned seq 1..{len(benchmarks)} in {YAML_PATH.name}")
+    summary = ", ".join(f"{track.upper()} 1..{count}" for track, count in counts.items())
+    print(f"[ok] assigned per-track seq in {YAML_PATH.name}: {summary}")
     return 0
 
 
@@ -284,7 +289,7 @@ def main() -> int:
     parser.add_argument(
         "--assign-seq",
         action="store_true",
-        help="Assign contiguous seq: 1..N in benchmarks.yaml, then exit.",
+        help="Assign per-track contiguous seq values in benchmarks.yaml, then exit.",
     )
     args = parser.parse_args()
 

@@ -508,16 +508,21 @@ def discover_for_track(track: str, cfg: dict, existing_repos: set[str], existing
 # --------------------------------------------------------------------------- #
 # Append-only YAML writing (preserves existing comments/formatting)
 # --------------------------------------------------------------------------- #
-def next_seq(benchmarks: list[dict], count: int = 1) -> int:
-    existing = [int(e["seq"]) for e in benchmarks if e.get("seq") is not None]
-    start = max(existing, default=0) + 1
-    return start if count == 1 else start + count - 1
+def next_seq(benchmarks: list[dict], track: str) -> int:
+    existing = [
+        int(e["seq"])
+        for e in benchmarks
+        if e.get("track") == track and e.get("seq") is not None
+    ]
+    return max(existing, default=0) + 1
 
 
 def assign_new_sequences(benchmarks: list[dict], new_entries: list[dict]) -> None:
-    start = next_seq(benchmarks, len(new_entries))
-    for offset, entry in enumerate(new_entries):
-        entry["seq"] = start + offset
+    next_by_track = {track: next_seq(benchmarks, track) for track in ("vlm", "vla", "wm")}
+    for entry in new_entries:
+        track = entry["track"]
+        entry["seq"] = next_by_track[track]
+        next_by_track[track] += 1
 
 
 def yaml_snippet(entries: list[dict]) -> str:
