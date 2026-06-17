@@ -6,7 +6,8 @@
 #
 # Subcategory fields (for fine-grained tables):
 #   vlm_group + vlm_category  — VLM primary vs control, and capability axis
-#   vla_env                   — simulation | sim2real | real
+#   vla_env + vla_category    — evaluation environment plus simulation subtype
+#                                core | robustness | memory | long_horizon | task_generalist
 #   wm_category               — perceptual | generation | interactive | embodied_utility | physical
 
 benchmarks:
@@ -242,10 +243,11 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2007.00398}
       - {en: RRC, cn: RRC, url: https://rrc.cvc.uab.es/}
 
-  # ======================== VLA · Simulation ========================
+  # ======================== VLA · Simulation · Core Suites ========================
   - name: LIBERO
     track: vla
     vla_env: simulation
+    vla_category: core
     year_en: "2023"
     year_cn: "2023"
     tests_en: "Lifelong / language-conditioned tabletop manipulation (Spatial, Object, Goal, Long suites)"
@@ -260,6 +262,7 @@ benchmarks:
   - name: LIBERO-PRO
     track: vla
     vla_env: simulation
+    vla_category: robustness
     year_en: "2025"
     year_cn: "2025"
     tests_en: "Robust LIBERO extension with perturbations on objects, initial states, instructions, and environments"
@@ -272,9 +275,27 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/Zxy-MLlab/LIBERO-PRO}
       - {en: Site, cn: 主页, url: https://zxy-mllab.github.io/LIBERO-PRO-Webpage/}
 
+  - name: LIBERO-Plus
+    track: vla
+    vla_env: simulation
+    vla_category: robustness
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "LIBERO robustness benchmark with 10,030 tasks across seven perturbation factors (camera, robot state, language, lighting, texture, noise, layout)"
+    tests_cn: "LIBERO 鲁棒性基准：10030 个任务，覆盖相机、机器人初始状态、语言、光照、纹理、噪声、物体布局等七类扰动"
+    metric_en: "Success rate by perturbation axis"
+    metric_cn: "按扰动维度统计的成功率"
+    repo: sylvestf/LIBERO-plus
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2510.13626}
+      - {en: Code, cn: 代码, url: https://github.com/sylvestf/LIBERO-plus}
+      - {en: Site, cn: 主页, url: https://sylvestf.github.io/LIBERO-plus}
+      - {en: LeRobot, cn: LeRobot, url: https://huggingface.co/docs/lerobot/main/libero_plus}
+
   - name: CALVIN
     track: vla
     vla_env: simulation
+    vla_category: core
     year_en: "2021"
     year_cn: "2021"
     tests_en: "Long-horizon instruction chaining; compositional generalization (ABC→D)"
@@ -289,6 +310,7 @@ benchmarks:
   - name: RoboTwin 2.0
     track: vla
     vla_env: simulation
+    vla_category: task_generalist
     year_en: "2025"
     year_cn: "2025"
     tests_en: "Dual-arm manipulation benchmark with domain randomization; 50 tasks, 5 robot embodiments, sim-to-real protocol"
@@ -305,6 +327,7 @@ benchmarks:
   - name: VLA-Arena
     track: vla
     vla_env: simulation
+    vla_category: robustness
     year_en: "2025"
     year_cn: "2025"
     tests_en: "Structured VLA eval across task structure, language, and vision axes (170 tasks; Safety/Distractor/Extrapolation/Long-Horizon)"
@@ -320,6 +343,7 @@ benchmarks:
   - name: THE COLOSSEUM
     track: vla
     vla_env: simulation
+    vla_category: robustness
     year_en: "2024"
     year_cn: "2024"
     tests_en: "Generalization in robotic manipulation under visual/semantic/execution perturbations"
@@ -335,6 +359,7 @@ benchmarks:
   - name: RLBench
     track: vla
     vla_env: simulation
+    vla_category: core
     year_en: "2020"
     year_cn: "2020"
     tests_en: "100+ language-conditioned manipulation tasks in CoppeliaSim (Franka Panda); widely used VLA baseline"
@@ -349,6 +374,7 @@ benchmarks:
   - name: ManiSkill2
     track: vla
     vla_env: simulation
+    vla_category: core
     year_en: "2023"
     year_cn: "2023"
     tests_en: "Generalizable manipulation across diverse objects / skills with high-throughput simulation"
@@ -363,6 +389,7 @@ benchmarks:
   - name: BEHAVIOR-1K
     track: vla
     vla_env: simulation
+    vla_category: core
     year_en: "2024"
     year_cn: "2024"
     tests_en: "Long-horizon, human-centered household activities with realistic simulation dynamics"
@@ -377,6 +404,7 @@ benchmarks:
   - name: RoboCasa / RoboCasa365
     track: vla
     vla_env: simulation
+    vla_category: long_horizon
     year_en: "2024/2026"
     year_cn: "2024/2026"
     tests_en: "Large-scale everyday kitchen manipulation, from atomic skills to long-horizon composites"
@@ -388,9 +416,42 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2406.02523}
       - {en: Code, cn: 代码, url: https://github.com/robocasa/robocasa}
 
+  - name: VLABench
+    track: vla
+    vla_env: simulation
+    vla_category: long_horizon
+    year_en: "2024/2025"
+    year_cn: "2024/2025"
+    tests_en: "Language-conditioned manipulation with long-horizon reasoning, implicit intentions, world knowledge, and 100 task categories"
+    tests_cn: "语言条件机器人操作：长程推理、隐式人类意图、世界知识迁移，覆盖 100 类任务与 2000+ 物体"
+    metric_en: "Success rate and capability breakdown"
+    metric_cn: "成功率与能力维度分解"
+    repo: OpenMOSS/VLABench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2412.18194}
+      - {en: Code, cn: 代码, url: https://github.com/OpenMOSS/VLABench}
+      - {en: Site, cn: 主页, url: https://vlabench.github.io/}
+
+  - name: RoboCerebra
+    track: vla
+    vla_env: simulation
+    vla_category: long_horizon
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Long-horizon robotic manipulation with System-2 planning, reflection, memory, and VLM-planner + VLA-controller interaction"
+    tests_cn: "长程机器人操作：评测 System-2 高层规划、反思、记忆，以及 VLM planner 与 VLA controller 的层级交互"
+    metric_en: "Task success and reasoning/planning breakdown"
+    metric_cn: "任务成功率与推理/规划维度分解"
+    repo: qiuboxiang/RoboCerebra
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2506.06677}
+      - {en: Code, cn: 代码, url: https://github.com/qiuboxiang/RoboCerebra}
+      - {en: Site, cn: 主页, url: https://robocerebra.github.io/}
+
   - name: EmbodiedBench
     track: vla
     vla_env: simulation
+    vla_category: long_horizon
     year_en: "2025"
     year_cn: "2025"
     tests_en: "MLLM-as-agent eval across 1,128 tasks in 4 sim environments (high/low-level; 6 capability subsets)"
@@ -402,6 +463,105 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2502.09560}
       - {en: Code, cn: 代码, url: https://github.com/EmbodiedBench/EmbodiedBench}
       - {en: Site, cn: 主页, url: https://embodiedbench.github.io/}
+
+  # ======================== VLA · Simulation · Memory ========================
+  - name: LIBERO-Mem
+    track: vla
+    vla_env: simulation
+    vla_category: memory
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Object-level memory in partially observable manipulation: motion, sequence, relations, and occlusion"
+    tests_cn: "部分可观测操作中的对象级记忆：物体运动、顺序、关系与遮挡回忆"
+    metric_en: "Success rate under temporal scaling"
+    metric_cn: "时间尺度压力测试下的成功率"
+    repo: libero-mem/libero-mem
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2511.11478}
+      - {en: Code, cn: 代码, url: https://github.com/libero-mem/libero-mem}
+      - {en: Site, cn: 主页, url: https://libero-mem.github.io/}
+
+  - name: RoboMME
+    track: vla
+    vla_env: simulation
+    vla_category: memory
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Memory-augmented manipulation across temporal, spatial, object, and procedural memory suites"
+    tests_cn: "记忆增强机器人操作：覆盖时间、空间、对象、程序性记忆四类任务套件"
+    metric_en: "Success rate across 16 tasks"
+    metric_cn: "16 个任务上的成功率"
+    repo: RoboMME/robomme_benchmark
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2603.04639}
+      - {en: Code, cn: 代码, url: https://github.com/RoboMME/robomme_benchmark}
+      - {en: Site, cn: 主页, url: https://robomme.github.io/}
+      - {en: Leaderboard, cn: 排行榜, url: https://robomme.github.io/leaderboard.html}
+
+  - name: MIKASA-Robo-VLA
+    track: vla
+    vla_env: simulation
+    vla_category: memory
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Memory-intensive tabletop manipulation for VLA: 90 language-conditioned tasks across 10 memory types"
+    tests_cn: "面向 VLA 的记忆密集桌面操作：90 个语言条件任务，覆盖 10 类记忆类型"
+    metric_en: "Success rate by horizon and memory type"
+    metric_cn: "按任务时长与记忆类型统计的成功率"
+    repo: CognitiveAISystems/MIKASA-Robo
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2502.10550}
+      - {en: Code, cn: 代码, url: https://github.com/CognitiveAISystems/MIKASA-Robo}
+      - {en: Docs, cn: 文档, url: https://mikasarobo.github.io/}
+
+  # ======================== VLA · Simulation · Task-Generalist ========================
+  - name: RoboLab
+    track: vla
+    vla_env: simulation
+    vla_category: task_generalist
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "High-fidelity Isaac Lab benchmark for DROID-trained task-generalist policies; 120 tasks across visual, procedural, and relational axes"
+    tests_cn: "高保真 Isaac Lab 仿真基准：评测 DROID 训练的通用任务策略，120 任务覆盖视觉、程序、关系三类能力"
+    metric_en: "SR%, progress score, EE speed, EE SPARC"
+    metric_cn: "SR%、进度分、末端速度、EE SPARC"
+    repo: NVlabs/RoboLab
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2604.09860}
+      - {en: Code, cn: 代码, url: https://github.com/NVlabs/RoboLab}
+      - {en: Site, cn: 主页, url: https://research.nvidia.com/labs/srl/projects/robolab/}
+      - {en: Leaderboard, cn: 排行榜, url: https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html}
+
+  - name: Kinetix
+    track: vla
+    vla_env: simulation
+    vla_category: task_generalist
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Open-ended 2D physics-control tasks used by vla-eval as a broad control/generalization stress test"
+    tests_cn: "开放式 2D 物理控制任务；在 vla-eval 中作为广义控制与泛化压力测试"
+    metric_en: "Task return / success"
+    metric_cn: "任务回报 / 成功率"
+    repo: FLAIROx/Kinetix
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2410.23208}
+      - {en: Site, cn: 主页, url: https://kinetix-env.github.io/}
+
+  - name: MolmoSpaces-Bench
+    track: vla
+    vla_env: simulation
+    vla_category: task_generalist
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Zero-shot navigation and manipulation benchmark over procedurally generated spaces with pick, place, open, close, and door tasks"
+    tests_cn: "程序化生成空间中的零样本导航与操作基准，覆盖 pick/place/open/close/open-door 等任务"
+    metric_en: "Task success rate"
+    metric_cn: "任务成功率"
+    repo: allenai/molmospaces
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2602.11337}
+      - {en: Code, cn: 代码, url: https://github.com/allenai/molmospaces}
+      - {en: Site, cn: 主页, url: https://allenai.github.io/molmospaces/}
 
   # ======================== VLA · Sim-to-Real Proxy ========================
   - name: SimplerEnv
@@ -448,6 +608,35 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2403.12945}
       - {en: Code, cn: 代码, url: https://github.com/droid-dataset/droid_policy_learning}
       - {en: Site, cn: 主页, url: https://droid-dataset.github.io/}
+
+  - name: RoboArena
+    track: vla
+    vla_env: real
+    year_en: "2025"
+    year_cn: "2025"
+    tests_en: "Distributed real-world evaluation of generalist robot policies via double-blind pairwise comparisons on DROID robots"
+    tests_cn: "分布式真机评测：在 DROID 机器人平台上通过双盲 pairwise comparison 排名通用机器人策略"
+    metric_en: "Pairwise preference / Elo-style ranking"
+    metric_cn: "成对偏好 / Elo 风格排名"
+    repo: robo-arena/roboarena
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2506.18123}
+      - {en: Code, cn: 代码, url: https://github.com/robo-arena/roboarena}
+      - {en: Site, cn: 主页, url: https://robo-arena.github.io/}
+
+  - name: VLA-REPLICA
+    track: vla
+    vla_env: real
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Low-cost reproducible real-world VLA benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD manipulation tasks"
+    tests_cn: "低成本可复现实验室真机 VLA 基准：SO-101 机械臂、RGB-D 相机、标准化 ID/OOD 操作任务"
+    metric_en: "Real-world success rate (ID / OOD)"
+    metric_cn: "真机成功率（ID / OOD）"
+    repo: null
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.20774}
+      - {en: Site, cn: 主页, url: https://irvlutd.github.io/VLAReplica/}
 
   # ======================== WM · Perceptual Quality ========================
   - name: VBench
@@ -524,6 +713,21 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2602.08971}
       - {en: Site, cn: 主页, url: https://world-arena.ai/}
 
+  - name: RoboWM-Bench
+    track: wm
+    wm_category: embodied_utility
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Manipulation-centric world-model evaluation: generated human/robot videos are converted to executable robot actions and validated in simulation"
+    tests_cn: "面向机器人操作的世界模型评测：将生成的人手/机器人视频转为可执行动作，并在仿真中验证任务完成"
+    metric_en: "Step-level executability and final task success"
+    metric_cn: "逐步可执行性与最终任务成功率"
+    repo: flyingGH/RoboWM-Bench
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2604.19092}
+      - {en: Code, cn: 代码, url: https://github.com/flyingGH/RoboWM-Bench}
+      - {en: Site, cn: 主页, url: https://robowm-bench.github.io/RoboWM-Bench/}
+
   # ======================== WM · Physical / Instruction Adherence ========================
   - name: WorldModelBench
     track: wm
@@ -551,3 +755,17 @@ benchmarks:
     repo: AgibotTech/EWMBench
     links:
       - {en: Code, cn: 代码, url: https://github.com/AgibotTech/EWMBench}
+
+  - name: MiraBench
+    track: wm
+    wm_category: physical
+    year_en: "2026"
+    year_cn: "2026"
+    tests_en: "Action-conditioned reliability in robotic world models: physics adherence, action-following fidelity, and optimism-bias detection"
+    tests_cn: "机器人世界模型的动作条件可靠性：物理遵循、动作跟随一致性与成功幻觉/乐观偏差检测"
+    metric_en: "Physics adherence, action-following fidelity, optimism-bias score"
+    metric_cn: "物理遵循分、动作跟随一致性、乐观偏差分"
+    repo: null
+    links:
+      - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2605.29360}
+      - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/Anonymous-nips-submissions/Anonymous-nips-submissions}

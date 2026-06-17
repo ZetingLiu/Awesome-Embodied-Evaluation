@@ -253,6 +253,7 @@ def _build_prompt(track: str, title: str, abstract: str) -> tuple[str, str]:
         ),
         "vla": (
             '  "vla_env": one of simulation | sim2real | real,\n'
+            '  "vla_category": for simulation, one of core | robustness | memory | long_horizon | task_generalist,\n'
         ),
         "wm": (
             '  "wm_category": one of perceptual | generation | interactive | embodied_utility | physical,\n'

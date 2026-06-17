@@ -6,7 +6,7 @@ Machine-managed columns (Stars / Updated) are fetched from the GitHub REST API
 and injected only into the marked table blocks, e.g.:
 
     <!-- AEE-TABLE:VLM-PRIMARY-SPATIAL:START --> ... <!-- END -->
-    <!-- AEE-TABLE:VLA-SIM:START --> ... <!-- END -->
+    <!-- AEE-TABLE:VLA-SIM-CORE:START --> ... <!-- END -->
     <!-- AEE-TABLE:WM-INTERACTIVE:START --> ... <!-- END -->
 
 Everything outside the markers (prose, related lists, etc.) is left untouched.
@@ -60,6 +60,14 @@ def _vla(env: str):
     return lambda e: e.get("track") == "vla" and e.get("vla_env") == env
 
 
+def _vla_category(env: str, cat: str):
+    return lambda e: (
+        e.get("track") == "vla"
+        and e.get("vla_env") == env
+        and e.get("vla_category") == cat
+    )
+
+
 def _wm(cat: str):
     return lambda e: e.get("track") == "wm" and e.get("wm_category") == cat
 
@@ -75,7 +83,11 @@ MARKER_SPECS = [
     ("VLM-CONTROL-PERCEPTION", _vlm_control("perception")),
     ("VLM-CONTROL-VIDEO", _vlm_control("video")),
     ("VLM-CONTROL-DOCUMENT", _vlm_control("document")),
-    ("VLA-SIM", _vla("simulation")),
+    ("VLA-SIM-CORE", _vla_category("simulation", "core")),
+    ("VLA-SIM-ROBUSTNESS", _vla_category("simulation", "robustness")),
+    ("VLA-SIM-MEMORY", _vla_category("simulation", "memory")),
+    ("VLA-SIM-LONG-HORIZON", _vla_category("simulation", "long_horizon")),
+    ("VLA-SIM-GENERALIST", _vla_category("simulation", "task_generalist")),
     ("VLA-SIM2REAL", _vla("sim2real")),
     ("VLA-REAL", _vla("real")),
     ("WM-PERCEPTUAL", _wm("perceptual")),

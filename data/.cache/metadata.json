@@ -7,12 +7,20 @@
     "stars": 126,
     "updated": "2025-06"
   },
+  "CognitiveAISystems/MIKASA-Robo": {
+    "stars": 112,
+    "updated": "2026-06"
+  },
   "EmbodiedBench/EmbodiedBench": {
     "stars": 311,
     "updated": "2026-05"
   },
+  "FLAIROx/Kinetix": {
+    "stars": 258,
+    "updated": "2026-05"
+  },
   "Lifelong-Robot-Learning/LIBERO": {
-    "stars": 1952,
+    "stars": 1955,
     "updated": "2025-03"
   },
   "MME-Benchmarks/Video-MME": {
@@ -23,16 +31,28 @@
     "stars": 576,
     "updated": "2026-02"
   },
+  "NVlabs/RoboLab": {
+    "stars": 305,
+    "updated": "2026-06"
+  },
+  "OpenMOSS/VLABench": {
+    "stars": 442,
+    "updated": "2025-11"
+  },
   "PKU-Alignment/VLA-Arena": {
     "stars": 178,
     "updated": "2026-03"
   },
+  "RoboMME/robomme_benchmark": {
+    "stars": 113,
+    "updated": "2026-06"
+  },
   "RoboTwin-Platform/RoboTwin": {
-    "stars": 2450,
+    "stars": 2453,
     "updated": "2026-05"
   },
   "StanfordVL/BEHAVIOR-1K": {
-    "stars": 1519,
+    "stars": 1520,
     "updated": "2026-06"
   },
   "Vchitect/VBench": {
@@ -51,6 +71,10 @@
     "stars": 267,
     "updated": "2026-03"
   },
+  "allenai/molmospaces": {
+    "stars": 365,
+    "updated": "2026-06"
+  },
   "droid-dataset/droid_policy_learning": {
     "stars": 289,
     "updated": "2025-04"
@@ -63,6 +87,10 @@
     "stars": 365,
     "updated": "2024-09"
   },
+  "flyingGH/RoboWM-Bench": {
+    "stars": 0,
+    "updated": "2026-05"
+  },
   "haosulab/ManiSkill2-task-dev": {
     "stars": 1,
     "updated": "2023-08"
@@ -71,12 +99,16 @@
     "stars": 284,
     "updated": "2025-12"
   },
+  "libero-mem/libero-mem": {
+    "stars": 22,
+    "updated": "2025-11"
+  },
   "lupantech/MathVista": {
     "stars": 363,
     "updated": "2025-09"
   },
   "martin-sedlacek/REALM": {
-    "stars": 58,
+    "stars": 59,
     "updated": "2026-06"
   },
   "mees/calvin": {
@@ -84,7 +116,7 @@
     "updated": "2025-09"
   },
   "meituan-longcat/WBench": {
-    "stars": 144,
+    "stars": 145,
     "updated": "2026-06"
   },
   "mengfeidu/EmbSpatial-Bench": {
@@ -99,16 +131,24 @@
     "stars": 91,
     "updated": "2026-01"
   },
+  "qiuboxiang/RoboCerebra": {
+    "stars": 65,
+    "updated": "2026-04"
+  },
   "qiulu66/EgoPlan-Bench2": {
     "stars": 31,
     "updated": "2025-04"
   },
+  "robo-arena/roboarena": {
+    "stars": 104,
+    "updated": "2026-04"
+  },
   "robocasa/robocasa": {
-    "stars": 1466,
+    "stars": 1467,
     "updated": "2026-05"
   },
   "robot-colosseum/robot-colosseum": {
-    "stars": 150,
+    "stars": 149,
     "updated": "2025-03"
   },
   "simpler-env/SimplerEnv": {
@@ -118,6 +158,10 @@
   "stepjam/RLBench": {
     "stars": 1784,
     "updated": "2025-01"
+  },
+  "sylvestf/LIBERO-plus": {
+    "stars": 347,
+    "updated": "2026-01"
   },
   "tsinghua-fib-lab/WorldArena": {
     "stars": 220,

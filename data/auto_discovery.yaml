@@ -66,6 +66,7 @@ automation:
     vla:
       extra_fields:
         vla_env: simulation
+        vla_category: core
       min_stars: 30
       min_track_hits: 2
       min_citations: 0
@@ -73,6 +74,9 @@ automation:
         - vision language action benchmark
         - robot manipulation benchmark evaluation
         - embodied agent benchmark navigation manipulation
+        - vla robustness benchmark libero perturbation
+        - vla memory benchmark robotic manipulation
+        - long horizon vla benchmark manipulation
       track_terms:
         - robot
         - manipulation
