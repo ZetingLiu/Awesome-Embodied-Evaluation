@@ -69,9 +69,9 @@ Reasoning & Planning 评测拆成两层：
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
 | 1 | **Where2Place** | 2024 | 空闲空间指代与放置点预测：在杂乱真实场景中根据语言定位可放置区域 | 点位准确率 | 224 | 2025-07 | [论文](https://arxiv.org/abs/2406.10721) · [代码](https://github.com/wentaoyuan/RoboPoint) · [数据集](https://huggingface.co/datasets/wentao-yuan/where2place) |
-| 2 | **RefSpatial-Bench** | 2025 | 复杂 3D 场景下的多步空间指代与放置推理 | 准确率（Location / Placement） | 263 | 2025-12 | [论文](https://arxiv.org/abs/2506.04308) · [代码](https://github.com/Zhoues/RoboRefer) · [主页](https://zhoues.github.io/RoboRefer/) |
-| 3 | **VSI-Bench** | 2025 | 基于第一视角视频的视觉空间智能评测（配置关系、测量估计、时空记忆） | Accuracy / MRA | 726 | 2025-08 | [论文](https://arxiv.org/abs/2412.14171) · [代码](https://github.com/vision-x-nyu/thinking-in-space) · [数据集](https://huggingface.co/datasets/nyu-visionx/VSI-Bench) |
-| 4 | **EmbSpatial-Bench** | 2024 | 具身 3D 场景中的第一视角空间关系理解（上下左右/远近等 6 类关系） | Accuracy | 31 | 2024-06 | [论文](https://arxiv.org/abs/2406.05756) · [代码](https://github.com/mengfeidu/EmbSpatial-Bench) · [数据集](https://huggingface.co/datasets/Phineas476/EmbSpatial-Bench) |
+| 2 | **EmbSpatial-Bench** | 2024 | 具身 3D 场景中的第一视角空间关系理解（上下左右/远近等 6 类关系） | Accuracy | 31 | 2024-06 | [论文](https://arxiv.org/abs/2406.05756) · [代码](https://github.com/mengfeidu/EmbSpatial-Bench) · [数据集](https://huggingface.co/datasets/Phineas476/EmbSpatial-Bench) |
+| 3 | **RefSpatial-Bench** | 2025 | 复杂 3D 场景下的多步空间指代与放置推理 | 准确率（Location / Placement） | 263 | 2025-12 | [论文](https://arxiv.org/abs/2506.04308) · [代码](https://github.com/Zhoues/RoboRefer) · [主页](https://zhoues.github.io/RoboRefer/) |
+| 4 | **VSI-Bench** | 2025 | 基于第一视角视频的视觉空间智能评测（配置关系、测量估计、时空记忆） | Accuracy / MRA | 726 | 2025-08 | [论文](https://arxiv.org/abs/2412.14171) · [代码](https://github.com/vision-x-nyu/thinking-in-space) · [数据集](https://huggingface.co/datasets/nyu-visionx/VSI-Bench) |
 <!-- AEE-TABLE:VLM-PRIMARY-SPATIAL:END -->
 
 #### 规划与下一步推理
@@ -153,9 +153,9 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 <!-- AEE-TABLE:VLA-SIM-CORE:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 1 | **LIBERO** | 2023 | 终身 / 语言条件下的桌面操作（Spatial、Object、Goal、Long 四个子集） | 成功率 | 2.0k | 2025-03 | [论文](https://arxiv.org/abs/2306.03310) · [代码](https://github.com/Lifelong-Robot-Learning/LIBERO) |
+| 1 | **RLBench** | 2020 | CoppeliaSim 中 100+ 语言条件操作任务（Franka Panda）；动作模型/操作学习长期基线 | 成功率 | 1.8k | 2025-01 | [论文](https://arxiv.org/abs/1909.12271) · [代码](https://github.com/stepjam/RLBench) |
 | 2 | **CALVIN** | 2021 | 长时序指令串联；组合泛化（ABC→D） | 平均完成链长 | 942 | 2025-09 | [论文](https://arxiv.org/abs/2112.03227) · [代码](https://github.com/mees/calvin) |
-| 3 | **RLBench** | 2020 | CoppeliaSim 中 100+ 语言条件操作任务（Franka Panda）；动作模型/操作学习长期基线 | 成功率 | 1.8k | 2025-01 | [论文](https://arxiv.org/abs/1909.12271) · [代码](https://github.com/stepjam/RLBench) |
+| 3 | **LIBERO** | 2023 | 终身 / 语言条件下的桌面操作（Spatial、Object、Goal、Long 四个子集） | 成功率 | 2.0k | 2025-03 | [论文](https://arxiv.org/abs/2306.03310) · [代码](https://github.com/Lifelong-Robot-Learning/LIBERO) |
 | 4 | **ManiSkill2** | 2023 | 多对象、多技能条件下的泛化操作评测，强调高吞吐仿真 | 任务成功率 / 奖励相关指标 | 1 | 2023-08 | [论文](https://arxiv.org/abs/2302.04659) · [代码](https://github.com/haosulab/ManiSkill2-task-dev) |
 | 5 | **BEHAVIOR-1K** | 2024 | 面向真实日常活动的长时程任务评测，强调高保真物理与场景复杂度 | 活动成功率 / 完成度指标 | 1.5k | 2026-06 | [论文](https://arxiv.org/abs/2403.09227) · [代码](https://github.com/StanfordVL/BEHAVIOR-1K) |
 <!-- AEE-TABLE:VLA-SIM-CORE:END -->
@@ -165,10 +165,10 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 <!-- AEE-TABLE:VLA-SIM-ROBUSTNESS:START -->
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
-| 6 | **LIBERO-PRO** | 2025 | LIBERO 鲁棒性扩展：在物体、初始状态、指令、环境四维度施加扰动，诊断记忆化问题 | 扰动下成功率 | 267 | 2026-03 | [论文](https://arxiv.org/abs/2510.03827) · [代码](https://github.com/Zxy-MLlab/LIBERO-PRO) · [主页](https://zxy-mllab.github.io/LIBERO-PRO-Webpage/) |
-| 7 | **LIBERO-Plus** | 2025 | LIBERO 鲁棒性基准：10030 个任务，覆盖相机、机器人初始状态、语言、光照、纹理、噪声、物体布局等七类扰动 | 按扰动维度统计的成功率 | 348 | 2026-01 | [论文](https://arxiv.org/abs/2510.13626) · [代码](https://github.com/sylvestf/LIBERO-plus) · [主页](https://sylvestf.github.io/LIBERO-plus) · [LeRobot](https://huggingface.co/docs/lerobot/main/libero_plus) |
-| 8 | **VLA-Arena** | 2025 | 结构化动作模型评测：任务结构/语言/视觉三轴、170 任务（Safety/Distractor/Extrapolation/Long-Horizon） | 按难度等级（L0–L2）的成功率 | 178 | 2026-03 | [论文](https://arxiv.org/abs/2512.22539) · [代码](https://github.com/PKU-Alignment/VLA-Arena) · [主页](https://vla-arena.github.io/) |
-| 9 | **THE COLOSSEUM** | 2024 | 机器人操作泛化评测：视觉/语义/执行多类扰动下的策略鲁棒性 | 成功率 | 149 | 2025-03 | [论文](https://arxiv.org/abs/2402.08191) · [代码](https://github.com/robot-colosseum/robot-colosseum) · [主页](https://robot-colosseum.github.io) |
+| 6 | **THE COLOSSEUM** | 2024 | 机器人操作泛化评测：视觉/语义/执行多类扰动下的策略鲁棒性 | 成功率 | 149 | 2025-03 | [论文](https://arxiv.org/abs/2402.08191) · [代码](https://github.com/robot-colosseum/robot-colosseum) · [主页](https://robot-colosseum.github.io) |
+| 7 | **LIBERO-PRO** | 2025 | LIBERO 鲁棒性扩展：在物体、初始状态、指令、环境四维度施加扰动，诊断记忆化问题 | 扰动下成功率 | 267 | 2026-03 | [论文](https://arxiv.org/abs/2510.03827) · [代码](https://github.com/Zxy-MLlab/LIBERO-PRO) · [主页](https://zxy-mllab.github.io/LIBERO-PRO-Webpage/) |
+| 8 | **LIBERO-Plus** | 2025 | LIBERO 鲁棒性基准：10030 个任务，覆盖相机、机器人初始状态、语言、光照、纹理、噪声、物体布局等七类扰动 | 按扰动维度统计的成功率 | 349 | 2026-01 | [论文](https://arxiv.org/abs/2510.13626) · [代码](https://github.com/sylvestf/LIBERO-plus) · [主页](https://sylvestf.github.io/LIBERO-plus) · [LeRobot](https://huggingface.co/docs/lerobot/main/libero_plus) |
+| 9 | **VLA-Arena** | 2025 | 结构化动作模型评测：任务结构/语言/视觉三轴、170 任务（Safety/Distractor/Extrapolation/Long-Horizon） | 按难度等级（L0–L2）的成功率 | 178 | 2026-03 | [论文](https://arxiv.org/abs/2512.22539) · [代码](https://github.com/PKU-Alignment/VLA-Arena) · [主页](https://vla-arena.github.io/) |
 <!-- AEE-TABLE:VLA-SIM-ROBUSTNESS:END -->
 
 ### 仿真 · 记忆与历史依赖
@@ -198,8 +198,8 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 | 序号 | 基准 | 年份 | 评什么 | 指标 | Stars | 最近更新 | 链接 |
 |---|---|---|---|---|---|---|---|
 | 17 | **RoboTwin 2.0** | 2025 | 双臂操作基准：50 任务、5 种机器人本体、强域随机化；社区动作模型评测常用（含 CVPR 挑战赛） | 任务成功率 | 2.5k | 2026-05 | [论文](https://arxiv.org/abs/2506.18088) · [代码](https://github.com/RoboTwin-Platform/RoboTwin) · [主页](https://robotwin-platform.github.io/) · [排行榜](https://robotwin-platform.github.io/leaderboard) |
-| 18 | **RoboLab** | 2026 | 高保真 Isaac Lab 仿真基准：评测 DROID 训练的通用任务策略，120 任务覆盖视觉、程序、关系三类能力 | SR%、进度分、末端速度、EE SPARC | 307 | 2026-06 | [论文](https://arxiv.org/abs/2604.09860) · [代码](https://github.com/NVlabs/RoboLab) · [主页](https://research.nvidia.com/labs/srl/projects/robolab/) · [排行榜](https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html) |
-| 19 | **Kinetix** | 2025 | 开放式 2D 物理控制任务；在 vla-eval 中作为广义控制与泛化压力测试 | 任务回报 / 成功率 | 258 | 2026-05 | [论文](https://arxiv.org/abs/2410.23208) · [主页](https://kinetix-env.github.io/) |
+| 18 | **Kinetix** | 2025 | 开放式 2D 物理控制任务；在 vla-eval 中作为广义控制与泛化压力测试 | 任务回报 / 成功率 | 258 | 2026-05 | [论文](https://arxiv.org/abs/2410.23208) · [主页](https://kinetix-env.github.io/) |
+| 19 | **RoboLab** | 2026 | 高保真 Isaac Lab 仿真基准：评测 DROID 训练的通用任务策略，120 任务覆盖视觉、程序、关系三类能力 | SR%、进度分、末端速度、EE SPARC | 307 | 2026-06 | [论文](https://arxiv.org/abs/2604.09860) · [代码](https://github.com/NVlabs/RoboLab) · [主页](https://research.nvidia.com/labs/srl/projects/robolab/) · [排行榜](https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html) |
 | 20 | **MolmoSpaces-Bench** | 2026 | 程序化生成空间中的零样本导航与操作基准，覆盖 pick/place/open/close/open-door 等任务 | 任务成功率 | 365 | 2026-06 | [论文](https://arxiv.org/abs/2602.11337) · [代码](https://github.com/allenai/molmospaces) · [主页](https://allenai.github.io/molmospaces/) |
 <!-- AEE-TABLE:VLA-SIM-GENERALIST:END -->
 

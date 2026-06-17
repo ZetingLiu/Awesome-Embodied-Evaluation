@@ -158,25 +158,42 @@ def render_links(links: list[dict], lang: str) -> str:
     return " · ".join(parts)
 
 
-def ordered_entries_by_track(benchmarks: list[dict]) -> dict[str, list[dict]]:
-    """Stable order per track: MARKER_SPECS order, then YAML list order within each table."""
-    ordered: dict[str, list[dict]] = {"vlm": [], "vla": [], "wm": []}
+def first_year(entry: dict) -> int:
+    """Use the earliest year mentioned in year_en for chronological ordering."""
+    text = str(entry.get("year_en") or entry.get("year_cn") or "")
+    match = re.search(r"(19|20)\d{2}", text)
+    return int(match.group(0)) if match else 9999
+
+
+def sorted_entries(entries: list[dict]) -> list[dict]:
+    return sorted(entries, key=first_year)
+
+
+def entries_by_marker(benchmarks: list[dict]) -> dict[str, list[dict]]:
+    grouped: dict[str, list[dict]] = {marker: [] for marker, _ in MARKER_SPECS}
     seen: set[int] = set()
-    for marker, selector in MARKER_SPECS:
-        track = marker.split("-", 1)[0].lower()
-        for entry in benchmarks:
-            key = id(entry)
-            if key in seen:
-                continue
+    for entry in benchmarks:
+        for marker, selector in MARKER_SPECS:
             if selector(entry):
-                ordered.setdefault(track, []).append(entry)
-                seen.add(key)
+                grouped[marker].append(entry)
+                seen.add(id(entry))
+                break
     for entry in benchmarks:
         if id(entry) not in seen:
             print(
                 f"[warn] entry not assigned to a marker: '{entry.get('name')}'",
                 file=sys.stderr,
             )
+    return grouped
+
+
+def ordered_entries_by_track(benchmarks: list[dict]) -> dict[str, list[dict]]:
+    """Stable order per track: MARKER_SPECS order, then chronological order within each table."""
+    ordered: dict[str, list[dict]] = {"vlm": [], "vla": [], "wm": []}
+    grouped = entries_by_marker(benchmarks)
+    for marker, _selector in MARKER_SPECS:
+        track = marker.split("-", 1)[0].lower()
+        ordered.setdefault(track, []).extend(sorted_entries(grouped.get(marker, [])))
     return ordered
 
 
@@ -227,7 +244,7 @@ def render_table(entries: list[dict], lang: str) -> str:
         return "_No entries yet._" if lang == "en" else "_暂无条目。_"
     header = "| " + " | ".join(HEADERS[lang]) + " |"
     sep = "|" + "|".join(["---"] * len(HEADERS[lang])) + "|"
-    rows = [render_row(e, lang) for e in sorted(entries, key=lambda e: int(e["seq"]))]
+    rows = [render_row(e, lang) for e in sorted_entries(entries)]
     return "\n".join([header, sep, *rows])
 
 
@@ -306,12 +323,7 @@ def main() -> int:
         entry["_meta"] = fetch_repo_meta(repo, cache) if repo else None
     save_cache(cache)
 
-    entries_by_marker: dict[str, list[dict]] = {marker: [] for marker, _ in MARKER_SPECS}
-    for entry in benchmarks:
-        for marker, selector in MARKER_SPECS:
-            if selector(entry):
-                entries_by_marker[marker].append(entry)
-                break
+    grouped_entries = entries_by_marker(benchmarks)
 
     if args.check:
         changed = False
@@ -319,7 +331,7 @@ def main() -> int:
             text = path.read_text(encoding="utf-8")
             new_text = text
             for marker, _selector in MARKER_SPECS:
-                table = render_table(entries_by_marker.get(marker, []), lang)
+                table = render_table(grouped_entries.get(marker, []), lang)
                 new_text = replace_block(new_text, marker, table)
             if new_text != text:
                 print(f"[check] {path.name} would change")
@@ -328,7 +340,7 @@ def main() -> int:
 
     changed_files = []
     for path, lang in [(README_EN, "en"), (README_CN, "cn")]:
-        if render_readme(path, entries_by_marker, lang):
+        if render_readme(path, grouped_entries, lang):
             changed_files.append(path.name)
 
     if changed_files:

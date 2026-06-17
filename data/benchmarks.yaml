@@ -57,7 +57,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/Zhoues/RoboRefer}
       - {en: Site, cn: 主页, url: https://zhoues.github.io/RoboRefer/}
 
-    seq: 2
+    seq: 3
   - name: VSI-Bench
     track: vlm
     vlm_group: primary
@@ -74,7 +74,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/vision-x-nyu/thinking-in-space}
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/nyu-visionx/VSI-Bench}
 
-    seq: 3
+    seq: 4
   - name: EmbSpatial-Bench
     track: vlm
     vlm_group: primary
@@ -92,7 +92,7 @@ benchmarks:
       - {en: Dataset, cn: 数据集, url: https://huggingface.co/datasets/Phineas476/EmbSpatial-Bench}
 
   # ======================== Reasoning & Planning · Embodied Primary · Planning ========================
-    seq: 4
+    seq: 2
   - name: EgoPlan-Bench2
     track: vlm
     vlm_group: primary
@@ -285,7 +285,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2306.03310}
       - {en: Code, cn: 代码, url: https://github.com/Lifelong-Robot-Learning/LIBERO}
 
-    seq: 1
+    seq: 3
   - name: LIBERO-PRO
     track: vla
     vla_env: simulation
@@ -302,7 +302,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/Zxy-MLlab/LIBERO-PRO}
       - {en: Site, cn: 主页, url: https://zxy-mllab.github.io/LIBERO-PRO-Webpage/}
 
-    seq: 6
+    seq: 7
   - name: LIBERO-Plus
     track: vla
     vla_env: simulation
@@ -321,7 +321,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://sylvestf.github.io/LIBERO-plus}
       - {en: LeRobot, cn: LeRobot, url: https://huggingface.co/docs/lerobot/main/libero_plus}
 
-    seq: 7
+    seq: 8
   - name: CALVIN
     track: vla
     vla_env: simulation
@@ -372,7 +372,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/PKU-Alignment/VLA-Arena}
       - {en: Site, cn: 主页, url: https://vla-arena.github.io/}
 
-    seq: 8
+    seq: 9
   - name: THE COLOSSEUM
     track: vla
     vla_env: simulation
@@ -389,7 +389,7 @@ benchmarks:
       - {en: Code, cn: 代码, url: https://github.com/robot-colosseum/robot-colosseum}
       - {en: Site, cn: 主页, url: https://robot-colosseum.github.io}
 
-    seq: 9
+    seq: 6
   - name: RLBench
     track: vla
     vla_env: simulation
@@ -405,7 +405,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/1909.12271}
       - {en: Code, cn: 代码, url: https://github.com/stepjam/RLBench}
 
-    seq: 3
+    seq: 1
   - name: ManiSkill2
     track: vla
     vla_env: simulation
@@ -579,7 +579,7 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://research.nvidia.com/labs/srl/projects/robolab/}
       - {en: Leaderboard, cn: 排行榜, url: https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html}
 
-    seq: 18
+    seq: 19
   - name: Kinetix
     track: vla
     vla_env: simulation
@@ -595,7 +595,7 @@ benchmarks:
       - {en: Paper, cn: 论文, url: https://arxiv.org/abs/2410.23208}
       - {en: Site, cn: 主页, url: https://kinetix-env.github.io/}
 
-    seq: 19
+    seq: 18
   - name: MolmoSpaces-Bench
     track: vla
     vla_env: simulation
@@ -685,8 +685,8 @@ benchmarks:
     vla_env: real
     year_en: "2026"
     year_cn: "2026"
-    tests_en: "Low-cost reproducible real-world action-model benchmark using an SO-101 arm, RGB-D cameras, and standardized ID/OOD
-      manipulation tasks"
+    tests_en: "Low-cost reproducible real-world action-model benchmark using an SO-101 arm, RGB-D cameras, and standardized
+      ID/OOD manipulation tasks"
     tests_cn: "低成本可复现实验室真机动作模型基准：SO-101 机械臂、RGB-D 相机、标准化 ID/OOD 操作任务"
     metric_en: "Real-world success rate (ID / OOD)"
     metric_cn: "真机成功率（ID / OOD）"
