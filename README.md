@@ -4,7 +4,7 @@
 
 A curated list of **benchmarks and evaluation methods** for embodied foundation models, spanning three tracks: **Vision-Language Models (VLM)**, **Vision-Language-Action models (VLA)**, and **World Models (WM)**.
 
-Most existing lists cover only one track. This repo puts all three in one place and focuses on **how each benchmark is actually evaluated** — task setup, inputs/outputs, metrics, and what it takes to reproduce the numbers.
+Most existing lists cover only one or two tracks. This repo puts all three in one place and focuses on **how each benchmark is actually evaluated** — task setup, inputs/outputs, metrics, and what it takes to reproduce the numbers.
 
 Contributions are welcome. See [Contributing](#contributing).
 
@@ -39,9 +39,7 @@ Each entry lists the paper, the official code, the main metric, and notes on rep
 
 Tables are further split by **capability axis** (VLM), **evaluation environment** (VLA: simulation / sim-to-real / real robot), or **world-model dimension** (WM). See `data/benchmarks.yaml` for the taxonomy fields (`vlm_category`, `vla_env`, `wm_category`).
 
-The **Stars** and **Updated** columns are refreshed automatically **twice a week** (Monday and Thursday) by a GitHub Actions workflow, so the popularity and activity signals stay current. Every other field is curated by hand.
-
-The same workflow can also propose newly discovered benchmark entries across VLM / VLA / WM via an automated PR. Rather than scraping README text, discovery anchors each candidate on its **arXiv paper** (the paper title becomes the canonical name, plus year and abstract) and applies strict guards: an official code repo, a star threshold, embodied-relevance keyword hits, and a survey/awesome-list filter so paper collections are rejected. When an LLM is configured, it makes the final "is this a real benchmark?" call and writes the *What it tests* / *Metric* summaries; otherwise deterministic rules are used. All auto-insertions land in a reviewable PR before merge.
+The **Stars** and **Updated** columns come from GitHub repository metadata and are refreshed manually by maintainers when the tables are updated. Every other field is curated by hand.
 
 ## VLM Evaluation
 
@@ -276,7 +274,7 @@ Pull requests are welcome. For a new entry, please include:
 - A minimal run command, if you have one.
 - Any reproducibility caveats you ran into (coordinate conventions, normalization stats, ambiguous termination rules, etc.).
 
-Keep one entry per row and place it in the matching track table. Assign a **per-track, contiguous `seq`** in `data/benchmarks.yaml` (shown as the first table column; VLM/VLA/WM each starts at 1). Auto-discovery appends the next number within the same track; after manual bulk edits run `python scripts/render_readme.py --assign-seq` before re-rendering.
+Keep one entry per row and place it in the matching track table. Assign a **per-track, contiguous `seq`** in `data/benchmarks.yaml` (shown as the first table column; VLM/VLA/WM each starts at 1). After manual bulk edits, run `python scripts/render_readme.py --assign-seq` before re-rendering.
 
 ## License
 
