@@ -183,6 +183,7 @@ Action 基准先按 **策略在哪里评测** 分组：闭环仿真、sim-to-rea
 | 10 | **LIBERO-Mem** | 2025 | 部分可观测操作中的对象级记忆：物体运动、顺序、关系与遮挡回忆 | 时间尺度压力测试下的成功率 | 22 | 2025-11 | [论文](https://arxiv.org/abs/2511.11478) · [代码](https://github.com/libero-mem/libero-mem) · [主页](https://libero-mem.github.io/) |
 | 11 | **RoboMME** | 2026 | 记忆增强机器人操作：覆盖时间、空间、对象、程序性记忆四类任务套件 | 16 个任务上的成功率 | 113 | 2026-06 | [论文](https://arxiv.org/abs/2603.04639) · [代码](https://github.com/RoboMME/robomme_benchmark) · [主页](https://robomme.github.io/) · [排行榜](https://robomme.github.io/leaderboard.html) |
 | 12 | **MIKASA-Robo-VLA** | 2026 | 面向动作模型的记忆密集桌面操作：90 个语言条件任务，覆盖 10 类记忆类型 | 按任务时长与记忆类型统计的成功率 | 112 | 2026-06 | [论文](https://arxiv.org/abs/2502.10550) · [代码](https://github.com/CognitiveAISystems/MIKASA-Robo) · [文档](https://mikasarobo.github.io/) |
+| 28 | **EMem-Bench** | 2026 | 2,554 个交互回合中的视觉细节记忆、动态状态追踪、交互结果记忆与经验泛化 | 成功率；记忆增强交互效率（MAE） | — | — | [论文](https://arxiv.org/abs/2609.28236) · [代码](https://github.com/ZJU-OmniAI/Embodied-Omni/tree/main/embodied_memory) · [数据集](https://huggingface.co/datasets/lzLiang/EmbodiedMemoryBench) · [主页](https://zju-omniai.github.io/Embodied-Omni/EmbodiedMemoryBench/) |
 <!-- AEE-TABLE:VLA-SIM-MEMORY:END -->
 
 ### 仿真 · 长程推理
