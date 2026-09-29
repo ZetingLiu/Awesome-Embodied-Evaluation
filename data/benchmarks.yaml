@@ -1008,3 +1008,35 @@ benchmarks:
       - {en: Site, cn: 主页, url: https://alaya-studio.github.io/WorldMark/}
       - {en: Arena, cn: Arena, url: https://warena.ai/}
     seq: 5
+
+  # Interactive embodied memory evaluation
+  - name: EMem-Bench
+    track: vla
+    vla_env: simulation
+    vla_category: memory
+    seq: 28
+    year_en: '2026'
+    year_cn: '2026'
+    tests_en: Visual recall, dynamic state tracking, interaction outcomes, and experience generalization across 2,554 interactive episodes
+    tests_cn: 2,554 个交互回合中的视觉细节记忆、动态状态追踪、交互结果记忆与经验泛化
+    metric_en: Success rate; memory-augmented efficiency (MAE)
+    metric_cn: 成功率；记忆增强交互效率（MAE）
+    repo: ZJU-OmniAI/Embodied-Omni
+    links:
+    - en: Paper
+      cn: 论文
+      url: https://arxiv.org/abs/2609.28236
+    - en: Code
+      cn: 代码
+      url: https://github.com/ZJU-OmniAI/Embodied-Omni/tree/main/embodied_memory
+    - en: Dataset
+      cn: 数据集
+      url: https://huggingface.co/datasets/lzLiang/EmbodiedMemoryBench
+    - en: Site
+      cn: 主页
+      url: https://zju-omniai.github.io/Embodied-Omni/EmbodiedMemoryBench/
+    ecosystem:
+      paper: public
+      code: official
+      data_or_tasks: public
+      protocol: documented
